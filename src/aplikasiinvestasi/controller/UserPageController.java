@@ -51,6 +51,7 @@ public class UserPageController {
         masterCredential.setUsername(userPage.getUsernameField().getText());
         masterCredential.setPassword(userPage.getPassField().getText());
         masterCredential.setPrivilege(userPage.getAksesField().getSelectedItem().toString());
+        masterCredential.setStatus("AKTIF");
         userService.addCredential(masterCredential);
         listCredential = userService.viewAllUser();
         viewDataOnTable();
