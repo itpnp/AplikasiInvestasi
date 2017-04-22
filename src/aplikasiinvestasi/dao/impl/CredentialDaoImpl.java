@@ -28,6 +28,7 @@ public class CredentialDaoImpl implements CredentialDao {
     @Override
     public void addCredential(MasterCredential credential) {
         try{
+            System.out.println(credential.getPrivilegeCode());
             session = HibernateUtil.getSessionFactory().openSession();
             byte[] key = generateKey();
             credential.setSaltKey(key);

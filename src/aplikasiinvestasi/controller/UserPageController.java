@@ -47,7 +47,7 @@ public class UserPageController {
     }
     public void saveButton(java.awt.event.ActionEvent e){
         MasterCredential masterCredential = new MasterCredential();
-        masterCredential.setPrivilegeCode(userService.generateUserId());
+        masterCredential.setPrivilegeCode("ADM"+userService.generateUserId());
         masterCredential.setUsername(userPage.getUsernameField().getText());
         masterCredential.setPassword(userPage.getPassField().getText());
         masterCredential.setPrivilege(userPage.getAksesField().getSelectedItem().toString());
