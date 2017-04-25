@@ -47,10 +47,6 @@ public class AddNewLpbController {
         this.addLpb.getHargaField().setDocument(new TextValidation());
         this.listMaster = new ArrayList<>();
         this.rekeningService = new RekeningServiceImpl();
-        
-    }
-    
-    public AddNewLpb getLpb(){
         this.addLpb.getHargaField().addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -118,6 +114,9 @@ public class AddNewLpbController {
                 selectDataInvest(e);
             }
         });
+    }
+    
+    public AddNewLpb getLpb(){
         
         viewOnTable();
         this.addLpb.setTitle("Tambah Data LPB Lokal");

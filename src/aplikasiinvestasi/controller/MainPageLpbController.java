@@ -159,7 +159,6 @@ public class MainPageLpbController {
     public void printButtonAction(java.awt.event.ActionEvent awt){
         printOption = new PrintOptionController(this);
         printOption.openExportPage().setVisible(true);
-        
     }
     
     public void creditButtonAction(java.awt.event.ActionEvent e){
