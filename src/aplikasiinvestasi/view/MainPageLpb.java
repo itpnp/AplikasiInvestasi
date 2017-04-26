@@ -110,6 +110,14 @@ public class MainPageLpb extends javax.swing.JFrame {
         this.jPanel2 = jPanel2;
     }
 
+    public JButton getLpjButton() {
+        return lpjButton;
+    }
+
+    public void setLpjButton(JButton lpjButton) {
+        this.lpjButton = lpjButton;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,6 +132,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         printButton = new javax.swing.JButton();
         addLpbImportButton = new javax.swing.JButton();
+        lpjButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         bulanParam = new javax.swing.JComboBox();
@@ -139,6 +148,7 @@ public class MainPageLpb extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createEtchedBorder()));
 
+        addButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/bill medium.png"))); // NOI18N
         addButton.setText("LPB Lokal");
         addButton.setToolTipText("LPB LOKAL");
@@ -146,6 +156,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         addButton.setIconTextGap(1);
         addButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        printButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         printButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1482910741_excel.png"))); // NOI18N
         printButton.setText("Export To Excel");
         printButton.setToolTipText("Print To Excel");
@@ -154,6 +165,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         printButton.setIconTextGap(1);
         printButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        addLpbImportButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         addLpbImportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1480056802_import.png"))); // NOI18N
         addLpbImportButton.setText("LPB Import");
         addLpbImportButton.setToolTipText("LPB IMPORT");
@@ -162,26 +174,32 @@ public class MainPageLpb extends javax.swing.JFrame {
         addLpbImportButton.setIconTextGap(10);
         addLpbImportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        lpjButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        lpjButton.setText("LPJ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addComponent(addButton)
+                .addGap(11, 11, 11)
                 .addComponent(addLpbImportButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lpjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addComponent(printButton)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(printButton, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addComponent(addLpbImportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lpjButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(printButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addLpbImportButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -350,6 +368,7 @@ public class MainPageLpb extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton lpjButton;
     private javax.swing.JButton printButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JComboBox tahunParam;
