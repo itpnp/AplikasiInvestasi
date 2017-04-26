@@ -5,6 +5,7 @@
 package aplikasiinvestasi.service;
 
 import aplikasiinvestasi.dto.TotalKredit;
+import aplikasiinvestasi.model.MasterDepartemen;
 import aplikasiinvestasi.model.MasterInvest;
 import aplikasiinvestasi.model.MasterLpj;
 import java.util.List;
@@ -28,4 +29,6 @@ public interface LpjService {
     public List<MasterLpj> getAllDataByMonth(String month);
     public List<MasterLpj> getAllDataByYear(String year);
     public boolean saveInBatch(List<MasterLpj> listMaster); 
+    public List<MasterDepartemen> getDepartemenByUnit(String unit);
+    public List<MasterInvest> getAllInvestData();
 }

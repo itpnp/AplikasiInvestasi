@@ -4,9 +4,14 @@
  */
 package aplikasiinvestasi.service.impl;
 
+import aplikasiinvestasi.dao.DepartemenDao;
+import aplikasiinvestasi.dao.InvestDao;
 import aplikasiinvestasi.dao.LpjDao;
+import aplikasiinvestasi.dao.impl.DepartemenDaoImpl;
+import aplikasiinvestasi.dao.impl.InvestDaoImpl;
 import aplikasiinvestasi.dao.impl.LpjDaoImpl;
 import aplikasiinvestasi.dto.TotalKredit;
+import aplikasiinvestasi.model.MasterDepartemen;
 import aplikasiinvestasi.model.MasterInvest;
 import aplikasiinvestasi.model.MasterLpj;
 import aplikasiinvestasi.service.LpjService;
@@ -19,6 +24,9 @@ import java.util.List;
 public class LpjServiceImpl implements LpjService {
     
     private LpjDao lpjDao = new LpjDaoImpl();
+    private DepartemenDao departemenDao = new DepartemenDaoImpl();
+    private InvestDao investDao = new InvestDaoImpl();
+    
     @Override
     public boolean saveData(MasterLpj masterLpj) {
         return lpjDao.saveData(masterLpj);
@@ -87,6 +95,16 @@ public class LpjServiceImpl implements LpjService {
     @Override
     public boolean saveInBatch(List<MasterLpj> listMaster) {
         return lpjDao.saveInBatch(listMaster);
+    }
+
+    @Override
+    public List<MasterDepartemen> getDepartemenByUnit(String unit) {
+        return departemenDao.getDataByUnit(unit);
+    }
+
+    @Override
+    public List<MasterInvest> getAllInvestData() {
+        return investDao.getAllData();
     }
     
 }

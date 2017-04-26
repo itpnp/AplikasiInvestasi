@@ -37,6 +37,7 @@ public class LpjDaoImpl implements LpjDao {
             success = true;
         }catch(  HibernateException | ExceptionInInitializerError e){
             success = false;
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
         }finally{
             if(session != null){
                 if(session.isOpen()){
@@ -316,6 +317,7 @@ public class LpjDaoImpl implements LpjDao {
                  success = true;
              }else{
                  success = false;
+                 break;
              }
          }
          if(success){

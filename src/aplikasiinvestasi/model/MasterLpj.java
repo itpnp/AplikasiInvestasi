@@ -24,8 +24,8 @@ import javax.persistence.Temporal;
 public class MasterLpj implements Serializable {
     
     @Id
-    @Column(name="id_lpb")
-    private int idLpb;
+    @Column(name="id_lpj")
+    private int idLpj;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="kode_invest", nullable=true)
@@ -45,10 +45,10 @@ public class MasterLpj implements Serializable {
     @Column(name="keterangan")
     private String keterangan;
     
-    @Column(name="no_lpb_internal")
+    @Column(name="no_lpj_internal")
     private String noIpbInternal;
     
-    @Column(name="no_lpb_eksternal")
+    @Column(name="no_lpj_eksternal")
     private String noIpbEksternal;
     
     @Column(name="jumlah")
@@ -72,10 +72,10 @@ public class MasterLpj implements Serializable {
     @Column(name="active_status")
     private String activeStatus;
   
-    public MasterLpj(int idLpb, MasterInvest masterInvest, String alokasiBiaya, MasterDepartemen masterDepartemen, Date tanggal, 
+    public MasterLpj(int idLpj, MasterInvest masterInvest, String alokasiBiaya, MasterDepartemen masterDepartemen, Date tanggal, 
             String keterangan, String noIpbInternal, String noIpbEksternal, double jumlah, String satuan, long hargaSatuan, long debet, 
             String kodeRekening, String status, String activeStatus) {
-        this.idLpb = idLpb;
+        this.idLpj = idLpj;
         this.masterInvest = masterInvest;
         this.alokasiBiaya = alokasiBiaya;
         this.masterDepartemen = masterDepartemen;
@@ -119,12 +119,12 @@ public class MasterLpj implements Serializable {
         this.kodeRekening = kodeRekening;
     }
 
-    public int getIdLpb() {
-        return idLpb;
+    public int getIdLpj() {
+        return idLpj;
     }
 
-    public void setIdLpb(int idLpb) {
-        this.idLpb = idLpb;
+    public void setIdLpj(int idLpj) {
+        this.idLpj = idLpj;
     }
 
     public MasterInvest getMasterInvest() {

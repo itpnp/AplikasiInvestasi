@@ -9,6 +9,7 @@ import aplikasiinvestasi.model.MasterInvest;
 import aplikasiinvestasi.service.BskkService;
 import aplikasiinvestasi.service.DepartemenService;
 import aplikasiinvestasi.service.LpbService;
+import aplikasiinvestasi.service.LpjService;
 import aplikasiinvestasi.service.impl.DepartemenServiceImpl;
 import aplikasiinvestasi.utils.ButtonColumns;
 import aplikasiinvestasi.view.ChooseDataInvest;
@@ -30,13 +31,16 @@ import javax.swing.table.TableColumnModel;
 public class ChooseDataInvestController {
     private ChooseDataInvest chooseData;
     private LpbService lpbService;
+    private LpjService lpjService;
     private List<MasterInvest> listInvest;
     private List<MasterDepartemen> listPenanggungJawab;
     private AddNewLpbController addLpbLokal;
     private AddNewLpbImportController addLpbImport;
+    private AddLpjController addLpj;
     private PrintOptionController printOption;
     private final DepartemenService departemenService = new DepartemenServiceImpl();
     private UpdateLpbController updateController;
+    private UpdateLpjController updateLpjController;
     private Action detail;
     private BskkService bskkService;
     private AddBskkController addBskkController;
@@ -72,11 +76,25 @@ public class ChooseDataInvestController {
             }
         };
     }
-    
+    public ChooseDataInvestController(AddLpjController lpjController){
+        chooseData = new ChooseDataInvest(lpjController.getParent().getMainPage(), true);
+        this.lpjService = lpjController.getService();
+        listInvest = lpjService.getAllInvestData();
+        addLpj = lpjController;
+        detail = new AbstractAction(){
+        @Override
+        public void actionPerformed(ActionEvent e)
+            {
+                int modelRow = Integer.valueOf( e.getActionCommand() );
+                addLpj.setMasterInvest(listInvest.get(modelRow));
+                chooseData.dispose();
+            }
+        };
+    }
      public ChooseDataInvestController(PrintOptionController printController){
         chooseData = new ChooseDataInvest(printController.getParentController().getMainPage(), true);
         this.lpbService = printController.getService();
-        listInvest = lpbService.getAllInvestData();
+        listInvest = lpjService.getAllInvestData();
         printOption = printController;
         detail = new AbstractAction(){
         @Override
@@ -100,6 +118,21 @@ public class ChooseDataInvestController {
             {
                 int modelRow = Integer.valueOf( e.getActionCommand() );
                 updateController.setMasterInvest(listInvest.get(modelRow));
+                chooseData.dispose();
+            }
+        };
+    }
+    public ChooseDataInvestController(final UpdateLpjController updateController){
+        chooseData = new ChooseDataInvest(updateController.getParent(), true);
+        this.lpjService = updateController.getService();
+        listInvest = lpjService.getAllInvestData();
+        this.updateLpjController = updateController;
+        detail = new AbstractAction(){
+        @Override
+        public void actionPerformed(ActionEvent e)
+            {
+                int modelRow = Integer.valueOf( e.getActionCommand() );
+                updateLpjController.setMasterInvest(listInvest.get(modelRow));
                 chooseData.dispose();
             }
         };

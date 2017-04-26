@@ -107,8 +107,16 @@ public class UpdateLpbController {
            this.masterLpb.setStatus("RESMI");
         }
         lpbService.updateData(masterLpb);
+        mainPageController.getAllData();
+        mainPageController.viewDataOnTable();
     }
     public UpdateLpb editPage(){
+        this.updateLpb.getDepartemenComboBox().addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            @Override
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                departemenComboBoxPropertyChange(evt);
+            }
+        });
         updateLpb.getSaveButton().addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -169,4 +177,12 @@ public class UpdateLpbController {
         this.masterLpb.setMasterInvest(null);
         this.updateLpb.getInvestField().setText("");
     }
+    private void departemenComboBoxPropertyChange(java.beans.PropertyChangeEvent evt) {                                                  
+      if(listDepartemen != null){
+        updateLpb.getAlokasiBiayaField().setText(listDepartemen.get(updateLpb.getDepartemenComboBox().getSelectedIndex()).getAlokasi());
+        updateLpb.getAlokasiBiayaField().requestFocus();
+      }else{
+        updateLpb.getAlokasiBiayaField().setText("");
+      }
+    } 
 }

@@ -297,10 +297,10 @@ public class AddNewLpj extends javax.swing.JDialog {
         jLabel6.setText("Keterangan");
 
         jLabel7.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        jLabel7.setText("Nomor LPB Internal");
+        jLabel7.setText("Nomor LPJ Internal");
 
         jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        jLabel8.setText("Nomor LPB Eksternal");
+        jLabel8.setText("Nomor LPJ Eksternal");
 
         jLabel9.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         jLabel9.setText("Quantity");

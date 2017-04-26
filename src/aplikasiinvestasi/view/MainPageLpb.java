@@ -118,6 +118,22 @@ public class MainPageLpb extends javax.swing.JFrame {
         this.lpjButton = lpjButton;
     }
 
+    public JButton getViewLPJ() {
+        return viewLPJ;
+    }
+
+    public void setViewLPJ(JButton viewLPJ) {
+        this.viewLPJ = viewLPJ;
+    }
+
+    public JButton getViewLpb() {
+        return viewLpb;
+    }
+
+    public void setViewLpb(JButton viewLpb) {
+        this.viewLpb = viewLpb;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -143,6 +159,8 @@ public class MainPageLpb extends javax.swing.JFrame {
         viewTable = new javax.swing.JTable();
         creditButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        viewLPJ = new javax.swing.JButton();
+        viewLpb = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -175,7 +193,11 @@ public class MainPageLpb extends javax.swing.JFrame {
         addLpbImportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         lpjButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        lpjButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1493198199_vector_65_12.png"))); // NOI18N
         lpjButton.setText("LPJ");
+        lpjButton.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lpjButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lpjButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -187,8 +209,8 @@ public class MainPageLpb extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(addLpbImportButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lpjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addComponent(lpjButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(printButton)
                 .addContainerGap())
         );
@@ -282,7 +304,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridwidth = 10;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 1211;
         gridBagConstraints.ipady = 429;
@@ -316,6 +338,28 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(11, 6, 0, 0);
         jPanel2.add(jSeparator1, gridBagConstraints);
+
+        viewLPJ.setFont(new java.awt.Font("Lucida Sans", 1, 10)); // NOI18N
+        viewLPJ.setText("LPJ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 0);
+        jPanel2.add(viewLPJ, gridBagConstraints);
+
+        viewLpb.setFont(new java.awt.Font("Lucida Sans", 1, 10)); // NOI18N
+        viewLpb.setText("LPB");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 6, 0, 0);
+        jPanel2.add(viewLpb, gridBagConstraints);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -372,6 +416,8 @@ public class MainPageLpb extends javax.swing.JFrame {
     private javax.swing.JButton printButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JComboBox tahunParam;
+    private javax.swing.JButton viewLPJ;
+    private javax.swing.JButton viewLpb;
     private javax.swing.JTable viewTable;
     // End of variables declaration//GEN-END:variables
 }
