@@ -7,6 +7,7 @@ package aplikasiinvestasi.view;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 
@@ -59,6 +60,30 @@ public class CreditLpbPage extends javax.swing.JDialog {
         this.findButton = findButton;
     }
 
+    public JCheckBox getAllCheck() {
+        return allCheck;
+    }
+
+    public void setAllCheck(JCheckBox allCheck) {
+        this.allCheck = allCheck;
+    }
+
+    public JCheckBox getLpbCheck() {
+        return lpbCheck;
+    }
+
+    public void setLpbCheck(JCheckBox lpbCheck) {
+        this.lpbCheck = lpbCheck;
+    }
+
+    public JCheckBox getLpjCheck() {
+        return lpjCheck;
+    }
+
+    public void setLpjCheck(JCheckBox lpjCheck) {
+        this.lpjCheck = lpjCheck;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,6 +101,9 @@ public class CreditLpbPage extends javax.swing.JDialog {
         bulanComboBox = new javax.swing.JComboBox();
         tahunComboBox = new javax.swing.JComboBox();
         findButton = new javax.swing.JButton();
+        lpbCheck = new javax.swing.JCheckBox();
+        lpjCheck = new javax.swing.JCheckBox();
+        allCheck = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         viewTable = new javax.swing.JTable();
@@ -83,7 +111,7 @@ public class CreditLpbPage extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setFocusable(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(250, 450));
+        jPanel1.setPreferredSize(new java.awt.Dimension(280, 450));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Sans", 1, 10)), "Find", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Sans", 1, 10))); // NOI18N
 
@@ -103,6 +131,15 @@ public class CreditLpbPage extends javax.swing.JDialog {
         findButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1479291087_Search.png"))); // NOI18N
         findButton.setText("Cari");
 
+        lpbCheck.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        lpbCheck.setText("LPB");
+
+        lpjCheck.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        lpjCheck.setText("LPJ");
+
+        allCheck.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        allCheck.setText("Semua");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -119,13 +156,25 @@ public class CreditLpbPage extends javax.swing.JDialog {
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bulanComboBox, 0, 159, Short.MAX_VALUE)
-                            .addComponent(tahunComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(bulanComboBox, 0, 189, Short.MAX_VALUE)
+                            .addComponent(tahunComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lpbCheck)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lpjCheck)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(allCheck)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lpbCheck)
+                    .addComponent(lpjCheck)
+                    .addComponent(allCheck))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(bulanComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,7 +200,7 @@ public class CreditLpbPage extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.WEST);
@@ -232,6 +281,7 @@ public class CreditLpbPage extends javax.swing.JDialog {
 //        });
 //    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox allCheck;
     private javax.swing.JComboBox bulanComboBox;
     private javax.swing.JButton findButton;
     private javax.swing.JLabel jLabel1;
@@ -240,6 +290,8 @@ public class CreditLpbPage extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JCheckBox lpbCheck;
+    private javax.swing.JCheckBox lpjCheck;
     private javax.swing.JComboBox tahunComboBox;
     private javax.swing.JTable viewTable;
     // End of variables declaration//GEN-END:variables

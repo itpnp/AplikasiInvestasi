@@ -52,6 +52,7 @@ public class MainPageLpbController {
         mainPage.setVisible(true);
         listLpb = lpbService.getAllData();
         listLpj = lpjService.getAllData();
+        mainPage.getInfoLabel().setText("DATA LPB");
         viewDataOnTable();
         DefaultComboBoxModel monthModel = new DefaultComboBoxModel(BulanEnum.namaBulan());
         mainPage.getBulanParam().setModel(monthModel);
@@ -249,10 +250,14 @@ public class MainPageLpbController {
     public void showlistLpj(java.awt.event.ActionEvent awt){
         this.getAllData();
         this.viewLpjOnTable();
+        mainPage.getInfoLabel().setText("DATA LPJ");
+
     }
     public void showlistLpb(java.awt.event.ActionEvent awt){
         this.getAllData();
         this.viewDataOnTable();
+        mainPage.getInfoLabel().setText("DATA LPB");
+
     }
     public void printButtonAction(java.awt.event.ActionEvent awt){
         printOption = new PrintOptionController(this);
