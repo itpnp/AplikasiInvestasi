@@ -279,12 +279,22 @@ public class MainPageLpbController {
         updateLpjController.editPage().setVisible(true);
     }
     public void searchButton(java.awt.event.ActionEvent e){
-        if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0){
-           listLpb = lpbService.getAllDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
-        }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0){
-            listLpb = lpbService.getAllDataByYear(""+mainPage.getTahunParam().getSelectedItem().toString());
+        if(mainPage.getInfoLabel().getText().equals("DATA LPB")){
+            if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0){
+                listLpb = lpbService.getAllDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
+             }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0){
+                 listLpb = lpbService.getAllDataByYear(""+mainPage.getTahunParam().getSelectedItem().toString());
+             }
+             viewDataOnTable();
+        }else if(mainPage.getInfoLabel().getText().equals("DATA LPJ")){
+            if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0){
+                listLpj = lpjService.getAllDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
+             }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0){
+                 listLpj = lpjService.getAllDataByYear(""+mainPage.getTahunParam().getSelectedItem().toString());
+             }
+             viewLpjOnTable();
         }
-        viewDataOnTable();
+        
     }
     public void getAllData(){
         listLpb = lpbService.getAllData();

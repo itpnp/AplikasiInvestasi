@@ -188,7 +188,6 @@ public class MainPageLpb extends javax.swing.JFrame {
         printButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1482910741_excel.png"))); // NOI18N
         printButton.setText("Export To Excel");
         printButton.setToolTipText("Print To Excel");
-        printButton.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         printButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         printButton.setIconTextGap(1);
         printButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -197,7 +196,6 @@ public class MainPageLpb extends javax.swing.JFrame {
         addLpbImportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1480056802_import.png"))); // NOI18N
         addLpbImportButton.setText("LPB Import");
         addLpbImportButton.setToolTipText("LPB IMPORT");
-        addLpbImportButton.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         addLpbImportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         addLpbImportButton.setIconTextGap(10);
         addLpbImportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -205,7 +203,6 @@ public class MainPageLpb extends javax.swing.JFrame {
         lpjButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         lpjButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1493198199_vector_65_12.png"))); // NOI18N
         lpjButton.setText("LPJ");
-        lpjButton.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lpjButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lpjButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -215,24 +212,21 @@ public class MainPageLpb extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(addButton)
-                .addGap(11, 11, 11)
-                .addComponent(addLpbImportButton)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lpjButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(printButton)
+                .addComponent(addLpbImportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lpjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lpjButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(printButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addLpbImportButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(addLpbImportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lpjButton, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+            .addComponent(printButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
@@ -298,6 +292,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
         jPanel2.add(searchButton, gridBagConstraints);
 
+        viewTable.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
         viewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

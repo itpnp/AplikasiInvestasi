@@ -146,11 +146,11 @@ public class PrintOption extends javax.swing.JDialog {
 
         buttonGroup.add(allLpbRadio);
         allLpbRadio.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        allLpbRadio.setText("All LPB");
+        allLpbRadio.setText("Semua Data");
 
         buttonGroup.add(investRadio);
         investRadio.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        investRadio.setText("Invest Only");
+        investRadio.setText("Data Investasi");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -193,7 +193,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Sans" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="All LPB"/>
+        <Property name="text" type="java.lang.String" value="Semua Data"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="investRadio">
@@ -204,7 +204,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Sans" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Invest Only"/>
+        <Property name="text" type="java.lang.String" value="Data Investasi"/>
       </Properties>
     </Component>
   </SubComponents>
