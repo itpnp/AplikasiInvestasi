@@ -1267,4 +1267,37 @@ public class LpbDaoImpl implements LpbDao {
         return listLpb;
     }
 
+    @Override
+    public List<MasterLpb> findByYearMonthRekening(String year, String month, String rekening) {
+        List<MasterLpb> listLpb = new ArrayList<>();
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            listLpb = session.createCriteria(MasterLpb.class, "a")
+                    .createAlias("a.masterInvest", "invest")
+                    .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"'"))
+                    .add(Restrictions.sqlRestriction("Year(tanggal) = '"+year+"'"))
+                    .add(Restrictions.eq("kodeRekening",rekening)).list();
+             if(listLpb != null){
+                for(MasterLpb lpb : listLpb){
+                    if(lpb.getMasterDepartemen() != null){
+                        Hibernate.initialize(lpb.getMasterDepartemen());
+                    }
+                    if(lpb.getMasterInvest()!=null){
+                        Hibernate.initialize(lpb.getMasterInvest());
+                    }
+                }
+            }
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return listLpb;
+    }
+
 }

@@ -104,5 +104,10 @@ public class LpbServiceImpl implements LpbService{
         return lpbDao.saveInBatch(listMaster);
     }
 
+    @Override
+    public List<MasterLpb> findByYearMonthRekening(String year, String month, String rekening) {
+        return lpbDao.findByYearMonthRekening(year, month, rekening);
+    }
+
     
 }

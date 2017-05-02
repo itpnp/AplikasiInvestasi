@@ -280,17 +280,21 @@ public class MainPageLpbController {
     }
     public void searchButton(java.awt.event.ActionEvent e){
         if(mainPage.getInfoLabel().getText().equals("DATA LPB")){
-            if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0){
+            if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
                 listLpb = lpbService.getAllDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
-             }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0){
+             }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
                  listLpb = lpbService.getAllDataByYear(""+mainPage.getTahunParam().getSelectedItem().toString());
+             }else if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && !mainPage.getKodeRekening().getText().equals("")){
+                 listLpb = lpbService.findByYearMonthRekening(mainPage.getTahunParam().getSelectedItem().toString(), ""+mainPage.getBulanParam().getSelectedIndex(),mainPage.getKodeRekening().getText());
              }
              viewDataOnTable();
-        }else if(mainPage.getInfoLabel().getText().equals("DATA LPJ")){
-            if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0){
+        }else if(mainPage.getInfoLabel().getText().equals("DATA LPJ") ){
+            if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
                 listLpj = lpjService.getAllDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
-             }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0){
-                 listLpj = lpjService.getAllDataByYear(""+mainPage.getTahunParam().getSelectedItem().toString());
+             }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
+                listLpj = lpjService.getAllDataByYear(""+mainPage.getTahunParam().getSelectedItem().toString());
+             }else if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && !mainPage.getKodeRekening().getText().equals("")){
+                listLpj = lpjService.findByYearMonthRekening(mainPage.getTahunParam().getSelectedItem().toString(), ""+mainPage.getBulanParam().getSelectedIndex(),mainPage.getKodeRekening().getText());
              }
              viewLpjOnTable();
         }

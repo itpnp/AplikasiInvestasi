@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -29,6 +30,14 @@ public class MainPageLpb extends javax.swing.JFrame {
          } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
              e.printStackTrace();
          }
+    }
+
+    public JTextField getKodeRekening() {
+        return kodeRekening;
+    }
+
+    public void setKodeRekening(JTextField kodeRekening) {
+        this.kodeRekening = kodeRekening;
     }
 
     public JButton getAddLpbImportButton() {
@@ -171,6 +180,8 @@ public class MainPageLpb extends javax.swing.JFrame {
         viewLPJ = new javax.swing.JButton();
         viewLpb = new javax.swing.JButton();
         infoLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        kodeRekening = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -237,39 +248,39 @@ public class MainPageLpb extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         jLabel1.setText("Bulan");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(11, 4, 0, 0);
         jPanel2.add(jLabel1, gridBagConstraints);
 
         bulanParam.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         bulanParam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         bulanParam.setPreferredSize(new java.awt.Dimension(66, 29));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 86;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(6, 10, 0, 0);
         jPanel2.add(bulanParam, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         jLabel2.setText("Tahun");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 0);
         jPanel2.add(jLabel2, gridBagConstraints);
 
         tahunParam.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         tahunParam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         tahunParam.setPreferredSize(new java.awt.Dimension(66, 29));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 88;
@@ -283,7 +294,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         searchButton.setText("Cari");
         searchButton.setPreferredSize(new java.awt.Dimension(77, 29));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 10;
@@ -309,21 +320,21 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridwidth = 13;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1211;
+        gridBagConstraints.ipadx = 1201;
         gridBagConstraints.ipady = 764;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(6, 10, 11, 0);
+        gridBagConstraints.insets = new java.awt.Insets(6, 10, 11, 10);
         jPanel2.add(jScrollPane1, gridBagConstraints);
 
         creditButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         creditButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1480320881_Visa.png"))); // NOI18N
         creditButton.setToolTipText("Credit");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = -9;
@@ -335,7 +346,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 1;
@@ -347,7 +358,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         viewLPJ.setFont(new java.awt.Font("Lucida Sans", 1, 10)); // NOI18N
         viewLPJ.setText("LPJ");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipady = 8;
@@ -358,7 +369,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         viewLpb.setFont(new java.awt.Font("Lucida Sans", 1, 10)); // NOI18N
         viewLpb.setText("LPB");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipady = 8;
@@ -372,10 +383,33 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(9, 10, 0, 0);
         jPanel2.add(infoLabel, gridBagConstraints);
+
+        jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel3.setText("Kode Rekening");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipady = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 10, 0, 0);
+        jPanel2.add(jLabel3, gridBagConstraints);
+
+        kodeRekening.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 4, 0, 0);
+        jPanel2.add(kodeRekening, gridBagConstraints);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -425,10 +459,12 @@ public class MainPageLpb extends javax.swing.JFrame {
     private javax.swing.JLabel infoLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField kodeRekening;
     private javax.swing.JButton lpjButton;
     private javax.swing.JButton printButton;
     private javax.swing.JButton searchButton;

@@ -31,4 +31,6 @@ public interface LpjService {
     public boolean saveInBatch(List<MasterLpj> listMaster); 
     public List<MasterDepartemen> getDepartemenByUnit(String unit);
     public List<MasterInvest> getAllInvestData();
+    public List<MasterLpj> findByYearMonthRekening(String year,String month, String rekening);
+
 }

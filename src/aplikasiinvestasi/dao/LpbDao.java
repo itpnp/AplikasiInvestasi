@@ -38,6 +38,8 @@ public interface LpbDao {
     public void updateData(MasterLpb masterLpb);
     public List<MasterLpb> getAllDataByMonth(String month);
     public List<MasterLpb> getAllDataByYear(String year);
-    public boolean saveInBatch(List<MasterLpb> listMaster);    
+    public boolean saveInBatch(List<MasterLpb> listMaster);
+    public List<MasterLpb> findByYearMonthRekening(String year,String month, String rekening);
+
     
 }

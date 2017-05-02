@@ -106,5 +106,10 @@ public class LpjServiceImpl implements LpjService {
     public List<MasterInvest> getAllInvestData() {
         return investDao.getAllData();
     }
+
+    @Override
+    public List<MasterLpj> findByYearMonthRekening(String year, String month, String rekening) {
+        return lpjDao.findByYearMonthRekening(year, month, rekening);
+    }
     
 }

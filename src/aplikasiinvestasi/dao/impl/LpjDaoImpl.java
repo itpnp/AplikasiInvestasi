@@ -327,5 +327,38 @@ public class LpjDaoImpl implements LpjDao {
          }
          return success;
     }
+
+    @Override
+    public List<MasterLpj> findByYearMonthRekening(String year, String month, String rekening) {
+        List<MasterLpj> listLpj = new ArrayList<>();
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            listLpj = session.createCriteria(MasterLpj.class, "a")
+                    .createAlias("a.masterInvest", "invest")
+                    .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"'"))
+                    .add(Restrictions.sqlRestriction("Year(tanggal) = '"+year+"'"))
+                    .add(Restrictions.eq("kodeRekening",rekening)).list();
+             if(listLpj != null){
+                for(MasterLpj lpj : listLpj){
+                    if(lpj.getMasterDepartemen() != null){
+                        Hibernate.initialize(lpj.getMasterDepartemen());
+                    }
+                    if(lpj.getMasterInvest()!=null){
+                        Hibernate.initialize(lpj.getMasterInvest());
+                    }
+                }
+            }
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return listLpj;
+    }
     
 }

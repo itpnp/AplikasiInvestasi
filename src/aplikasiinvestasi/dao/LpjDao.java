@@ -27,5 +27,6 @@ public interface LpjDao {
     public void updateData(MasterLpj masterLpj);
     public List<MasterLpj> getAllDataByMonth(String month);
     public List<MasterLpj> getAllDataByYear(String year);
-    public boolean saveInBatch(List<MasterLpj> listMaster);    
+    public boolean saveInBatch(List<MasterLpj> listMaster);   
+    public List<MasterLpj> findByYearMonthRekening(String year,String month, String rekening);
 }
