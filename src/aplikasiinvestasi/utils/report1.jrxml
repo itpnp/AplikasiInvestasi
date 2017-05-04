@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="49d015de-e702-4303-b33f-f39cb1f3a593">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="299"/>
+	<property name="ireport.y" value="29"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#00FFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#00FFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 2" uuid="8ffb4904-a493-4ae0-8ff1-2fc94cdcb4b7">
+		<field name="kodeInvest" class="java.lang.String"/>
+		<field name="kodeRekening" class="java.lang.String"/>
+		<field name="alokasiBiaya" class="java.lang.String"/>
+		<field name="kodeDepartemen" class="java.lang.String"/>
+		<field name="tanggal" class="java.lang.String"/>
+		<field name="keterangan" class="java.lang.String"/>
+		<field name="lpjInternal" class="java.lang.String"/>
+		<field name="lpjEksternal" class="java.lang.String"/>
+		<field name="qty" class="java.lang.String"/>
+		<field name="satuan" class="java.lang.String"/>
+		<field name="harga" class="java.lang.String"/>
+		<field name="debet" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="totalPpn" class="java.lang.String"/>
+	<parameter name="test" class="net.sf.jasperreports.engine.data.JRTableModelDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="63" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="968" height="63" uuid="a3ab23a7-87a2-45d3-bcc2-f574c87b2f6c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="24" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DATA PENERIMAAN JASA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="0" width="185" height="35" uuid="550b1d16-872f-4a53-ab33-da67e59692c0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalPpn}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="35" uuid="3e53ad66-4601-447f-9a87-2991342b4f94"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total PPN  :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="216" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="0" y="0" width="968" height="216" uuid="4ff5fc10-8c5f-4aac-89c4-3e26ec3881ef"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 2" uuid="a977e7fe-2f50-4c5f-8d4f-bfba55256bcf">
+						<parametersMapExpression><![CDATA[$P{test}]]></parametersMapExpression>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRTableModelDataSource()]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="6026c46e-3f42-4e00-bfdd-809d83f72a47">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="bd39204e-2fb5-422e-9b60-263b64f01894"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Kode Invest]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="c8e95d64-e6f2-4656-9ec7-dffd781d5fe7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{kodeInvest}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="51" uuid="dba74eef-2825-4ce7-92a3-4fd50e78296d">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="51" height="30" uuid="2a24bee3-aa53-47be-ac70-d7de3327bf79"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Kode Rekening]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="51" height="20" uuid="13b2d37f-5988-46fa-a733-d99906ccd74e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{kodeRekening}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="41" uuid="73db92f2-8a66-4a7f-a063-38f65d87bb24">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="41" height="30" uuid="e276c243-c74f-4fde-8e29-573afd662440"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Alokasi Biaya]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="41" height="20" uuid="6b6ed3e5-bcab-4f10-83db-b39efeeff638"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{alokasiBiaya}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="62" uuid="a06f60e6-c134-4211-93d5-6683f04cf00f">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="62" height="30" uuid="9f1f6ab4-5e46-4777-88b9-e2c27d0fd994"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Kode Departemen]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="62" height="20" uuid="ecf8f003-ee2d-44f2-8cd0-a8e5a11a18ad"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{kodeDepartemen}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="58" uuid="bc9f3534-c019-4249-bbd4-5ea9daf35e15">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="58" height="30" uuid="ac414229-8b95-4e8b-95da-7dd80ecad99f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Tanggal]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="58" height="20" uuid="b8cca76a-59ce-4a71-8f51-ceba875ebc3a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="191" uuid="52c12312-e841-438e-8211-c0ff0388a54e">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="191" height="30" uuid="f5381eec-91bc-46d0-ac48-65192a16464d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Keterangan]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="191" height="20" uuid="0e5bee36-034d-4c67-8cb5-7e0002a8d3e6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{keterangan}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="8ce5cf0e-4692-496f-96a6-c6cd922e95a0">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="bc923793-c26f-43a8-b9a5-607cf89cf1b2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[LPJ INTR]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="a2e6e1a4-cdf7-4fd7-a06e-d8d3cbc6c2be"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{lpjInternal}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="a7d52189-e741-4da3-910c-136e19bf8d32">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="9c1e8d5a-2f57-4177-b247-b5d35b5821a9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[LPJ EKSTR]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="5da049a2-1a53-4d9a-9733-6a7e27c22957"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{lpjEksternal}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="32" uuid="3901adf2-4c31-4d50-a41d-a91638ed1b8d">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="32" height="30" uuid="f4566fd5-206b-46cd-98f7-e24878df02ad"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[QTY]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="32" height="20" uuid="a398c2fa-c340-4dd6-85a6-98c7a54a477e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="54" uuid="b88225f1-afc4-4704-ab8e-162a0ef642ec">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="54" height="30" uuid="ee349b29-deeb-498a-81b8-ef9473012f6b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Satuan]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="54" height="20" uuid="6788bed4-7c60-4d6e-9dd5-4b1bbfc8de25"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{satuan}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="104" uuid="2d2f4496-9f5d-454c-8b38-84cc2d90a067">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="104" height="30" uuid="2439faf4-ec21-47fc-8c5b-2869d4ac0063"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Harga]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="104" height="20" uuid="91423119-5e2e-4e14-a819-476abf453004"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="103" uuid="4735ca86-c566-4f26-8268-e8295b3df0f4">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="103" height="30" uuid="5696b024-83c7-4922-8a31-170ea87527d9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial Black" size="8" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Debet]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="103" height="20" uuid="4cb1f644-cb13-4fbb-bc4f-3c13132a7a74"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{debet}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

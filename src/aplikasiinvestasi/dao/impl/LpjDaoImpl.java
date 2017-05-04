@@ -4,52 +4,31 @@
  */
 package aplikasiinvestasi.dao.impl;
 
+import aplikasiinvestasi.controller.MainPageLpbController;
 import aplikasiinvestasi.dao.LpjDao;
 import aplikasiinvestasi.dto.TotalKredit;
 import aplikasiinvestasi.model.MasterInvest;
 import aplikasiinvestasi.model.MasterLpj;
 import aplikasiinvestasi.utils.HibernateUtil;
-import java.awt.Desktop;
-import java.awt.print.PrinterException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.text.MessageFormat;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-import javax.print.Doc;
-import javax.print.DocFlavor;
-import javax.print.DocPrintJob;
-import javax.print.PrintService;
-import javax.print.PrintServiceLookup;
-import javax.print.ServiceUI;
-import javax.print.SimpleDoc;
-import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.standard.Copies;
-import javax.print.attribute.standard.MediaSize;
-import javax.print.attribute.standard.MediaSizeName;
-import javax.print.attribute.standard.MediaTray;
-import javax.print.attribute.standard.OrientationRequested;
-import javax.swing.JFileChooser;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFFont;
-import org.apache.poi.hssf.usermodel.HSSFPrintSetup;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.DataFormat;
-import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.util.CellRangeAddress;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.data.JRTableModelDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -483,50 +462,73 @@ public class LpjDaoImpl implements LpjDao {
 
     @Override
     public void directPrint(JTable viewTable, String ppn) {
+        
+        try {
+//            JRBeanCollectionDataSource collectionDataSource=new JRBeanCollectionDataSource(listLpj);
+            Map parameter = new HashMap();
+            InputStream in = this.getClass().getClassLoader().getResourceAsStream("aplikasiinvestasi/utils/report1.jrxml");
+            JasperDesign design=JRXmlLoader.load(in);
+            JasperReport report=JasperCompileManager.compileReport(design);
+            Map parameters = new HashMap(); 
+            parameters.put("totalPpn", ppn);
+            
+            JasperPrint jasperPrint;
+            jasperPrint = JasperFillManager.fillReport(report, parameters, new JRTableModelDataSource(viewTable.getModel()));
+            jasperPrint.setName("Laporan");
+            
+            JasperViewer jv=new JasperViewer(jasperPrint, false);
+            jv.setTitle("Laporan Mahasiswa");
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(MainPageLpbController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         /* Fetch printing properties from the GUI components */
         
-        MessageFormat header = new MessageFormat("Data LPJ");
-        MessageFormat footer = new MessageFormat("~");
-
-        boolean fitWidth = false;
-        boolean showPrintDialog = true;
-        boolean interactive = true;
-
-        /* determine the print mode */
-        JTable.PrintMode mode = JTable.PrintMode.FIT_WIDTH;
-
-        try {
-            /* print the table */
-            PrintRequestAttributeSet set = new HashPrintRequestAttributeSet();
-            set.add(OrientationRequested.LANDSCAPE);
-            set.add(MediaSizeName.NA_LEGAL);
-            set.add(new Copies(1));
-            
-            boolean complete = viewTable.print(mode, header, footer,
-                                                 showPrintDialog, set,
-                                                 interactive, null);
-
-            /* if printing completes */
-            if (complete) {
-                /* show a success message */
-                JOptionPane.showMessageDialog(null,
-                                              "Printing Complete",
-                                              "Printing Result",
-                                              JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                /* show a message indicating that printing was cancelled */
-                JOptionPane.showMessageDialog(null,
-                                              "Printing Cancelled",
-                                              "Printing Result",
-                                              JOptionPane.INFORMATION_MESSAGE);
-            }
-        } catch (PrinterException pe) {
-            /* Printing failed, report to the user */
-            JOptionPane.showMessageDialog(null,
-                                          "Printing Failed: " + pe.getMessage(),
-                                          "Printing Result",
-                                          JOptionPane.ERROR_MESSAGE);
-        }
+//        MessageFormat header = new MessageFormat("Data LPJ");
+//        MessageFormat footer = new MessageFormat("~");
+//
+//        boolean fitWidth = false;
+//        boolean showPrintDialog = true;
+//        boolean interactive = true;
+//
+//        /* determine the print mode */
+//        JTable.PrintMode mode = JTable.PrintMode.FIT_WIDTH;
+//
+//        try {
+//            /* print the table */
+//            PrintRequestAttributeSet set = new HashPrintRequestAttributeSet();
+//            set.add(OrientationRequested.LANDSCAPE);
+//            set.add(MediaSizeName.NA_LEGAL);
+//            set.add(new Copies(1));
+//            
+//            boolean complete = viewTable.print(mode, header, footer,
+//                                                 showPrintDialog, set,
+//                                                 interactive, null);
+//
+//            /* if printing completes */
+//            if (complete) {
+//                /* show a success message */
+//                JOptionPane.showMessageDialog(null,
+//                                              "Printing Complete",
+//                                              "Printing Result",
+//                                              JOptionPane.INFORMATION_MESSAGE);
+//            } else {
+//                /* show a message indicating that printing was cancelled */
+//                JOptionPane.showMessageDialog(null,
+//                                              "Printing Cancelled",
+//                                              "Printing Result",
+//                                              JOptionPane.INFORMATION_MESSAGE);
+//            }
+//        } catch (PrinterException pe) {
+//            /* Printing failed, report to the user */
+//            JOptionPane.showMessageDialog(null,
+//                                          "Printing Failed: " + pe.getMessage(),
+//                                          "Printing Result",
+//                                          JOptionPane.ERROR_MESSAGE);
+//        }
+        
+        //ini export ke excel
         
 //        try{
 //                HSSFWorkbook workbook = new HSSFWorkbook();

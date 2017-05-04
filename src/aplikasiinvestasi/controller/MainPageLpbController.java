@@ -292,43 +292,7 @@ public class MainPageLpbController {
         updateLpjController.editPage().setVisible(true);
     }
     public void directPrint(java.awt.event.ActionEvent e){
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Kode Invest");
-        model.addColumn("<html><center>Kode<br>Rekening");
-        model.addColumn("<html><center>Alokasi<br>Biaya");
-        model.addColumn("<html><center>Kode<br>Departemen");
-        model.addColumn("Tanggal");
-        model.addColumn("Keterangan");
-        model.addColumn("LPJ INTR");
-        model.addColumn("LPJ EKSTR");
-        model.addColumn("QTY");
-        model.addColumn("Satuan");
-        model.addColumn("Harga");
-        model.addColumn("Debet");
-        for(MasterLpj lpj : listLpj){
-            Object[] obj = new Object[12];
-            if(lpj.getMasterInvest()!=null){
-                obj[0] = lpj.getMasterInvest().getKodeInvest();
-            }else{
-                obj[0] = "-";
-            }
-            obj[1]  = lpj.getKodeRekening();
-            obj[2]  = lpj.getAlokasiBiaya();
-            obj[3]  = lpj.getMasterDepartemen().getKodeDepartement();
-            obj[4]  = FormatDate.convert(lpj.getTanggal());
-            obj[5]  = lpj.getKeterangan();
-            obj[6]  = lpj.getNoIpbInternal();
-            obj[7]  = lpj.getNoIpbEksternal();
-            obj[8]  = lpj.getJumlah();
-            obj[9]  = lpj.getSatuan();
-            obj[10] = FormatRupiah.convert(String.valueOf(lpj.getHargaSatuan()));
-            obj[11] = FormatRupiah.convert(String.valueOf(lpj.getDebet()));
-            model.addRow(obj);
-        }
-        mainPage.getViewTable().setModel(model);
-        mainPage.setTitle("Laporan LPB dan LPJ");
         
-    
         lpjService.directPrint(mainPage.getViewTable(), mainPage.getTotalPpn().getText());
     }
     public void searchButton(java.awt.event.ActionEvent e){
