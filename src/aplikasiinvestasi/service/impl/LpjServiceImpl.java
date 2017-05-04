@@ -16,6 +16,7 @@ import aplikasiinvestasi.model.MasterInvest;
 import aplikasiinvestasi.model.MasterLpj;
 import aplikasiinvestasi.service.LpjService;
 import java.util.List;
+import javax.swing.JTable;
 
 /**
  *
@@ -110,6 +111,11 @@ public class LpjServiceImpl implements LpjService {
     @Override
     public List<MasterLpj> findByYearMonthRekening(String year, String month, String rekening) {
         return lpjDao.findByYearMonthRekening(year, month, rekening);
+    }
+
+    @Override
+    public void directPrint(JTable viewTable, String ppn) {
+        lpjDao.directPrint(viewTable, ppn);
     }
     
 }

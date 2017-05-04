@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -1298,6 +1299,11 @@ public class LpbDaoImpl implements LpbDao {
             }
         }
         return listLpb;
+    }
+
+    @Override
+    public void directPrint(JTable viewTable, String ppn) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

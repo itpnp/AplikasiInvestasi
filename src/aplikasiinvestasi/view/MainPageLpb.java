@@ -152,6 +152,30 @@ public class MainPageLpb extends javax.swing.JFrame {
         this.infoLabel = infoLabel;
     }
 
+    public JLabel getTotalPpn() {
+        return totalPpn;
+    }
+
+    public void setTotalPpn(JLabel totalPpn) {
+        this.totalPpn = totalPpn;
+    }
+
+    public JLabel getLabelPpn() {
+        return labelPpn;
+    }
+
+    public void setLabelPpn(JLabel labelPpn) {
+        this.labelPpn = labelPpn;
+    }
+
+    public JButton getDirectPrint() {
+        return directPrint;
+    }
+
+    public void setDirectPrint(JButton directPrint) {
+        this.directPrint = directPrint;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -182,6 +206,9 @@ public class MainPageLpb extends javax.swing.JFrame {
         infoLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         kodeRekening = new javax.swing.JTextField();
+        labelPpn = new javax.swing.JLabel();
+        totalPpn = new javax.swing.JLabel();
+        directPrint = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -320,14 +347,14 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 13;
+        gridBagConstraints.gridwidth = 15;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1201;
-        gridBagConstraints.ipady = 764;
+        gridBagConstraints.ipadx = 1192;
+        gridBagConstraints.ipady = 699;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(6, 10, 11, 10);
+        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 10);
         jPanel2.add(jScrollPane1, gridBagConstraints);
 
         creditButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
@@ -411,6 +438,37 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 4, 0, 0);
         jPanel2.add(kodeRekening, gridBagConstraints);
 
+        labelPpn.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        labelPpn.setText("Total PPN LPB");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 27;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 40, 55, 0);
+        jPanel2.add(labelPpn, gridBagConstraints);
+
+        totalPpn.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        totalPpn.setText("Rp. - ,00");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 14;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipadx = 89;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 55, 10);
+        jPanel2.add(totalPpn, gridBagConstraints);
+
+        directPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/print-icon 16.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipady = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
+        jPanel2.add(directPrint, gridBagConstraints);
+
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -456,6 +514,7 @@ public class MainPageLpb extends javax.swing.JFrame {
     private javax.swing.JButton addLpbImportButton;
     private javax.swing.JComboBox bulanParam;
     private javax.swing.JButton creditButton;
+    private javax.swing.JButton directPrint;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -465,10 +524,12 @@ public class MainPageLpb extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField kodeRekening;
+    private javax.swing.JLabel labelPpn;
     private javax.swing.JButton lpjButton;
     private javax.swing.JButton printButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JComboBox tahunParam;
+    private javax.swing.JLabel totalPpn;
     private javax.swing.JButton viewLPJ;
     private javax.swing.JButton viewLpb;
     private javax.swing.JTable viewTable;

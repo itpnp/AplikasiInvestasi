@@ -46,10 +46,13 @@ public class MainPageLpbController {
     private UpdateLpjController updateLpjController;
     private List<MasterLpb> listLpb;
     private List<MasterLpj> listLpj;
+    private int totalDebetLpj, totalDebetLpb;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public MainPageLpbController(){
         mainPage.setVisible(true);
+        mainPage.getTotalPpn().setText("Rp. - ,00");
+        mainPage.getLabelPpn().setText("Total PPN :");
         listLpb = lpbService.getAllData();
         listLpj = lpjService.getAllData();
         mainPage.getInfoLabel().setText("DATA LPB");
@@ -87,6 +90,12 @@ public class MainPageLpbController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 printButtonAction(e);
+            }
+        });
+        mainPage.getDirectPrint().addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                directPrint(e);
             }
         });
         mainPage.getLpjButton().addActionListener(new java.awt.event.ActionListener() {
@@ -232,7 +241,7 @@ public class MainPageLpbController {
         @Override
         public void actionPerformed(ActionEvent e)
             {
-                int modelRow = Integer.valueOf( e.getActionCommand() );
+                int modelRow = Integer.valueOf( e.getActionCommand());
                 openEditLpjPage(listLpj.get(modelRow));
             }
         };
@@ -250,12 +259,16 @@ public class MainPageLpbController {
     public void showlistLpj(java.awt.event.ActionEvent awt){
         this.getAllData();
         this.viewLpjOnTable();
+        mainPage.getTotalPpn().setText("Rp. - ,00");
+        mainPage.getLabelPpn().setText("Total PPN :");
         mainPage.getInfoLabel().setText("DATA LPJ");
 
     }
     public void showlistLpb(java.awt.event.ActionEvent awt){
         this.getAllData();
         this.viewDataOnTable();
+        mainPage.getTotalPpn().setText("Rp. - ,00");
+        mainPage.getLabelPpn().setText("Total PPN :");
         mainPage.getInfoLabel().setText("DATA LPB");
 
     }
@@ -278,6 +291,46 @@ public class MainPageLpbController {
         updateLpjController.setData(masterLpj);
         updateLpjController.editPage().setVisible(true);
     }
+    public void directPrint(java.awt.event.ActionEvent e){
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Kode Invest");
+        model.addColumn("<html><center>Kode<br>Rekening");
+        model.addColumn("<html><center>Alokasi<br>Biaya");
+        model.addColumn("<html><center>Kode<br>Departemen");
+        model.addColumn("Tanggal");
+        model.addColumn("Keterangan");
+        model.addColumn("LPJ INTR");
+        model.addColumn("LPJ EKSTR");
+        model.addColumn("QTY");
+        model.addColumn("Satuan");
+        model.addColumn("Harga");
+        model.addColumn("Debet");
+        for(MasterLpj lpj : listLpj){
+            Object[] obj = new Object[12];
+            if(lpj.getMasterInvest()!=null){
+                obj[0] = lpj.getMasterInvest().getKodeInvest();
+            }else{
+                obj[0] = "-";
+            }
+            obj[1]  = lpj.getKodeRekening();
+            obj[2]  = lpj.getAlokasiBiaya();
+            obj[3]  = lpj.getMasterDepartemen().getKodeDepartement();
+            obj[4]  = FormatDate.convert(lpj.getTanggal());
+            obj[5]  = lpj.getKeterangan();
+            obj[6]  = lpj.getNoIpbInternal();
+            obj[7]  = lpj.getNoIpbEksternal();
+            obj[8]  = lpj.getJumlah();
+            obj[9]  = lpj.getSatuan();
+            obj[10] = FormatRupiah.convert(String.valueOf(lpj.getHargaSatuan()));
+            obj[11] = FormatRupiah.convert(String.valueOf(lpj.getDebet()));
+            model.addRow(obj);
+        }
+        mainPage.getViewTable().setModel(model);
+        mainPage.setTitle("Laporan LPB dan LPJ");
+        
+    
+        lpjService.directPrint(mainPage.getViewTable(), mainPage.getTotalPpn().getText());
+    }
     public void searchButton(java.awt.event.ActionEvent e){
         if(mainPage.getInfoLabel().getText().equals("DATA LPB")){
             if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
@@ -287,18 +340,31 @@ public class MainPageLpbController {
              }else if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && !mainPage.getKodeRekening().getText().equals("")){
                  listLpb = lpbService.findByYearMonthRekening(mainPage.getTahunParam().getSelectedItem().toString(), ""+mainPage.getBulanParam().getSelectedIndex(),mainPage.getKodeRekening().getText());
              }
-             viewDataOnTable();
+            totalDebetLpb = 0;
+            for(MasterLpb lpb : listLpb){
+                totalDebetLpb = totalDebetLpj+Integer.valueOf(String.valueOf(lpb.getDebet()));
+            }
+            Double x = 0.1*totalDebetLpj;
+            mainPage.getTotalPpn().setText(FormatRupiah.convert(String.valueOf((x.intValue()))));
+            mainPage.getLabelPpn().setText("Total PPN LPB :");
+            viewDataOnTable();
         }else if(mainPage.getInfoLabel().getText().equals("DATA LPJ") ){
             if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
                 listLpj = lpjService.getAllDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
              }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
                 listLpj = lpjService.getAllDataByYear(""+mainPage.getTahunParam().getSelectedItem().toString());
-             }else if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && !mainPage.getKodeRekening().getText().equals("")){
+             }else if(mainPage.getBulanParam().getSelectedIndex() > 0 && mainPage.getTahunParam().getSelectedIndex() >0 && !mainPage.getKodeRekening().getText().equals("")){
                 listLpj = lpjService.findByYearMonthRekening(mainPage.getTahunParam().getSelectedItem().toString(), ""+mainPage.getBulanParam().getSelectedIndex(),mainPage.getKodeRekening().getText());
              }
-             viewLpjOnTable();
+            totalDebetLpj = 0;
+            for(MasterLpj lpj : listLpj){
+                totalDebetLpj = totalDebetLpj+(int)lpj.getDebet();
+            }
+            Double x = 0.1*totalDebetLpj;
+            mainPage.getTotalPpn().setText(FormatRupiah.convert(String.valueOf((x.intValue()))));
+            mainPage.getLabelPpn().setText("Total PPN LPJ :");
+            viewLpjOnTable();
         }
-        
     }
     public void getAllData(){
         listLpb = lpbService.getAllData();

@@ -8,6 +8,7 @@ import aplikasiinvestasi.dto.TotalKredit;
 import aplikasiinvestasi.model.MasterInvest;
 import aplikasiinvestasi.model.MasterLpj;
 import java.util.List;
+import javax.swing.JTable;
 
 /**
  *
@@ -29,4 +30,6 @@ public interface LpjDao {
     public List<MasterLpj> getAllDataByYear(String year);
     public boolean saveInBatch(List<MasterLpj> listMaster);   
     public List<MasterLpj> findByYearMonthRekening(String year,String month, String rekening);
+    public void directPrint(JTable viewTable, String ppn);
+
 }

@@ -9,6 +9,7 @@ import aplikasiinvestasi.model.MasterDepartemen;
 import aplikasiinvestasi.model.MasterInvest;
 import aplikasiinvestasi.model.MasterLpj;
 import java.util.List;
+import javax.swing.JTable;
 
 /**
  *
@@ -32,5 +33,5 @@ public interface LpjService {
     public List<MasterDepartemen> getDepartemenByUnit(String unit);
     public List<MasterInvest> getAllInvestData();
     public List<MasterLpj> findByYearMonthRekening(String year,String month, String rekening);
-
+    public void directPrint(JTable viewTable, String ppn);
 }

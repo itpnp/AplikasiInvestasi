@@ -10,6 +10,7 @@ import aplikasiinvestasi.model.MasterLpb;
 import aplikasiinvestasi.model.MasterLpj;
 import java.awt.Component;
 import java.util.List;
+import javax.swing.JTable;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -40,6 +41,6 @@ public interface LpbDao {
     public List<MasterLpb> getAllDataByYear(String year);
     public boolean saveInBatch(List<MasterLpb> listMaster);
     public List<MasterLpb> findByYearMonthRekening(String year,String month, String rekening);
-
+    public void directPrint(JTable viewTable, String ppn);
     
 }
