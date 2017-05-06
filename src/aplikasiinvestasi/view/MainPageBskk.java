@@ -85,6 +85,14 @@ public class MainPageBskk extends javax.swing.JFrame {
         this.noBpkkParameter = noBpkkParameter;
     }
 
+    public JButton getTerimaButton() {
+        return terimaButton;
+    }
+
+    public void setTerimaButton(JButton terimaButton) {
+        this.terimaButton = terimaButton;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,6 +105,7 @@ public class MainPageBskk extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         addButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
+        terimaButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         viewTable = new javax.swing.JTable();
@@ -126,6 +135,8 @@ public class MainPageBskk extends javax.swing.JFrame {
         exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        terimaButton.setText("TERIMA");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -134,12 +145,15 @@ public class MainPageBskk extends javax.swing.JFrame {
                 .addComponent(addButton)
                 .addGap(14, 14, 14)
                 .addComponent(exportButton)
-                .addGap(0, 526, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(terimaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 389, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(exportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
             .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(terimaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
@@ -274,6 +288,7 @@ public class MainPageBskk extends javax.swing.JFrame {
     private javax.swing.JTextField noBpkkParameter;
     private javax.swing.JButton searchButton;
     private javax.swing.JComboBox tahunParam;
+    private javax.swing.JButton terimaButton;
     private javax.swing.JTable viewTable;
     // End of variables declaration//GEN-END:variables
 }

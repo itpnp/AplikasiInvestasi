@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 06, 2017 at 11:16 AM
+-- Generation Time: May 06, 2017 at 11:55 AM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -769,6 +769,24 @@ INSERT INTO `master_rekening` (`no`, `no_rekening`, `keterangan`) VALUES
 (500, '5318.22', 'BPE - BEBAN KONSULTAN'),
 (501, '5318.99', 'BPE - LAIN - LAIN'),
 (502, '5319.99', 'BEBAN EKSPORT LAIN - LAIN/KOMISI');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `master_terima_bskk`
+--
+
+CREATE TABLE IF NOT EXISTS `master_terima_bskk` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `jenis` varchar(100) NOT NULL,
+  `tanggal` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `master_terima_bskk`
+--
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -47,7 +47,9 @@
                   <Component id="addButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Component id="exportButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="526" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="terimaButton" min="-2" pref="131" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="389" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -55,6 +57,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="exportButton" pref="66" max="32767" attributes="0"/>
               <Component id="addButton" alignment="0" max="32767" attributes="0"/>
+              <Component id="terimaButton" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -83,6 +86,11 @@
             <Property name="text" type="java.lang.String" value="Export To Excel"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="terimaButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="TERIMA"/>
           </Properties>
         </Component>
       </SubComponents>

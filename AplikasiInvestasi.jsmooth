@@ -7,6 +7,7 @@
 <JVMSearchPath>exepath</JVMSearchPath>
 <JVMSearchPath>jview</JVMSearchPath>
 <arguments></arguments>
+<bundledJVMPath>.</bundledJVMPath>
 <classPath>dist\AplikasiInvestasi.jar</classPath>
 <embeddedJar>false</embeddedJar>
 <executableName>Aplikasi Investasi.exe</executableName>
