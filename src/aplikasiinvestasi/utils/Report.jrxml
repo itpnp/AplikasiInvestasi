@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="935" pageHeight="609" orientation="Landscape" columnWidth="893" leftMargin="42" rightMargin="0" topMargin="20" bottomMargin="20" uuid="1e7e548d-f2e3-4ef8-9a02-d9952dd002ba">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="209"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#73E6E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#CFE6E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#00FFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="DataTable" uuid="b2882a71-a957-41df-80be-ad89d54fdee0">
+		<field name="COLUMN_0" class="java.lang.String"/>
+		<field name="COLUMN_1" class="java.lang.String"/>
+		<field name="COLUMN_2" class="java.lang.String"/>
+		<field name="COLUMN_3" class="java.lang.String"/>
+		<field name="COLUMN_4" class="java.lang.String"/>
+		<field name="COLUMN_5" class="java.lang.String"/>
+		<field name="COLUMN_6" class="java.lang.String"/>
+		<field name="COLUMN_7" class="java.lang.String"/>
+		<field name="COLUMN_8" class="java.lang.Double"/>
+		<field name="COLUMN_9" class="java.lang.String"/>
+		<field name="COLUMN_10" class="java.lang.String"/>
+		<field name="COLUMN_11" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="Data" class="javax.swing.table.DefaultTableModel"/>
+	<parameter name="totalPpn" class="java.lang.String"/>
+	<parameter name="title" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="731" height="79" uuid="79379142-a9c5-4d3a-8afc-50f46cfbfda7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="35" uuid="89395804-aa0e-46b8-bb39-2c536f55829e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total PPN : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="262" height="35" uuid="4554787f-9038-41df-8e88-baabb08f1616"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalPpn}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="124" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="0" y="0" width="731" height="124" uuid="36096770-6d20-41b5-922d-4c47fabee302"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DataTable" uuid="7a2a5621-9c98-4eda-b8e7-c5a9455f2987">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRTableModelDataSource($P{Data})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="60" uuid="73480501-c286-4959-a6c2-7e564755b1c0">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="30" uuid="2aa69057-db75-429a-8f0f-d57b4ce4053c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Kode Invest]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="24" uuid="74f3779f-fc53-45dc-970e-a93e6ff78298"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_0}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="32" uuid="b515e6ef-db8e-4830-b5d0-68cc72281d71">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="32" height="30" uuid="3bbd4cf7-b193-4451-9473-07ee35911b17"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Kode Rekening]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="32" height="24" uuid="21f8453a-aa53-42b5-8074-c24631a66a5d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="27" uuid="26f399e3-f2dd-4cca-a04b-c3925fc3340a">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="27" height="30" uuid="e1a601ae-1f61-4bd8-9271-c8e781b32f7e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Alokasi Biaya]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="27" height="24" uuid="92e6aa4d-9eb4-49a9-a320-bfcd1cbca96f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_2}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="41" uuid="195b2b25-7df8-4a75-a152-c900eba4053b">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="41" height="30" uuid="b58cd4fb-70fa-4985-b0f0-8446b291954f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Kode Departemen]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="41" height="24" uuid="8cd8f154-8c6f-4d1b-99bc-a0d09e3f4167"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_3}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="46" uuid="7b7f918d-7ed2-43d7-85ae-c283bb3dfa8a">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="46" height="30" uuid="fda70af0-4afd-4188-8c08-9777add82c18"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Tanggal]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="46" height="24" uuid="a75e4d13-8a86-40fa-a499-2b8974689dcc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_4}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="157" uuid="ca30469d-8d68-4c3a-bf93-292c12b75984">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="157" height="30" uuid="0e9e2050-6e6b-4c30-afbe-7407c24fc8ba"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Keterangan]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="157" height="24" uuid="a9301c49-4f26-4ff7-8ba2-2ad664a2a1a5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_5}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="81" uuid="c888d7f5-42b7-4c3b-b1d6-cdcdc54b8414">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="81" height="30" uuid="a5014bb4-8ab2-4e45-9266-26c99d26ea9b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[LPJ INTR]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="81" height="24" uuid="700a958b-6f16-4f87-b1a5-b46fe6936e20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_6}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="71" uuid="f86ceb58-3f5f-42b1-8640-5798ed923033">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="71" height="30" uuid="85114984-4551-4dc7-a4f4-4332c657e957"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[LPJ EKSTR]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="71" height="24" uuid="99ba44f5-5878-44b2-9cd3-bb7202ca812a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_7}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="18" uuid="2508bcba-030f-4e46-a685-d1863e8e3b69">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="18" height="30" uuid="a040d963-4de6-47d1-a464-61fa3a5f1d4a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[QTY]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="18" height="24" uuid="807fe105-4e71-4ec7-bc68-5dfed3eec052"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_8}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="27" uuid="abbddb92-5272-4ace-8073-3fb5d169280a">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="27" height="30" uuid="97f3c737-3716-4dbc-a13c-0a205d873c9b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Satuan]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="27" height="24" uuid="86f4652c-ff96-4770-8b96-378d53be168d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_9}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="76" uuid="0d6b0d4a-9066-4bcf-b932-f1b81a746407">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="76" height="30" uuid="477e9be7-fd88-4b8a-b4e0-494e86080208"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Harga]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="2" y="0" width="74" height="24" uuid="e3473df0-3c69-40d0-8de2-c8f19fa81115"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_10}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="71" uuid="9982d029-8770-4295-9616-6aff7a16e6fc">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="71" height="30" uuid="52d6da5a-f093-4fc4-a273-fdee7ab5f4fe"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Debet]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="29" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="24" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="71" height="24" uuid="99f7db18-5162-47b5-8248-e912b2c9e2c1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lucida Sans" size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COLUMN_11}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
+</jasperReport>

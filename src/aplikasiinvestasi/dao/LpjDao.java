@@ -30,6 +30,6 @@ public interface LpjDao {
     public List<MasterLpj> getAllDataByYear(String year);
     public boolean saveInBatch(List<MasterLpj> listMaster);   
     public List<MasterLpj> findByYearMonthRekening(String year,String month, String rekening);
-    public void directPrint(JTable viewTable, String ppn);
+    public void directPrint(JTable viewTable, String ppn, String title);
 
 }

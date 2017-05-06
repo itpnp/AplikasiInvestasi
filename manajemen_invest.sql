@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 08, 2017 at 10:17 AM
+-- Generation Time: May 06, 2017 at 11:16 AM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -35,57 +35,12 @@ CREATE TABLE IF NOT EXISTS `master_bskk` (
   `no_bpkk` varchar(50) NOT NULL,
   `debet` bigint(20) NOT NULL,
   PRIMARY KEY (`id_bskk`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `master_bskk`
 --
 
-INSERT INTO `master_bskk` (`id_bskk`, `kode_rekening`, `departemen`, `invest`, `tanggal`, `keterangan`, `no_bpkk`, `debet`) VALUES
-(1, '5221.01', 22, NULL, '2016-11-04', 'TAGIHAN AQUARIA 04/11/16', '024', 230000),
-(2, '5221.01', 22, 'test.invest.013', '2016-11-05', 'TAGIHAN AGA BULAN NOVEMBER 2016', '030', 127000),
-(3, '5221.01', 22, 'test.invest.013', '2016-11-08', 'TAGIHAN AQUARIA TGL 08/11/16', '040', 5730000),
-(4, '5221.01', 22, 'test.invest.013', '2016-11-11', 'TAGIHAN AQUARIA TGL 11/11/16', '061', 973000),
-(5, '5221.01', 22, 'test.invest.013', '2016-11-15', 'TAGIHAN AQUARIA TGL 15/11/2016', '091', 153000),
-(6, '5221.01', 22, 'test.invest.013', '2016-11-18', 'TAGIHAN AQUARIA TGL 18/11/16 ', '122', 175000),
-(7, '5221.01', 22, 'test.invest.013', '2016-11-24', 'TAGIHAN AQUARIA TGL 23/11/16 ', '154', 113000),
-(8, '5221.01', 22, 'test.invest.013', '2016-11-29', 'TAGIHAN AQUARIA TGL 29/11/16 ', '180', 217000),
-(9, '5224.04', 48, 'test.invest.011', '2016-11-04', 'PLATE CTP FOLIUM,BLANKO,KARTU NAMA TGL 24,25,29,31/10/16 ', '018', 1530000),
-(10, '5224.04', 48, 'test.invest.011', '2016-11-11', 'KLISE STAMPING KARTU NAMA TGL 4/11/16 ', '070', 1780000),
-(11, '5224.04', 48, 'test.invest.011', '2016-11-11', 'KLISE STAMPING TGL 4/11/16 ', '071', 1820000),
-(12, '5224.04', 48, 'test.invest.011', '2016-11-18', 'PLATE CTP BLANKO,FILM ZEPHYR TGL 5,10,11/11/16 ', '130', 1240000),
-(13, '5224.04', 48, 'test.invest.011', '2016-11-25', 'KLISE EMBOSS,STAMPING UNIV PUTRA BATAM TGL 18/11/16 ', '166', 547000),
-(14, '5224.04', 48, 'test.invest.011', '2016-11-29', 'KLISE STAMPING UPB TGL 27/11/16 ', '183', 745000),
-(15, '5224.04', 12, 'test.invest.001', '2016-11-04', 'BENSIN PROD HL II TGL 3/11/16 ', '016', 250000),
-(16, '5224.04', 42, 'test.invest.001', '2016-11-04', 'BENSIN PROD HL I TGL 31/10/16 ', '023', 325000),
-(17, '5224.04', 12, 'test.invest.001', '2016-11-09', 'BENSIN PROD HL II TGL 8/11/16 ', '023', 180000),
-(18, '5224.04', 12, 'test.invest.001', '2016-11-15', 'BENSIN PROD HL II TGL 14/11/16 ', '092', 450000),
-(19, '5224.04', 42, 'test.invest.001', '2016-11-25', 'BENSIN PROD HL I TGL 18/11/16 ', '165', 700000),
-(20, '5224.04', 42, 'test.invest.001', '2016-11-25', 'BENSIN PROD,SOLAR PROD HL I TGL 23/11/16 ', '165', 200000),
-(21, '5224.04', 12, 'test.invest.001', '2016-11-29', 'BENSIN PROD HL II TGL 28/11/16 ', '181', 750000),
-(22, '5210.12', 6, 'test.invest.013', '2016-11-17', 'SUMB. KEMATIAN BPK KNDUNG EDI MULJANTO TGL 2/11/16 ', '119', 500000),
-(23, '5210.12', 1, 'test.invest.013', '2016-11-25', 'PEMAKAMAN KARYAWAN TRI WAHYU TGL 21/11/16 ', '160', 1500000),
-(24, '5226.04', 22, 'test.invest.012', '2016-11-02', 'BENSIN K1745VB,K1857KK TGL 27/10/16 ', '006', 300000),
-(25, '5226.04', 22, 'test.invest.012', '2016-11-02', 'BENSIN K3259VT TGL 29/10/16 ', '007', 789000),
-(26, '5226.04', 22, 'test.invest.012', '2016-11-03', 'BENSIN K3259VT TGL 3/11/16 ', '014', 250000),
-(27, '5226.04', 12, 'test.invest.012', '2016-11-04', 'SOLAR FORKLIFT TGL 3/11/16 ', '016', 750000),
-(28, '5226.04', 53, 'test.invest.012', '2016-11-04', 'BENSIN K7916HB TGL 2/11/16 ', '023', 200000),
-(29, '5226.04', 15, 'test.invest.012', '2016-11-05', 'BENSIN TEKNISI TGL 1/11/16 ', '033', 100000),
-(30, '5221.01', 3, NULL, '2017-01-11', 'Buat Beli Formula Rahasia', '090', 4700000),
-(31, '1121.87', 1, 'test.invest.013', '2017-01-03', 'Beli Jajan', '051', 150000),
-(32, '1121.87', 1, 'test.invest.013', '2017-01-03', 'Beli Minum', '051', 350000),
-(33, '1121.87', 1, 'test.invest.013', '2017-01-03', 'Beli Makan', '051', 460000),
-(34, '123.45', 33, NULL, '2017-01-02', 'dfgdg', '151', 123234),
-(35, '123.45', 22, NULL, '2017-01-04', 'dfgdfgf', '151', 1242345),
-(36, '123.45', 30, NULL, '2017-01-04', 'Ini Test Update Terbaru', '151', 2342354),
-(37, '123.45', 45, NULL, '2017-01-04', 'dfgdg', '151', 1232545654),
-(38, '123.45', 46, NULL, '2017-01-04', 'ini test update terbaru', '151', 234544),
-(39, '123.45', 1, NULL, '2017-01-04', 'test', '151', 23545655),
-(40, '123.45', 51, NULL, '2017-01-04', 'dfgfgf', '151', 9678574),
-(41, '123.45', 52, NULL, '2017-01-04', 'dfhgfhg', '151', 35465675),
-(42, '123.45', 48, NULL, '2017-01-04', 'fghfgh', '151', 35345456),
-(43, '123.45', 4, NULL, '2017-01-04', 'fhfghgn', '151', 23535),
-(44, '123.45', 34, NULL, '2017-01-04', 'gghgfh', '151', 214435);
 
 -- --------------------------------------------------------
 
@@ -108,9 +63,12 @@ CREATE TABLE IF NOT EXISTS `master_credential` (
 --
 
 INSERT INTO `master_credential` (`privilege_code`, `username`, `password`, `privilege`, `salt_key`, `status`) VALUES
-('ADM001', 'habibie', '1281531c11111491591d21eb1461491f91b81e31441801ac', 'KABAG', ' R!†‡™¶Ìµ0∫é—Â©', 'AKTIF'),
-('ADM002', 'rizaldi', '1d61d218315e1ba1501ad14616c1591821a913b104152136', 'LPB', '&§.B0“cq:|dk¶I', 'AKTIF'),
-('ADM003', 'aldi', '19a12d1fb1fc1561361ec1a61731741701e410a1571ca112', 'BSKK', 'ÒºŸFÁ∑Ì\\Â›·ﬂ±', 'AKTIF');
+('ADM001', 'habibie', '1281531c11111491591d21eb1461491f91b81e31441801ac', 'KABAG', ' R!†‡™¶Ìµ0∫é—Â©', 'NON AKTIF'),
+('ADM002', 'rizaldi', '1d61d218315e1ba1501ad14616c1591821a913b104152136', 'LPB', '&§.B0“cq:|dk¶I', 'NON AKTIF'),
+('ADM003', 'aldi', '19a12d1fb1fc1561361ec1a61731741701e410a1571ca112', 'BSKK', 'ÒºŸFÁ∑Ì\\Â›·ﬂ±', 'NON AKTIF'),
+('ADM004', 'ika_kusuma', '14d11f1fb1ec13d1b01021a219012515412214718f1b81e1', 'BSKK', '^ŒŒ¨˘◊NˆÑù_Y+ã', 'AKTIF'),
+('ADM005', 'bertyn_kristina', '1b418d1101061e71b21de11c17a1571721fc11d1dd1fb1e0', 'LPB', '2éíhÓ÷I5Z¢¸˛\\È', 'AKTIF'),
+('ADM006', 'lefran_at', '1f51a01f616117e16d12517019015e10e15e1921f31cd191', 'KABAG', 'ä∆h0JßZ^LSÄY', 'AKTIF');
 
 -- --------------------------------------------------------
 
@@ -126,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `master_departemen` (
   `unit` varchar(10) NOT NULL,
   `alokasi` varchar(15) NOT NULL,
   PRIMARY KEY (`id_departement`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `master_departemen`
@@ -186,7 +144,8 @@ INSERT INTO `master_departemen` (`id_departement`, `kode_departement`, `nama_dep
 (51, '1U1', 'IS', 'Petrus Henry', 'Holo I', '4A'),
 (52, '1U2', 'Human resource', 'Petrus Henry', 'Holo I', '4A'),
 (53, '1U3', 'Umum', 'M.Kristianta', 'Holo I', '4A'),
-(54, '1U4', 'Satpam', 'Petrus Henry', 'Holo I', '4A');
+(54, '1U4', 'Satpam', 'Petrus Henry', 'Holo I', '4A'),
+(55, '2P5', 'QC', 'Bu Anies Pratiwi', 'Holo II', '5A');
 
 -- --------------------------------------------------------
 
@@ -213,27 +172,15 @@ CREATE TABLE IF NOT EXISTS `master_invest` (
 --
 
 INSERT INTO `master_invest` (`kode_invest`, `nomor_ijin_invest`, `jenis_invest`, `jumlah`, `diajukan_oleh`, `rencana_biaya`, `pemohon`, `tanggal_ijin_invest`) VALUES
-('test.invest.018', '004/test/09/2015', 'Ban Truk Cadangan', 4, 22, 12000000, 22, '2015-09-15'),
-('test.invest.017', '003/test/09/2015', 'Printer Postek Q8', 2, 10, 4000000, 10, '2015-09-13'),
-('test.invest.016', '002/test/09/2015', 'Barcode Reader', 2, 1, 3300000, 1, '2015-09-11'),
-('test.invest.015', '001/test/09/2015', 'Laptop', 1, 2, 7300000, 2, '2015-09-09'),
-('test.invest.014', '007/test/06/2017', 'Aplikasi Monitoring Suhu Ruangan', 1, 1, 2500000, 1, '2017-06-25'),
-('test.invest.013', '006/test/06/2017', 'Anjangsana', 20, 20, 21200000, 20, '2017-06-21'),
-('test.invest.012', '005/test/06/2017', 'Pelatihan Kebakaran', 10, 20, 13000000, 20, '2017-06-11'),
-('test.invest.011', '004/test/06/2017', 'Perawatan Mesin', 1, 1, 34300000, 1, '2017-06-07'),
-('test.invest.010', '003/test/03/2017', 'Perancangan Aplikasi Terintegrasi', 1, 1, 27500000, 1, '2017-03-13'),
-('test.invest.009', '002/test/03/2017', 'Perancangan Aplikasi Timbangan', 1, 2, 2500000, 2, '2017-03-11'),
-('test.invest.008', '001/test/03/2017', 'Pembuatan Holo Reader 2017', 200, 26, 233100000, 26, '2017-03-05'),
-('test.invest.007', '007/test/10/2016', 'Kamera DSLR', 1, 2, 7300000, 2, '2016-10-23'),
-('test.invest.006', '007/test/10/2016', 'Perancangan Door Lock', 1, 26, 23000000, 26, '2016-10-17'),
-('test.invest.005', '005/test/10/2016', 'PC Station', 1, 2, 10000000, 2, '2016-10-01'),
-('test.invest.004', '004/test/08/2016', 'Pengadaan Komputer', 2, 2, 5300000, 2, '2016-08-21'),
-('test.invest.003', '003/test/08/2016', 'Pembangunan Lahan Parkir', 1, 20, 170000000, 20, '2016-08-13'),
-('test.invest.002', '002/test/08/2016', 'membangun server', 1, 2, 123000000, 2, '2016-08-07'),
-('test.invest.001', '001/test/08/2016', 'Renovasi Gudang', 1, 22, 227000000, 22, '2016-08-03'),
-('test.invest.019', '005/test/12/2015', 'GPS', 2, 1, 2700000, 1, '2015-12-17'),
-('test.invest.020', '006/test/12/2015', 'Layar 22"', 2, 2, 5200000, 2, '2015-12-21'),
-('test.invest.021', '007/test/12/2015', 'Ribbon Barcode', 25, 10, 3100000, 10, '2015-12-23');
+('001/PNP-HLG/P-INV/I/2017', '002/PNP-HLG/INV/I/2017', 'SEMI ELECTRIC STACKER', 1, 22, 46734790, 22, '2017-01-10'),
+('002/PNP-HLG/P-INV/I/2017', '001/PNP-HLG/IT/I/2017', 'LCD PROJECTOR', 1, 2, 5350000, 2, '2017-01-23'),
+('004/PNP-HLG/P-INV/I/2017', '001/PNP-HLG/INV-QC2/I/2017', 'INFRARED THERMOGUN DUAL LASER', 1, 55, 978000, 55, '2017-01-24'),
+('005/PNP-HLG/P-INV/II/2017', '03/PNP-HLG/IT/I/2017', 'KOMPUTER', 7, 2, 27460000, 2, '2017-02-17'),
+('007/PNP-HLG/P-INV/III/2017', '001/PNP-HLG/INV-TEK/III/2017', 'COMPRESSOR DAN AIR DRYER', 1, 15, 32049400, 15, '2017-03-16'),
+('008/PNP-HLG/P-INV/III/2017', '008/PNP-HLG/P-INV/III/2017', 'PEREMAJAAN SERVER', 1, 2, 122450000, 2, '2017-03-11'),
+('009/PNP-HLG/P-INV/II/2017', '018/PNP-HLG/UM/INV/II/2017', 'RENOVASI EX RUANGAN EMBOSS', 0, 22, 76721000, 22, '2017-02-21'),
+('010/PNP-HLG/P-INV/III/2017', '002/PNP-HLG/INV/TEK/III/2017', 'PEREMAJAAN AIR CONDITIONER', 4, 15, 34225000, 15, '2017-03-13'),
+('013/PNP-HLG/P-INV/IV/2017', '003/PNP-HLG/INV-QC2/IV/2017 003/PNP-HLG/INV/TEK/IV/2017', 'PENGADAAN AC DAN MEJA MINI LAB LT 1', 2, 55, 15799500, 55, '2017-04-22');
 
 -- --------------------------------------------------------
 
@@ -260,30 +207,47 @@ CREATE TABLE IF NOT EXISTS `master_lpb` (
   `sumber_barang` enum('LOKAL','IMPORT') NOT NULL,
   PRIMARY KEY (`id_lpb`),
   KEY `kode_invest` (`kode_invest`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=60 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `master_lpb`
 --
 
-INSERT INTO `master_lpb` (`id_lpb`, `kode_invest`, `kode_rekening`, `alokasi_biaya`, `kode_departemen`, `tanggal`, `keterangan`, `no_lpb_internal`, `no_lpb_eksternal`, `jumlah`, `satuan`, `harga_satuan`, `debet`, `status`, `active_status`, `sumber_barang`) VALUES
-(59, 'test.invest.021', '5313.31', '4A', '27', '2017-01-10', 'Kertas Sticker Ukuran Kecil', '234/internal/2017', '12/eksternal/2017', 4, 'Buah', 23400034, 93600136, 'POLOS', 'ACTIVE', 'IMPORT'),
-(58, 'test.invest.021', '5313.31', '5A', '1', '2017-01-10', 'Ribbon Printer Postek', '234/internal/2017', '12/eksternal/2017', 3, 'Buah', 342500, 1027500, 'POLOS', 'ACTIVE', 'IMPORT'),
-(57, NULL, '5313.31', '5A', '1', '2017-01-10', 'Beli Pesawat Jet', '23/eksternal/2017', '14/eksternal/2017', 5, 'Buah', 2670000, 13350000, 'POLOS', 'ACTIVE', 'IMPORT'),
-(56, NULL, '5313.31', '5A', '1', '2017-01-10', 'Mesin Fotocopy import ', '23/eksternal/2017', '14/eksternal/2017', 3, 'buah', 23000000, 69000000, 'POLOS', 'ACTIVE', 'IMPORT'),
-(55, NULL, '121.34', '5A', '25', '2017-01-09', 'Motherboard Gigabyte GA-H81M', '01/internal/2017', '02/eksternal/2018', 2, 'Buah', 750000, 1500000, 'RESMI', 'ACTIVE', 'LOKAL'),
-(54, NULL, '121.34', '5A', '25', '2017-01-09', 'Motherboard Gigabyte GA-H81M', '01/internal/2017', '02/eksternal/2018', 2, 'Buah', 750000, 1500000, 'RESMI', 'ACTIVE', 'LOKAL'),
-(53, NULL, '121.34', '5A', '25', '2017-01-09', 'Motherboard Gigabyte GA-H81M', '01/internal/2017', '02/eksternal/2018', 2, 'Buah', 750000, 1500000, 'RESMI', 'ACTIVE', 'LOKAL'),
-(52, NULL, '121.34', '5A', '25', '2017-01-09', 'Motherboard Gigabyte GA-H81M', '01/internal/2017', '02/eksternal/2018', 2, 'Buah', 750000, 1500000, 'RESMI', 'ACTIVE', 'LOKAL'),
-(51, NULL, '121.34', '5A', '25', '2017-01-09', 'Motherboard Gigabyte GA-H81M', '01/internal/2017', '02/eksternal/2018', 2, 'Buah', 750000, 1500000, 'RESMI', 'ACTIVE', 'LOKAL'),
-(50, 'test.invest.011', '1172.01', '5A', '15', '2017-08-15', 'Karburator', 'test.lpb.invest.45', 'test.lpb.invest.14.eks', 1, 'Buah', 17000000, 17000000, 'POLOS', 'ACTIVE', 'LOKAL'),
-(49, 'test.invest.011', '1172.01', '5A', '15', '2017-08-10', 'Busi Mesin', 'test.lpb.invest.44', 'test.lpb.invest.11.eks', 4, 'Buah', 150000, 600000, 'POLOS', 'ACTIVE', 'LOKAL'),
-(48, 'test.invest.007', '1175.01', '5A', '10', '2016-11-27', 'Panel', 'test.lpb.invest.15', 'test.lpb.invest.21.eks', 2, 'Buah', 200000, 400000, 'POLOS', 'ACTIVE', 'LOKAL'),
-(47, 'test.invest.006', '1175.01', '5A', '10', '2016-11-23', 'Mikrokontroller ATMega 8525', 'test.lpb.invest.12', 'test.lpb.invest.79.eks', 2, 'Buah', 2500000, 5000000, 'RESMI', 'ACTIVE', 'LOKAL'),
-(46, 'test.invest.006', '1175.01', '5A', '10', '2016-11-15', 'Board PCB', 'test.lpb.invest09', 'test.lpb.invest.57.eks', 2, 'Buah', 4700000, 9400000, 'RESMI', 'ACTIVE', 'LOKAL'),
-(45, 'test.invest.006', '1175.01', '5A', '26', '2016-11-07', 'Sensor Finger Scan', 'test.lpb.invest.11', 'test.lpb.invest.03.eks', 2, 'Buah', 3500000, 7000000, 'POLOS', 'ACTIVE', 'LOKAL'),
-(44, 'test.invest.017', '1174.01', '5A', '10', '2016-12-21', 'Printer Postek Q8', 'test.lpb.invest.023', 'test.lpb.invest.045', 1, 'Buah', 2150000, 2150000, 'POLOS', 'ACTIVE', 'IMPORT'),
-(43, 'test.invest.017', '1174.01', '5A', '10', '2016-10-13', 'Printer Postek Q8', 'test.lpb.invest.001', 'test.lpb.invest.001.eks', 1, 'Buah', 2100000, 2100000, 'POLOS', 'ACTIVE', 'LOKAL');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `master_lpj`
+--
+
+CREATE TABLE IF NOT EXISTS `master_lpj` (
+  `id_lpj` int(11) NOT NULL AUTO_INCREMENT,
+  `kode_invest` varchar(100) DEFAULT NULL,
+  `kode_rekening` varchar(50) NOT NULL,
+  `alokasi_biaya` varchar(50) NOT NULL,
+  `kode_departemen` varchar(50) NOT NULL,
+  `tanggal` date NOT NULL,
+  `keterangan` text NOT NULL,
+  `no_lpj_internal` varchar(50) NOT NULL,
+  `no_lpj_eksternal` varchar(50) NOT NULL,
+  `jumlah` double NOT NULL,
+  `satuan` varchar(50) NOT NULL,
+  `harga_satuan` bigint(20) NOT NULL,
+  `debet` bigint(20) NOT NULL,
+  `status` enum('POLOS','RESMI') NOT NULL,
+  `active_status` enum('ACTIVE','DELETED') NOT NULL,
+  PRIMARY KEY (`id_lpj`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `master_lpj`
+--
+
+INSERT INTO `master_lpj` (`id_lpj`, `kode_invest`, `kode_rekening`, `alokasi_biaya`, `kode_departemen`, `tanggal`, `keterangan`, `no_lpj_internal`, `no_lpj_eksternal`, `jumlah`, `satuan`, `harga_satuan`, `debet`, `status`, `active_status`) VALUES
+(1, NULL, '1101.02', '5A', '1', '2017-05-02', 'Test 1', '001/test/lpj/05/2017', '001/ext/lpj/05/2017', 3, 'Meter', 13000, 39000, 'POLOS', 'ACTIVE'),
+(2, NULL, '1101.02', '5A', '10', '2017-05-02', 'test 2', '001/test/lpj/05/2017', '001/ext/lpj/05/2017', 1, 'Orang', 23000, 23000, 'POLOS', 'ACTIVE'),
+(3, NULL, '1101.02', '5A', '1', '2017-05-02', 'test 3', '001/test/lpj/05/2017', '001/ext/lpj/05/2017', 25, 'Pintu', 25000, 625000, 'POLOS', 'ACTIVE'),
+(4, NULL, '1101.01', '5A', '1', '2017-05-02', 'fhfhf', 'fhfhfhfg', 'hfhfghfhfh', 3, 'hjgj', 13000, 39000, 'RESMI', 'ACTIVE');
 
 -- --------------------------------------------------------
 

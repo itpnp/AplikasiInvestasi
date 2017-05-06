@@ -114,8 +114,8 @@ public class LpjServiceImpl implements LpjService {
     }
 
     @Override
-    public void directPrint(JTable viewTable, String ppn) {
-        lpjDao.directPrint(viewTable, ppn);
+    public void directPrint(JTable viewTable, String ppn, String title) {
+        lpjDao.directPrint(viewTable, ppn, title);
     }
     
 }

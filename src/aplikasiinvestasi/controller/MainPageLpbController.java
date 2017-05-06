@@ -292,8 +292,11 @@ public class MainPageLpbController {
         updateLpjController.editPage().setVisible(true);
     }
     public void directPrint(java.awt.event.ActionEvent e){
-        
-        lpjService.directPrint(mainPage.getViewTable(), mainPage.getTotalPpn().getText());
+        if(mainPage.getInfoLabel().getText().equals("DATA LPB")){
+            lpjService.directPrint(mainPage.getViewTable(), mainPage.getTotalPpn().getText(), "DATA LAPORAN PENERIMAAN BARANG");
+        }else{
+            lpjService.directPrint(mainPage.getViewTable(), mainPage.getTotalPpn().getText(), "DATA LAPORAN PENERIMAAN JASA");
+        }
     }
     public void searchButton(java.awt.event.ActionEvent e){
         if(mainPage.getInfoLabel().getText().equals("DATA LPB")){
@@ -312,7 +315,7 @@ public class MainPageLpbController {
             mainPage.getTotalPpn().setText(FormatRupiah.convert(String.valueOf((x.intValue()))));
             mainPage.getLabelPpn().setText("Total PPN LPB :");
             viewDataOnTable();
-        }else if(mainPage.getInfoLabel().getText().equals("DATA LPJ") ){
+        }else if(mainPage.getInfoLabel().getText().equals("DATA LPJ")){
             if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
                 listLpj = lpjService.getAllDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
              }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
