@@ -159,7 +159,6 @@ public class MainPageBskkController {
         }
         viewDataOnTable();
     }
-    
     public void openBskkPage(java.awt.event.ActionEvent e){
         
     }
