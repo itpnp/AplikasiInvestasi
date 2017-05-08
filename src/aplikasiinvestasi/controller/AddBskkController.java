@@ -44,7 +44,6 @@ public class AddBskkController {
     }
     
     public void viewDataOnTable(){
-        
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Rekening");
         model.addColumn("Departemen");
@@ -59,7 +58,6 @@ public class AddBskkController {
             model.addRow(obj);
         }
         addBskk.getViewTable().setModel(model);
-        addBskk.getViewTable().validate();
     }
     public void addButton(java.awt.event.ActionEvent e){
         if(validation()){
@@ -73,6 +71,7 @@ public class AddBskkController {
                 if(masterInvest != null){
                     bskk.setMasterInvest(masterInvest);
                 }
+                
             listBskk.add(bskk);
             this.viewDataOnTable();
             empty();
@@ -81,9 +80,16 @@ public class AddBskkController {
     public void save(java.awt.event.ActionEvent e){
         if(listBskk.size()>0){
             bskkService.saveInBatch(listBskk);
+            DefaultTableModel model = new DefaultTableModel();
+            model.addColumn("Rekening");
+            model.addColumn("Departemen");
+            model.addColumn("Keterangan");
+            model.addColumn("Debet");
+            addBskk.getViewTable().setModel(model);
              mainPage.getAllData();
              mainPage.viewDataOnTable();
         }
+        
     }
     
     public AddBskk addBskk(){
@@ -221,12 +227,7 @@ public class AddBskkController {
         addBskk.getTanggalLabel().setText(FormatDate.convert(addBskk.getTanggalField().getDate()));
     }
     public void empty(){
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Rekening");
-        model.addColumn("Departemen");
-        model.addColumn("Keterangan");
-        model.addColumn("Debet");
-        addBskk.getViewTable().setModel(model);
+        
         addBskk.getDebetField().setText("");
         addBskk.getKeteranganField().setText("");
         addBskk.getKodeRekeningField().setText("");

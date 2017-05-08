@@ -6,7 +6,9 @@ package aplikasiinvestasi.controller;
 
 import aplikasiinvestasi.model.MasterBskk;
 import aplikasiinvestasi.service.BskkService;
+import aplikasiinvestasi.service.TerimaService;
 import aplikasiinvestasi.service.impl.BskkServiceImpl;
+import aplikasiinvestasi.service.impl.TerimaServiceImpl;
 import aplikasiinvestasi.utils.BulanEnum;
 import aplikasiinvestasi.utils.ButtonColumns;
 import aplikasiinvestasi.utils.FormatDate;
@@ -38,9 +40,11 @@ public class MainPageBskkController {
     private AddBskkController addBskkController;
     private UpdateBskkController updateBskkController;
     private TerimaPageController terimaPage;
+    private TerimaService terimaService;
     
     public MainPageBskkController(){
         this.bskkService = new BskkServiceImpl();
+        this.terimaService = new TerimaServiceImpl();
         this.mainPage = new MainPageBskk();
         mainPage.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainPage.setVisible(true);
@@ -88,7 +92,9 @@ public class MainPageBskkController {
     public BskkService getService(){
         return bskkService;
     }
-    
+    public TerimaService getTerimaService(){
+        return terimaService;
+    }
     public MainPageBskk getParent(){
         return mainPage;
     }

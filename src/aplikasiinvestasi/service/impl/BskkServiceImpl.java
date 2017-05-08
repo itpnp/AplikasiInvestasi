@@ -70,8 +70,8 @@ public class BskkServiceImpl implements BskkService{
     }
 
     @Override
-    public void exportToExcel(String bulan, String tahun) {
-        bskkDao.exportToExcel(bulan, tahun);
+    public void exportToExcel(String bulan, String tahun, List<MasterTerima> listTerima) {
+        bskkDao.exportToExcel(bulan, tahun,listTerima);
     }
 
     @Override

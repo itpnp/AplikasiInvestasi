@@ -46,6 +46,7 @@ public class BskkDaoImpl implements BskkDao{
     private Session session;
     private HSSFSheet sheet;
     
+    
     @Override
     public List<MasterBskk> getAllData() {
         List<MasterBskk> listBskk = new ArrayList<>();
@@ -234,7 +235,7 @@ public class BskkDaoImpl implements BskkDao{
 
     @Override
     @SuppressWarnings({"null", "ConstantConditions"})
-    public void exportToExcel(String bulan, String tahun) {
+    public void exportToExcel(String bulan, String tahun, List<MasterTerima> listTerima) {
          @SuppressWarnings("UnusedAssignment")
          File file = null;
 	    try{
@@ -491,8 +492,8 @@ public class BskkDaoImpl implements BskkDao{
                     HSSFFormulaEvaluator.evaluateAllFormulaCells(workbook);
                     for(int i=0; i<10; i++){
                         sheet.autoSizeColumn(i, true);
-                        
                     }
+                    this.exportToExcelSheet2(workbook, sheet, listTerima);
                     @SuppressWarnings("UnusedAssignment")
                     FileOutputStream outputStream = null;
                     JFileChooser saveFile = new JFileChooser();
@@ -622,20 +623,59 @@ public class BskkDaoImpl implements BskkDao{
         fontTitle.setColor(HSSFColor.BLACK.index);
         fontTitle.setFontName("Tahoma");
         titleStyle.setFont(fontTitle);
+        titleStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
         
-        fontTitle2.setFontHeightInPoints((short)10);
+        fontTitle2.setFontHeightInPoints((short)12);
         fontTitle2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
         fontTitle2.setColor(HSSFColor.BLACK.index);
         fontTitle2.setFontName("Tahoma");
         titleStyle2.setFont(fontTitle2);
+        titleStyle2.setAlignment(HSSFCellStyle.ALIGN_CENTER);
         
         fontData.setFontHeightInPoints((short)12);
         fontData.setFontName("Tahoma");
         dataStyle.setFont(fontData);
         
+        HSSFCell cell;
+        HSSFRow rowData;
+        rowData = sheet.createRow(1);
+        cell = rowData .createCell(0);
+        sheet.addMergedRegion(new CellRangeAddress(1,1,0,7));
+        cell.setCellValue("Rekap Kas Kecil Bulan");
+        cell.setCellStyle(titleStyle);
         
+        rowData = sheet.createRow(7);
+        cell = rowData .createCell(0);
+        sheet.addMergedRegion(new CellRangeAddress(7,7,0,1));
+        cell.setCellValue("TERIMA");
+        cell.setCellStyle(titleStyle2);
         
-        
-    }
-
+        int nomor = 1;
+        for(int i=0; i<listTerima.size(); i++){
+            rowData = sheet.createRow(i+8);
+            cell = rowData.createCell(0);
+            cell.setCellValue(nomor);
+            cell.setCellStyle(dataStyle);
+            
+            cell = rowData.createCell(1);
+            cell.setCellValue(listTerima.get(i).getJenis());
+            cell.setCellStyle(dataStyle);
+            
+            cell = rowData.createCell(2);
+            cell.setCellValue("=");
+            cell.setCellStyle(dataStyle);
+            
+            cell = rowData.createCell(3);
+            cell.setCellValue("Rp");
+            cell.setCellStyle(dataStyle);
+            
+            cell = rowData.createCell(4);
+            cell.setCellValue(listTerima.get(i).getJumlah());
+            cell.setCellStyle(dataStyle);
+            nomor++;
+        }
+        for(int i=0; i<10; i++){
+           sheet.autoSizeColumn(i, true);
+        }
+     }
 }

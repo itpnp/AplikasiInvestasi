@@ -26,7 +26,7 @@ public interface BskkService {
     public List<MasterBskk> getDataByInvestNumber(String investNumber);
     public List<MasterDepartemen> getDepartemenByUnit(String unit);
     public List<MasterInvest> getAllInvestData();
-    public void exportToExcel(String bulan, String tahun);
+    public void exportToExcel(String bulan, String tahun, List<MasterTerima> listTerima);
     public void saveInBatch(List<MasterBskk> listBskk);
     public List<MasterBskk> getDataByMonthAndYearAndInvestNumber(String month, String year,String investNumber);
     public List<MasterBskk> getDataByBpkk(String bpkkNumber);

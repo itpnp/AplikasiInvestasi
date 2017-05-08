@@ -23,7 +23,7 @@ public interface BskkDao {
     public List<MasterBskk> getDataByMonthAndYear(String month, String year);
     public List<MasterBskk> getDataByYear(String year);
     public List<MasterBskk> getDataByInvestNumber(String investNumber);
-    public void exportToExcel(String bulan, String tahun);
+    public void exportToExcel(String bulan, String tahun, List<MasterTerima> listTerima);
     public Long countDebet(MasterInvest masterInvest);
     public void saveInBatch(List<MasterBskk> listBskk);
     public List<MasterBskk> getDataByMonthAndYearAndInvestNumber(String month, String year,String investNumber);
