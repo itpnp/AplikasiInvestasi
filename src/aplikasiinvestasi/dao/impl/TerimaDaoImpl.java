@@ -33,6 +33,7 @@ public class TerimaDaoImpl implements TerimaDao {
             session.getTransaction().commit();
             success = true;
             session.flush();
+            JOptionPane.showMessageDialog(null,"Data Berhasil Disimpan", "Error", JOptionPane.ERROR_MESSAGE, null);
         }catch(  HibernateException | ExceptionInInitializerError e){
             JOptionPane.showMessageDialog(null,"Error Check Database " +e, "Error", JOptionPane.ERROR_MESSAGE, null);
         }finally{
@@ -53,7 +54,7 @@ public class TerimaDaoImpl implements TerimaDao {
             session.beginTransaction();
             listTerima = session.createCriteria(MasterTerima.class, "terima")
                     .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"' and YEAR(tanggal) = '"+year+"'"))
-                    .addOrder(Order.desc("bskk.tanggal")).list();
+                    .addOrder(Order.desc("terima.tanggal")).list();
             session.flush();
         }catch(  HibernateException | ExceptionInInitializerError e){
             JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
@@ -76,6 +77,28 @@ public class TerimaDaoImpl implements TerimaDao {
             listTerima= session.createCriteria(MasterTerima.class,"terima")
             .addOrder(Order.desc("terima.tanggal")).list();
             
+            session.flush();
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return listTerima;
+    }
+
+    @Override
+    public List<MasterTerima> findByYear(String year) {
+        List<MasterTerima> listTerima= new ArrayList<>();
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            listTerima = session.createCriteria(MasterTerima.class, "terima")
+                    .add(Restrictions.sqlRestriction("YEAR(tanggal) = '"+year+"'"))
+                    .addOrder(Order.desc("terima.tanggal")).list();
             session.flush();
         }catch(  HibernateException | ExceptionInInitializerError e){
             JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);

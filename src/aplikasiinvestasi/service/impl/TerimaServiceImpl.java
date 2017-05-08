@@ -31,5 +31,10 @@ public class TerimaServiceImpl implements TerimaService {
     public List<MasterTerima> getAllData() {
         return terimaDao.getAllData();
     }
+
+    @Override
+    public List<MasterTerima> findByYear(String year) {
+        return terimaDao.findByYear(year);
+    }
     
 }

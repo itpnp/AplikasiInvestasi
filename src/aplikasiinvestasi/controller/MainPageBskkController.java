@@ -14,6 +14,7 @@ import aplikasiinvestasi.utils.FormatRupiah;
 import aplikasiinvestasi.utils.Table;
 import aplikasiinvestasi.utils.TableHeaderRenderer;
 import aplikasiinvestasi.view.MainPageBskk;
+import aplikasiinvestasi.view.TerimaBskkPage;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -36,12 +37,11 @@ public class MainPageBskkController {
     private List<MasterBskk> listBskk;
     private AddBskkController addBskkController;
     private UpdateBskkController updateBskkController;
+    private TerimaPageController terimaPage;
     
     public MainPageBskkController(){
         this.bskkService = new BskkServiceImpl();
         this.mainPage = new MainPageBskk();
-        getAllData();
-        viewDataOnTable();
         mainPage.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainPage.setVisible(true);
         addBskkController = new AddBskkController(this);
@@ -66,8 +66,23 @@ public class MainPageBskkController {
                 searchData(e);
             }
         });
+        mainPage.getTerimaButton().addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openTerimaPage(e);
+            }
+        });
+        mainPage.getHomeButton().addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openHomePage(e);
+            }
+        });
         mainPage.getBulanParam().setModel(new DefaultComboBoxModel(BulanEnum.namaBulan()));
         mainPage.getTahunParam().setModel(new DefaultComboBoxModel(BulanEnum.tahun()));
+        terimaPage = new TerimaPageController();
     }
     
     public BskkService getService(){
@@ -159,8 +174,26 @@ public class MainPageBskkController {
         }
         viewDataOnTable();
     }
-    public void openBskkPage(java.awt.event.ActionEvent e){
-        
+    public void openTerimaPage(java.awt.event.ActionEvent e){
+        mainPage.getContentPane().remove(mainPage.getjPanel2());
+        mainPage.getContentPane().add(terimaPage.getPage(),java.awt.BorderLayout.CENTER);
+//        terimaPage.getPage().setSize(mainPage.getWorkBook().getSize());
+        terimaPage.getPage().setVisible(true);
+        mainPage.getContentPane().validate();
+        mainPage.getjPanel2().setVisible(false);
+        terimaPage.getAllData();
+        terimaPage.viewData();
+    }
+    
+    public void openHomePage(java.awt.event.ActionEvent e){
+        if(terimaPage.getPage().isVisible()){
+            mainPage.getContentPane().remove(terimaPage.getPage());
+            mainPage.getContentPane().add(mainPage.getjPanel2(),java.awt.BorderLayout.CENTER);
+            mainPage.getjPanel2().setVisible(true);
+            mainPage.getContentPane().validate();
+            terimaPage.getPage().setVisible(false);
+        }
+       
     }
     
 }

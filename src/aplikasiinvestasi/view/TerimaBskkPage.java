@@ -6,6 +6,7 @@ package aplikasiinvestasi.view;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXDatePicker;
@@ -79,6 +80,22 @@ public class TerimaBskkPage extends javax.swing.JPanel {
         this.viewTable = viewTable;
     }
 
+    public JTextField getJumlahField() {
+        return jumlahField;
+    }
+
+    public void setJumlahField(JTextField jumlahField) {
+        this.jumlahField = jumlahField;
+    }
+
+    public JLabel getLabelRupiah() {
+        return labelRupiah;
+    }
+
+    public void setLabelRupiah(JLabel labelRupiah) {
+        this.labelRupiah = labelRupiah;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,6 +104,7 @@ public class TerimaBskkPage extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -94,6 +112,9 @@ public class TerimaBskkPage extends javax.swing.JPanel {
         jenisField = new javax.swing.JTextField();
         tanggalField = new org.jdesktop.swingx.JXDatePicker();
         saveButton = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jumlahField = new javax.swing.JTextField();
+        labelRupiah = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -108,6 +129,7 @@ public class TerimaBskkPage extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tambah Data", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanel1.setPreferredSize(new java.awt.Dimension(597, 115));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         jLabel1.setText("Jenis");
@@ -122,38 +144,61 @@ public class TerimaBskkPage extends javax.swing.JPanel {
         saveButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         saveButton.setText("SIMPAN");
 
+        jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel5.setText("Jumlah");
+
+        jumlahField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+
+        labelRupiah.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        labelRupiah.setText("Rp. - ,00");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(30, 30, 30)
-                        .addComponent(jenisField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jenisField, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tanggalField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(saveButton)
-                .addContainerGap(267, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tanggalField, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jumlahField, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelRupiah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(saveButton)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1))
                     .addComponent(jenisField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel2))
+                    .addComponent(tanggalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tanggalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jumlahField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelRupiah)
                     .addComponent(saveButton))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
@@ -192,7 +237,7 @@ public class TerimaBskkPage extends javax.swing.JPanel {
                 .addComponent(tahunParam, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(findButton)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,8 +256,9 @@ public class TerimaBskkPage extends javax.swing.JPanel {
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
-        jPanel4.setLayout(new java.awt.BorderLayout());
+        jPanel4.setLayout(new java.awt.GridBagLayout());
 
+        viewTable.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         viewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -226,7 +272,17 @@ public class TerimaBskkPage extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(viewTable);
 
-        jPanel4.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 564;
+        gridBagConstraints.ipady = 391;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 15, 10);
+        jPanel4.add(jScrollPane1, gridBagConstraints);
 
         jPanel2.add(jPanel4, java.awt.BorderLayout.CENTER);
 
@@ -239,12 +295,15 @@ public class TerimaBskkPage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jenisField;
+    private javax.swing.JTextField jumlahField;
+    private javax.swing.JLabel labelRupiah;
     private javax.swing.JButton saveButton;
     private javax.swing.JComboBox tahunParam;
     private org.jdesktop.swingx.JXDatePicker tanggalField;

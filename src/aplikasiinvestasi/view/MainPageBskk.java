@@ -6,6 +6,7 @@ package aplikasiinvestasi.view;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -93,6 +94,22 @@ public class MainPageBskk extends javax.swing.JFrame {
         this.terimaButton = terimaButton;
     }
 
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JButton getHomeButton() {
+        return homeButton;
+    }
+
+    public void setHomeButton(JButton homeButton) {
+        this.homeButton = homeButton;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,6 +123,7 @@ public class MainPageBskk extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
         terimaButton = new javax.swing.JButton();
+        homeButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         viewTable = new javax.swing.JTable();
@@ -135,25 +153,39 @@ public class MainPageBskk extends javax.swing.JFrame {
         exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        terimaButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        terimaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1494233316_Finance_loan_money 32.png"))); // NOI18N
         terimaButton.setText("TERIMA");
+        terimaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        terimaButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        homeButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1494232675_go-home 32.png"))); // NOI18N
+        homeButton.setText("HOME");
+        homeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        homeButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(addButton)
-                .addGap(14, 14, 14)
+                .addContainerGap()
+                .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(exportButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(terimaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 389, Short.MAX_VALUE))
+                .addGap(0, 232, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(exportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
             .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(terimaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
@@ -278,6 +310,7 @@ public class MainPageBskk extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private javax.swing.JComboBox bulanParam;
     private javax.swing.JButton exportButton;
+    private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

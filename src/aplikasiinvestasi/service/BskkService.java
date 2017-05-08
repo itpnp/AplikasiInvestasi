@@ -7,7 +7,10 @@ package aplikasiinvestasi.service;
 import aplikasiinvestasi.model.MasterBskk;
 import aplikasiinvestasi.model.MasterDepartemen;
 import aplikasiinvestasi.model.MasterInvest;
+import aplikasiinvestasi.model.MasterTerima;
 import java.util.List;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 /**
  *
@@ -27,5 +30,7 @@ public interface BskkService {
     public void saveInBatch(List<MasterBskk> listBskk);
     public List<MasterBskk> getDataByMonthAndYearAndInvestNumber(String month, String year,String investNumber);
     public List<MasterBskk> getDataByBpkk(String bpkkNumber);
+    public void exportToExcelSheet2(HSSFWorkbook workbook, HSSFSheet sheet, List<MasterTerima> listTerima);
+
     
 }

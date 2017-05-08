@@ -17,7 +17,7 @@ import javax.persistence.Temporal;
  * @author Rizaldi Habibie
  */
 @Entity
-@Table(name="master_terima_baskk")
+@Table(name="master_terima_bskk")
 public class MasterTerima implements Serializable {
     
     @Id
@@ -27,6 +27,9 @@ public class MasterTerima implements Serializable {
     @Column(name="jenis")
     private String jenis;
     
+    @Column(name="jumlah")
+    private Long jumlah;
+    
     @Column(name="tanggal")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date tanggal;
@@ -34,10 +37,19 @@ public class MasterTerima implements Serializable {
     public MasterTerima() {
     }
 
-    public MasterTerima(int id, String jenis, Date tanggal) {
+    public MasterTerima(int id, String jenis, Long jumlah, Date tanggal) {
         this.id = id;
         this.jenis = jenis;
+        this.jumlah = jumlah;
         this.tanggal = tanggal;
+    }
+
+    public Long getJumlah() {
+        return jumlah;
+    }
+
+    public void setJumlah(Long jumlah) {
+        this.jumlah = jumlah;
     }
 
     

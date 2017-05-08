@@ -7,6 +7,7 @@ package aplikasiinvestasi.dao.impl;
 import aplikasiinvestasi.dao.BskkDao;
 import aplikasiinvestasi.model.MasterBskk;
 import aplikasiinvestasi.model.MasterInvest;
+import aplikasiinvestasi.model.MasterTerima;
 import aplikasiinvestasi.utils.FormatDate;
 import aplikasiinvestasi.utils.HibernateUtil;
 import java.awt.HeadlessException;
@@ -599,6 +600,42 @@ public class BskkDaoImpl implements BskkDao{
             }
         }
         return listBskk;
+    }
+
+    @Override
+    public void exportToExcelSheet2(HSSFWorkbook workbook, HSSFSheet sheet, List<MasterTerima> listTerima) {
+        sheet = workbook.createSheet("Rekap KK");
+	sheet.getPrintSetup().setLandscape(true);
+	sheet.getPrintSetup().setPaperSize(HSSFPrintSetup.LEGAL_PAPERSIZE);
+        
+        HSSFCellStyle titleStyle = workbook.createCellStyle();
+        HSSFCellStyle titleStyle2 = workbook.createCellStyle();
+	HSSFCellStyle dataStyle = workbook.createCellStyle();
+        HSSFCellStyle moneyStyle = workbook.createCellStyle();
+                
+        HSSFFont fontTitle = workbook.createFont();
+        HSSFFont fontTitle2 = workbook.createFont();
+	HSSFFont fontData = workbook.createFont();
+                
+        fontTitle.setFontHeightInPoints((short)16);
+        fontTitle.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+        fontTitle.setColor(HSSFColor.BLACK.index);
+        fontTitle.setFontName("Tahoma");
+        titleStyle.setFont(fontTitle);
+        
+        fontTitle2.setFontHeightInPoints((short)10);
+        fontTitle2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+        fontTitle2.setColor(HSSFColor.BLACK.index);
+        fontTitle2.setFontName("Tahoma");
+        titleStyle2.setFont(fontTitle2);
+        
+        fontData.setFontHeightInPoints((short)12);
+        fontData.setFontName("Tahoma");
+        dataStyle.setFont(fontData);
+        
+        
+        
+        
     }
 
 }

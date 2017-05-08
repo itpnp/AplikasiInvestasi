@@ -13,8 +13,11 @@ import aplikasiinvestasi.dao.impl.InvestDaoImpl;
 import aplikasiinvestasi.model.MasterBskk;
 import aplikasiinvestasi.model.MasterDepartemen;
 import aplikasiinvestasi.model.MasterInvest;
+import aplikasiinvestasi.model.MasterTerima;
 import aplikasiinvestasi.service.BskkService;
 import java.util.List;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 /**
  *
@@ -84,6 +87,11 @@ public class BskkServiceImpl implements BskkService{
     @Override
     public List<MasterBskk> getDataByBpkk(String bpkkNumber) {
         return bskkDao.getDataByBpkk(bpkkNumber);
+    }
+
+    @Override
+    public void exportToExcelSheet2(HSSFWorkbook workbook, HSSFSheet sheet, List<MasterTerima> listTerima) {
+        bskkDao.exportToExcelSheet2(workbook, sheet, listTerima);
     }
     
 }

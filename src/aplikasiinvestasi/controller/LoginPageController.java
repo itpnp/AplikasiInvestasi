@@ -38,26 +38,34 @@ public class LoginPageController {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
 //        try{
-        MasterCredential user = null;
+        MasterCredential user;
         user = userService.login(loginPage.getUsernameField().getText(), loginPage.getPasswordField().getText());
         if(user != null && !user.getStatus().equals("NON AKTIF")){
-            if(user.getPrivilege().equals("KABAG")){
-                loginPage.dispose();
-                MainPageController main = new MainPageController();
-            }else if(user.getPrivilege().equals("LPB")){
-                loginPage.dispose();
-                MainPageLpbController main = new MainPageLpbController();
-            }else if(user.getPrivilege().equals("BSKK")){
-                loginPage.dispose();
-                MainPageBskkController main = new MainPageBskkController();
+            switch (user.getPrivilege()) {
+                case "KABAG":
+                    {
+                        loginPage.dispose();
+                        MainPageController main = new MainPageController();
+                        break;
+                    }
+                case "LPB":
+                    {
+                        loginPage.dispose();
+                        MainPageLpbController main = new MainPageLpbController();
+                        break;
+                    }
+                case "BSKK":
+                    {
+                        loginPage.dispose();
+                        MainPageBskkController main = new MainPageBskkController();
+                        main.getAllData();
+                        main.viewDataOnTable();
+                        break;
+                    }
             }
         }else{
            loginPage.getPasswordField().setText("");
            loginPage.getPasswordField().requestFocus();
         }
-//        }catch(ExceptionInInitializerError e){
-//            JOptionPane.showMessageDialog(null,"Check Your Connection","Warning", JOptionPane.ERROR_MESSAGE);
-//        }
-        
     }                      
 }
