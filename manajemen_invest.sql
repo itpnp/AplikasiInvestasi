@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 06, 2017 at 11:55 AM
+-- Generation Time: May 09, 2017 at 04:13 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -35,12 +35,15 @@ CREATE TABLE IF NOT EXISTS `master_bskk` (
   `no_bpkk` varchar(50) NOT NULL,
   `debet` bigint(20) NOT NULL,
   PRIMARY KEY (`id_bskk`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `master_bskk`
 --
 
+INSERT INTO `master_bskk` (`id_bskk`, `kode_rekening`, `departemen`, `invest`, `tanggal`, `keterangan`, `no_bpkk`, `debet`) VALUES
+(1, '1101.03', 2, '005/PNP-HLG/P-INV/II/2017', '2017-05-08', 'Beli Komputer Bu Tya', '001/test/bpkk/2017', 5000000),
+(2, '1101.03', 1, '008/PNP-HLG/P-INV/III/2017', '2017-05-08', 'Beli Server', '001/test/bpkk/2017', 100000000);
 
 -- --------------------------------------------------------
 
@@ -180,7 +183,8 @@ INSERT INTO `master_invest` (`kode_invest`, `nomor_ijin_invest`, `jenis_invest`,
 ('008/PNP-HLG/P-INV/III/2017', '008/PNP-HLG/P-INV/III/2017', 'PEREMAJAAN SERVER', 1, 2, 122450000, 2, '2017-03-11'),
 ('009/PNP-HLG/P-INV/II/2017', '018/PNP-HLG/UM/INV/II/2017', 'RENOVASI EX RUANGAN EMBOSS', 0, 22, 76721000, 22, '2017-02-21'),
 ('010/PNP-HLG/P-INV/III/2017', '002/PNP-HLG/INV/TEK/III/2017', 'PEREMAJAAN AIR CONDITIONER', 4, 15, 34225000, 15, '2017-03-13'),
-('013/PNP-HLG/P-INV/IV/2017', '003/PNP-HLG/INV-QC2/IV/2017 003/PNP-HLG/INV/TEK/IV/2017', 'PENGADAAN AC DAN MEJA MINI LAB LT 1', 2, 55, 15799500, 55, '2017-04-22');
+('013/PNP-HLG/P-INV/IV/2017', '003/PNP-HLG/INV-QC2/IV/2017 003/PNP-HLG/INV/TEK/IV/2017', 'PENGADAAN AC DAN MEJA MINI LAB LT 1', 2, 55, 15799500, 55, '2017-04-22'),
+('014/PNP-HLG/P-INV/IV/2017', '013/PNP-HLG/MGR-PROD/IV/2017', 'MESIN HOTMELT COATER', 1, 14, 160000000, 14, '2017-04-03');
 
 -- --------------------------------------------------------
 
@@ -779,12 +783,47 @@ INSERT INTO `master_rekening` (`no`, `no_rekening`, `keterangan`) VALUES
 CREATE TABLE IF NOT EXISTS `master_terima_bskk` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `jenis` varchar(100) NOT NULL,
+  `jumlah` bigint(20) NOT NULL,
   `tanggal` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `master_terima_bskk`
+--
+
+INSERT INTO `master_terima_bskk` (`id`, `jenis`, `jumlah`, `tanggal`) VALUES
+(1, 'Kas Pusat Test', 40000000, '2017-05-08'),
+(2, 'Kas Pusat Test 2', 1000000, '2017-05-10'),
+(3, 'Kas Pusat Test 3', 500000, '2017-05-26'),
+(4, 'Kas Pusat Test 4', 600000, '2017-05-26'),
+(5, 'Kas Pusat Test 5', 700000, '2017-05-26'),
+(6, 'Kas Pusat Test 6', 700000, '2017-04-04'),
+(7, 'Kas Pusat Test 6', 800000, '2017-04-11'),
+(8, 'Kas Pusat Test 8', 56000, '2017-04-27'),
+(9, 'Kas Pusat Test 9', 90000, '2017-04-27'),
+(10, 'Kas Pusat Test 10', 45000, '2017-04-27'),
+(11, 'Kas Pusat Test 11', 6300000, '2016-10-12'),
+(12, 'Kas Pusat Test 12', 4800000, '2016-10-19'),
+(13, 'Kas Pusat Test 13', 1230000, '2016-10-19'),
+(14, 'Kas Pusat Test 14', 460000, '2016-09-18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `saldo_akhir_bskk`
+--
+
+CREATE TABLE IF NOT EXISTS `saldo_akhir_bskk` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bulan` varchar(50) NOT NULL,
+  `tahun` varchar(50) NOT NULL,
+  `saldo` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `master_terima_bskk`
+-- Dumping data for table `saldo_akhir_bskk`
 --
 
 

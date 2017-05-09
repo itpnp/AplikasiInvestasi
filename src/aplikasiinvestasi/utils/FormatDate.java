@@ -5,7 +5,9 @@
 package aplikasiinvestasi.utils;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -18,5 +20,10 @@ public class FormatDate {
         java.text.DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
         formatedDate= dateFormat.format(date);
         return formatedDate;
+    }
+    
+    public static int totalDays(int month, int year){
+        Calendar monthStart = new GregorianCalendar(year, month, 1);
+        return monthStart.getActualMaximum(Calendar.DAY_OF_MONTH);
     }
 }

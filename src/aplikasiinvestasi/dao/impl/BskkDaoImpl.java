@@ -8,6 +8,7 @@ import aplikasiinvestasi.dao.BskkDao;
 import aplikasiinvestasi.model.MasterBskk;
 import aplikasiinvestasi.model.MasterInvest;
 import aplikasiinvestasi.model.MasterTerima;
+import aplikasiinvestasi.utils.BulanEnum;
 import aplikasiinvestasi.utils.FormatDate;
 import aplikasiinvestasi.utils.HibernateUtil;
 import java.awt.HeadlessException;
@@ -260,7 +261,7 @@ public class BskkDaoImpl implements BskkDao{
                 int month = cal.get(Calendar.MONTH) +1;
                 int year = cal.get(Calendar.YEAR);
                 
-		sheet = workbook.createSheet(month+" '"+year);
+		sheet = workbook.createSheet(BulanEnum.namaBulan()[month]+" '"+year);
 		sheet.getPrintSetup().setLandscape(true);
 		sheet.getPrintSetup().setPaperSize(HSSFPrintSetup.LEGAL_PAPERSIZE); 
                 
@@ -322,7 +323,7 @@ public class BskkDaoImpl implements BskkDao{
 		String[] title= new String[4];
                 title[0] = "PT PURA NUSAPERSADA - UNIT HOLOGRAFI";
 	        title[1] = "JURNAL PENGELUARAN KAS";
-                title[2]  = "PERIODE : "+month+" "+year+"";
+                title[2]  = "PERIODE : "+BulanEnum.namaBulan()[month]+" "+year+"";
 	        
                 for(int i = 0; i<3; i++){
                     rowHeader = sheet.createRow(i);
@@ -612,8 +613,12 @@ public class BskkDaoImpl implements BskkDao{
         HSSFCellStyle titleStyle = workbook.createCellStyle();
         HSSFCellStyle titleStyle2 = workbook.createCellStyle();
 	HSSFCellStyle dataStyle = workbook.createCellStyle();
+        HSSFCellStyle underScore = workbook.createCellStyle();
         HSSFCellStyle moneyStyle = workbook.createCellStyle();
-                
+        HSSFCellStyle moneyStyle2 = workbook.createCellStyle();
+        
+        DataFormat format = workbook.createDataFormat();
+        
         HSSFFont fontTitle = workbook.createFont();
         HSSFFont fontTitle2 = workbook.createFont();
 	HSSFFont fontData = workbook.createFont();
@@ -625,24 +630,59 @@ public class BskkDaoImpl implements BskkDao{
         titleStyle.setFont(fontTitle);
         titleStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
         
+        moneyStyle2.setDataFormat(format.getFormat("_-* #,##0.00_-;-* #,##0.00_-;_-* \"-\"??_-;_-@_-"));
+        moneyStyle2.setFont(fontTitle);
+        moneyStyle2.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+        
         fontTitle2.setFontHeightInPoints((short)12);
         fontTitle2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
         fontTitle2.setColor(HSSFColor.BLACK.index);
         fontTitle2.setFontName("Tahoma");
         titleStyle2.setFont(fontTitle2);
-        titleStyle2.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+//        titleStyle2.setAlignment(HSSFCellStyle.ALIGN_CENTER);
         
         fontData.setFontHeightInPoints((short)12);
         fontData.setFontName("Tahoma");
         dataStyle.setFont(fontData);
         
+        underScore.setBorderTop(HSSFCellStyle.BORDER_THIN);
+        underScore.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+        underScore.setDataFormat(format.getFormat("_-* #,##0.00_-;-* #,##0.00_-;_-* \"-\"??_-;_-@_-"));
+        underScore.setFont(fontTitle2);
+        
+        moneyStyle.setFont(fontData);
+        moneyStyle.setDataFormat(format.getFormat("_-* #,##0.00_-;-* #,##0.00_-;_-* \"-\"??_-;_-@_-"));
+        
         HSSFCell cell;
         HSSFRow rowData;
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(listTerima.get(0).getTanggal());
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);  
+        
         rowData = sheet.createRow(1);
         cell = rowData .createCell(0);
         sheet.addMergedRegion(new CellRangeAddress(1,1,0,7));
-        cell.setCellValue("Rekap Kas Kecil Bulan");
+        cell.setCellValue("Rekap Kas Kecil Bulan "+BulanEnum.namaBulan()[month+1]+" Tahun "+year);
         cell.setCellStyle(titleStyle);
+        
+        rowData = sheet.createRow(4);
+        cell = rowData .createCell(0);
+        cell.setCellValue("SALDO AWAL BULAN "+BulanEnum.namaBulan()[month]+" TAHUN "+year);
+        cell.setCellStyle(titleStyle);
+        sheet.addMergedRegion(new CellRangeAddress(4,4,0,4));
+        
+        cell = rowData .createCell(5);
+        cell.setCellValue("=");
+        cell.setCellStyle(titleStyle);
+        
+        cell = rowData .createCell(6);
+        cell.setCellValue("Rp");
+        cell.setCellStyle(titleStyle);
+        
+        cell = rowData .createCell(7);
+        cell.setCellValue(this.countSaldoBefore(month));
+        cell.setCellStyle(moneyStyle2);
         
         rowData = sheet.createRow(7);
         cell = rowData .createCell(0);
@@ -671,11 +711,251 @@ public class BskkDaoImpl implements BskkDao{
             
             cell = rowData.createCell(4);
             cell.setCellValue(listTerima.get(i).getJumlah());
-            cell.setCellStyle(dataStyle);
+            cell.setCellStyle(moneyStyle);
+            
             nomor++;
         }
+        rowData = sheet.createRow(9+(listTerima.size()));
+        cell = rowData.createCell(3);
+        cell.setCellValue("Rp");
+        cell.setCellStyle(dataStyle);
+        
+        cell = rowData.createCell(4);
+        cell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
+        cell.setCellFormula("SUM(E8:E"+(8+listTerima.size())+")");
+        cell.setCellStyle(underScore);
+        
+        rowData = sheet.createRow(13+listTerima.size());
+        cell = rowData .createCell(0);
+        sheet.addMergedRegion(new CellRangeAddress(13+listTerima.size(),13+listTerima.size(),0,1));
+        cell.setCellValue("KELUAR");
+        cell.setCellStyle(titleStyle2);
+        
+        nomor = 1;
+        int data = 0;
+        if(FormatDate.totalDays(month, year)==30){
+            data = 6;
+        }else{
+            data = 7;
+        }
+        
+       rowData = sheet.createRow(14+listTerima.size());
+       cell = rowData.createCell(0);
+       cell.setCellValue("1");
+       cell.setCellStyle(dataStyle);
+            
+       cell = rowData.createCell(1);
+       cell.setCellValue("PERIODE TGL 1-6/"+(month+1)+"/"+year);
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(2);
+       cell.setCellValue("=");
+       cell.setCellStyle(dataStyle);
+            
+       cell = rowData.createCell(3);
+       cell.setCellValue("Rp");
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(4);
+       cell.setCellValue(this.countDebetByDate(year+"/"+(month+1)+"/01", year+"/"+(month+1)+"/06"));
+       cell.setCellStyle(moneyStyle);
+       
+       rowData = sheet.createRow(15+listTerima.size());
+       cell = rowData.createCell(0);
+       cell.setCellValue("2");
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(1);
+       cell.setCellValue("PERIODE TGL 7-13/"+(month+1)+"/"+year);
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(2);
+       cell.setCellValue("=");
+       cell.setCellStyle(dataStyle);
+            
+       cell = rowData.createCell(3);
+       cell.setCellValue("Rp");
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(4);
+       cell.setCellValue(this.countDebetByDate(year+"/"+(month+1)+"/07", year+"/"+(month+1)+"/13"));
+       cell.setCellStyle(moneyStyle);
+       
+       rowData = sheet.createRow(16+listTerima.size());
+       cell = rowData.createCell(0);
+       cell.setCellValue("3");
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(1);
+       cell.setCellValue("PERIODE TGL 14-20/"+(month+1)+"/"+year);
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(2);
+       cell.setCellValue("=");
+       cell.setCellStyle(dataStyle);
+            
+       cell = rowData.createCell(3);
+       cell.setCellValue("Rp");
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(4);
+       cell.setCellValue(this.countDebetByDate(year+"/"+(month+1)+"/14", year+"/"+(month+1)+"/20"));
+       cell.setCellStyle(moneyStyle);
+       
+       rowData = sheet.createRow(17+listTerima.size());
+       cell = rowData.createCell(0);
+       cell.setCellValue("4");
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(1);
+       cell.setCellValue("PERIODE TGL 21-27/"+(month+1)+"/"+year);
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(2);
+       cell.setCellValue("=");
+       cell.setCellStyle(dataStyle);
+            
+       cell = rowData.createCell(3);
+       cell.setCellValue("Rp");
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(4);
+       cell.setCellValue(this.countDebetByDate(year+"/"+(month+1)+"/21", year+"/"+(month+1)+"/27"));
+       cell.setCellStyle(moneyStyle);
+       
+       rowData = sheet.createRow(18+listTerima.size());
+       cell = rowData.createCell(0);
+       cell.setCellValue("5");
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(1);
+       cell.setCellValue("PERIODE TGL 28-30/"+(month+1)+"/"+year);
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(2);
+       cell.setCellValue("=");
+       cell.setCellStyle(dataStyle);
+            
+       cell = rowData.createCell(3);
+       cell.setCellValue("Rp");
+       cell.setCellStyle(dataStyle);
+       
+       cell = rowData.createCell(4);
+       cell.setCellValue(this.countDebetByDate(year+"/"+(month+1)+"/28", year+"/"+(month+1)+"/30"));
+       cell.setCellStyle(moneyStyle);
+       
+       if(FormatDate.totalDays(month,year)>30){
+            rowData = sheet.createRow(18+listTerima.size());
+            cell = rowData.createCell(0);
+            cell.setCellValue("6");
+            cell.setCellStyle(dataStyle);
+            
+            cell = rowData.createCell(1);
+            cell.setCellValue("PERIODE TGL 31/"+(month+1)+"/"+year);
+            cell.setCellStyle(dataStyle);
+
+            cell = rowData.createCell(2);
+            cell.setCellValue("=");
+            cell.setCellStyle(dataStyle);
+
+            cell = rowData.createCell(3);
+            cell.setCellValue("Rp");
+            cell.setCellStyle(dataStyle);
+            
+            cell = rowData.createCell(4);
+            cell.setCellValue(this.countDebetByDate(year+"/"+(month+1)+"/31", year+"/"+(month+1)+"/31"));
+            cell.setCellStyle(moneyStyle);
+       }
+        
+        rowData = sheet.createRow(20+(listTerima.size()));
+        cell = rowData.createCell(3);
+        cell.setCellValue("Rp");
+        cell.setCellStyle(dataStyle);
+        
+        cell = rowData.createCell(4);
+        cell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
+        cell.setCellFormula("SUM(E"+(14+listTerima.size())+":E"+(18+listTerima.size())+")");
+        cell.setCellStyle(underScore);
+        
+        rowData = sheet.createRow(24+(listTerima.size()));
+        cell = rowData .createCell(0);
+        cell.setCellValue("SALDO AKHIR BULAN "+BulanEnum.namaBulan()[(month+1)]+" TAHUN "+year);
+        cell.setCellStyle(titleStyle);
+        sheet.addMergedRegion(new CellRangeAddress(24+(listTerima.size()),24+(listTerima.size()),0,4));
+        
+        cell = rowData.createCell(5);
+        cell.setCellValue("=");
+        cell.setCellStyle(titleStyle);
+        
+        cell = rowData.createCell(6);
+        cell.setCellValue("Rp");
+        cell.setCellStyle(titleStyle);
+        
+        cell = rowData .createCell(7);
+        cell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
+        if(this.countSaldoBefore(month)>0){
+            cell.setCellFormula("=+H5+E"+(8+(listTerima.size()))+"-E"+(20+(listTerima.size())));
+        }else{
+            cell.setCellFormula("SUM(E"+(14+listTerima.size())+":E"+(18+listTerima.size())+")"); 
+        }
+        
+        cell.setCellStyle(moneyStyle2);
+        
         for(int i=0; i<10; i++){
            sheet.autoSizeColumn(i, true);
+           if(i==4){
+              sheet.setColumnWidth(i, sheet.getColumnWidth(i) + 1000); 
+           }else if(i==7){
+              sheet.setColumnWidth(i, sheet.getColumnWidth(i) + 6000); 
+           }
         }
      }
+
+    @Override
+    public Long countDebetByDate(String startDate, String endDate) {
+        Long totalDebet = null;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query query = session.createSQLQuery("select SUM(debet) as total from master_bskk where tanggal BETWEEN '"+startDate+"' AND '"+endDate+"'");
+            if(query.uniqueResult()!= null){
+                totalDebet = Long.parseLong(""+query.uniqueResult());
+            }else{
+                totalDebet = Long.parseLong("0");
+            }
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return totalDebet;
+    }
+
+    @Override
+    public Long countSaldoBefore(int month) {
+        Long totalDebet = null;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query query = session.createSQLQuery("select SUM(debet) as total from master_bskk where MONTH(tanggal) = '"+month+"'");
+            if(query.uniqueResult()!= null){
+                totalDebet = Long.parseLong(""+query.uniqueResult());
+            }else{
+                totalDebet = Long.parseLong("0");
+            }
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return totalDebet;
+    }
 }

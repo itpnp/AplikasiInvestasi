@@ -93,5 +93,10 @@ public class BskkServiceImpl implements BskkService{
     public void exportToExcelSheet2(HSSFWorkbook workbook, HSSFSheet sheet, List<MasterTerima> listTerima) {
         bskkDao.exportToExcelSheet2(workbook, sheet, listTerima);
     }
+
+    @Override
+    public Long countDebetByDate(String startDate, String endDate) {
+        return bskkDao.countDebetByDate(startDate, endDate);
+    }
     
 }

@@ -29,4 +29,7 @@ public interface BskkDao {
     public List<MasterBskk> getDataByMonthAndYearAndInvestNumber(String month, String year,String investNumber);
     public List<MasterBskk> getDataByBpkk(String bpkkNumber);
     public void exportToExcelSheet2(HSSFWorkbook workbook, HSSFSheet sheet, List<MasterTerima> listTerima);
+    public Long countDebetByDate(String startDate, String endDate);
+    public Long countSaldoBefore(int month);
+    
 }
