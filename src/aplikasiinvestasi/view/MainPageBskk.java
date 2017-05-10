@@ -110,6 +110,14 @@ public class MainPageBskk extends javax.swing.JFrame {
         this.homeButton = homeButton;
     }
 
+    public JButton getSaldoAkhirButton() {
+        return saldoAkhirButton;
+    }
+
+    public void setSaldoAkhirButton(JButton saldoAkhirButton) {
+        this.saldoAkhirButton = saldoAkhirButton;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,6 +132,7 @@ public class MainPageBskk extends javax.swing.JFrame {
         exportButton = new javax.swing.JButton();
         terimaButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
+        saldoAkhirButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         viewTable = new javax.swing.JTable();
@@ -165,6 +174,12 @@ public class MainPageBskk extends javax.swing.JFrame {
         homeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         homeButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        saldoAkhirButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        saldoAkhirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1494412827_money.png"))); // NOI18N
+        saldoAkhirButton.setText("SALDO AKHIR");
+        saldoAkhirButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        saldoAkhirButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -178,7 +193,9 @@ public class MainPageBskk extends javax.swing.JFrame {
                 .addComponent(exportButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(terimaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 232, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(saldoAkhirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 97, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,6 +203,7 @@ public class MainPageBskk extends javax.swing.JFrame {
             .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(terimaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(saldoAkhirButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
@@ -319,6 +337,7 @@ public class MainPageBskk extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField noBpkkParameter;
+    private javax.swing.JButton saldoAkhirButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JComboBox tahunParam;
     private javax.swing.JButton terimaButton;

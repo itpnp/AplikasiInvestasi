@@ -40,6 +40,7 @@ public class MainPageBskkController {
     private AddBskkController addBskkController;
     private UpdateBskkController updateBskkController;
     private TerimaPageController terimaPage;
+    private SaldoAkhirController saldoAkhirController;
     private TerimaService terimaService;
     
     public MainPageBskkController(){
@@ -84,9 +85,17 @@ public class MainPageBskkController {
                 openHomePage(e);
             }
         });
+        mainPage.getSaldoAkhirButton().addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openSaldoPage(e);
+            }
+        });
         mainPage.getBulanParam().setModel(new DefaultComboBoxModel(BulanEnum.namaBulan()));
         mainPage.getTahunParam().setModel(new DefaultComboBoxModel(BulanEnum.tahun()));
         terimaPage = new TerimaPageController();
+        saldoAkhirController = new SaldoAkhirController();
     }
     
     public BskkService getService(){
@@ -181,25 +190,33 @@ public class MainPageBskkController {
         viewDataOnTable();
     }
     public void openTerimaPage(java.awt.event.ActionEvent e){
+        mainPage.getjPanel2().setVisible(false);
+        saldoAkhirController.getPage().setVisible(false);
         mainPage.getContentPane().remove(mainPage.getjPanel2());
         mainPage.getContentPane().add(terimaPage.getPage(),java.awt.BorderLayout.CENTER);
-//        terimaPage.getPage().setSize(mainPage.getWorkBook().getSize());
         terimaPage.getPage().setVisible(true);
         mainPage.getContentPane().validate();
-        mainPage.getjPanel2().setVisible(false);
         terimaPage.getAllData();
         terimaPage.viewData();
     }
     
     public void openHomePage(java.awt.event.ActionEvent e){
-        if(terimaPage.getPage().isVisible()){
-            mainPage.getContentPane().remove(terimaPage.getPage());
-            mainPage.getContentPane().add(mainPage.getjPanel2(),java.awt.BorderLayout.CENTER);
-            mainPage.getjPanel2().setVisible(true);
-            mainPage.getContentPane().validate();
-            terimaPage.getPage().setVisible(false);
-        }
-       
+         terimaPage.getPage().setVisible(false);
+         saldoAkhirController.getPage().setVisible(false);
+         mainPage.getContentPane().remove(terimaPage.getPage());
+         mainPage.getContentPane().add(mainPage.getjPanel2(),java.awt.BorderLayout.CENTER);
+         mainPage.getjPanel2().setVisible(true);
+         mainPage.getContentPane().validate();       
+    }
+    public void openSaldoPage(java.awt.event.ActionEvent e){
+        terimaPage.getPage().setVisible(false);
+        mainPage.getjPanel2().setVisible(false);
+         mainPage.getContentPane().remove(saldoAkhirController.getPage());
+         mainPage.getContentPane().add(saldoAkhirController.getPage(),java.awt.BorderLayout.CENTER);
+         saldoAkhirController.getPage().setVisible(true);
+         mainPage.getContentPane().validate();
+         saldoAkhirController.getAllData();
+         saldoAkhirController.viewData();
     }
     
 }

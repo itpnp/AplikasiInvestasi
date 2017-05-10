@@ -14,20 +14,15 @@ import aplikasiinvestasi.utils.FormatRupiah;
 import aplikasiinvestasi.utils.Table;
 import aplikasiinvestasi.utils.TableHeaderRenderer;
 import aplikasiinvestasi.view.IjinInvestPage;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 
 /**
  *

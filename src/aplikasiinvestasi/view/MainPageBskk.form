@@ -52,7 +52,9 @@
                   <Component id="exportButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="terimaButton" min="-2" pref="131" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="232" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="saldoAkhirButton" min="-2" pref="129" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="97" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -62,6 +64,7 @@
               <Component id="addButton" alignment="0" max="32767" attributes="0"/>
               <Component id="terimaButton" alignment="0" max="32767" attributes="0"/>
               <Component id="homeButton" alignment="0" max="32767" attributes="0"/>
+              <Component id="saldoAkhirButton" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -114,6 +117,19 @@
               <Image iconType="3" name="/aplikasiinvestasi/images/1494232675_go-home 32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="HOME"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="saldoAkhirButton">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Sans" size="12" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/aplikasiinvestasi/images/1494412827_money.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="SALDO AKHIR"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>

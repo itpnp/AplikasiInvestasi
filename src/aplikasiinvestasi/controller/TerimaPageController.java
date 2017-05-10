@@ -36,7 +36,6 @@ public class TerimaPageController {
     
     public TerimaPageController(){
         terimaPage = new TerimaBskkPage();
-        
         terimaPage.getSaveButton().addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

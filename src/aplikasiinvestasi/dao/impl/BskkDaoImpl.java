@@ -5,6 +5,7 @@
 package aplikasiinvestasi.dao.impl;
 
 import aplikasiinvestasi.dao.BskkDao;
+import aplikasiinvestasi.dao.SaldoAkhirDao;
 import aplikasiinvestasi.model.MasterBskk;
 import aplikasiinvestasi.model.MasterInvest;
 import aplikasiinvestasi.model.MasterTerima;
@@ -46,6 +47,7 @@ import org.hibernate.criterion.Restrictions;
 public class BskkDaoImpl implements BskkDao{
     private Session session;
     private HSSFSheet sheet;
+    private SaldoAkhirDao saldoDao = new SaldoAkhirDaoImpl();
     
     
     @Override
@@ -681,7 +683,7 @@ public class BskkDaoImpl implements BskkDao{
         cell.setCellStyle(titleStyle);
         
         cell = rowData .createCell(7);
-        cell.setCellValue(this.countSaldoBefore(month));
+        cell.setCellValue(saldoDao.findByMonthAndYear(BulanEnum.namaBulan()[month], ""+year).get(0).getSaldo());
         cell.setCellStyle(moneyStyle2);
         
         rowData = sheet.createRow(7);
@@ -893,8 +895,8 @@ public class BskkDaoImpl implements BskkDao{
         
         cell = rowData .createCell(7);
         cell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
-        if(this.countSaldoBefore(month)>0){
-            cell.setCellFormula("=+H5+E"+(8+(listTerima.size()))+"-E"+(20+(listTerima.size())));
+        if(saldoDao.findByMonthAndYear(BulanEnum.namaBulan()[month], ""+year).get(0).getSaldo()>=0){
+            cell.setCellFormula("H5+E"+(9+(listTerima.size()))+"-E"+(21+(listTerima.size())));
         }else{
             cell.setCellFormula("SUM(E"+(14+listTerima.size())+":E"+(18+listTerima.size())+")"); 
         }
