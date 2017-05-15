@@ -117,6 +117,7 @@ public class AddNewLpbImportController {
             }
         });
          viewOnTable();
+        this.addLpb.getTanggalField().setFormats("dd MMMM yyyy");
         this.addLpb.setTitle("Tambah Data LPB Import");
         this.addLpb.setVisible(true);
         return addLpb;

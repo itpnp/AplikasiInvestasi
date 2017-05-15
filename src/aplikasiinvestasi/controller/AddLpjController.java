@@ -114,6 +114,8 @@ public class AddLpjController {
                 selectDataInvest(e);
             }
         });
+        this.addLpj.getTanggalField().setFormats("dd MMMM yyyy");
+
     }
     public void viewOnTable(){
         DefaultTableModel model = new DefaultTableModel();

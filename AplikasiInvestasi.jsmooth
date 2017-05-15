@@ -7,11 +7,10 @@
 <JVMSearchPath>exepath</JVMSearchPath>
 <JVMSearchPath>jview</JVMSearchPath>
 <arguments></arguments>
-<bundledJVMPath>.</bundledJVMPath>
 <classPath>dist\AplikasiInvestasi.jar</classPath>
 <embeddedJar>false</embeddedJar>
 <executableName>Aplikasi Investasi.exe</executableName>
-<iconLocation>..\..\Downloads\1489479967_Currency_dollar.png</iconLocation>
+<iconLocation>E:\ICON\1489479967_Currency_dollar.png</iconLocation>
 <initialMemoryHeap>-1</initialMemoryHeap>
 <mainClassName>aplikasiinvestasi.AplikasiInvestasi</mainClassName>
 <maximumMemoryHeap>-1</maximumMemoryHeap>

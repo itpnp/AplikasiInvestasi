@@ -68,10 +68,9 @@ public class AddBskkController {
             bskk.setTanggal(addBskk.getTanggalField().getDate());
             bskk.setNoBskk(addBskk.getNomorBpkkField().getText());
             bskk.setMasterDepartemen(listDepartemen.get(addBskk.getDepartemenComboBox().getSelectedIndex()));
-                if(masterInvest != null){
+            if(masterInvest != null){
                     bskk.setMasterInvest(masterInvest);
-                }
-                
+            }
             listBskk.add(bskk);
             this.viewDataOnTable();
             empty();
@@ -86,8 +85,9 @@ public class AddBskkController {
             model.addColumn("Keterangan");
             model.addColumn("Debet");
             addBskk.getViewTable().setModel(model);
-             mainPage.getAllData();
-             mainPage.viewDataOnTable();
+            mainPage.getAllData();
+            mainPage.viewDataOnTable();
+            listBskk = new ArrayList<>();
         }
         
     }

@@ -114,6 +114,7 @@ public class AddNewLpbController {
                 selectDataInvest(e);
             }
         });
+        this.addLpb.getTanggalField().setFormats("dd MMMM yyyy");
     }
     
     public AddNewLpb getLpb(){
