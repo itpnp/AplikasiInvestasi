@@ -58,10 +58,10 @@ public class MasterLpj implements Serializable {
     private String satuan;
     
     @Column(name="harga_satuan")
-    private long hargaSatuan;
+    private Double hargaSatuan;
     
     @Column(name="debet")
-    private long debet;
+    private Double debet;
 
     @Column(name="kode_rekening")
     private String kodeRekening;
@@ -73,7 +73,7 @@ public class MasterLpj implements Serializable {
     private String activeStatus;
   
     public MasterLpj(int idLpj, MasterInvest masterInvest, String alokasiBiaya, MasterDepartemen masterDepartemen, Date tanggal, 
-            String keterangan, String noIpbInternal, String noIpbEksternal, double jumlah, String satuan, long hargaSatuan, long debet, 
+            String keterangan, String noIpbInternal, String noIpbEksternal, double jumlah, String satuan, Double hargaSatuan, Double debet, 
             String kodeRekening, String status, String activeStatus) {
         this.idLpj = idLpj;
         this.masterInvest = masterInvest;
@@ -199,19 +199,19 @@ public class MasterLpj implements Serializable {
         this.satuan = satuan;
     }
 
-    public long getHargaSatuan() {
+    public Double getHargaSatuan() {
         return hargaSatuan;
     }
 
-    public void setHargaSatuan(long hargaSatuan) {
+    public void setHargaSatuan(Double hargaSatuan) {
         this.hargaSatuan = hargaSatuan;
     }
 
-    public long getDebet() {
+    public Double getDebet() {
         return debet;
     }
 
-    public void setDebet(long debet) {
+    public void setDebet(Double debet) {
         this.debet = debet;
     }
 }

@@ -331,7 +331,8 @@ public class MainPageLpbController {
                  }else if(mainPage.getBulanParam().getSelectedIndex() > 0 && mainPage.getTahunParam().getSelectedIndex() >0 && !mainPage.getKodeRekening().getText().equals("")){
                     listLpj = lpjService.findByYearMonthRekening(mainPage.getTahunParam().getSelectedItem().toString(), ""+mainPage.getBulanParam().getSelectedIndex(),mainPage.getKodeRekening().getText());
                  }
-                totalDebetLpj = null;
+                totalDebetLpj = 0.0;
+                System.out.println(listLpj.size());
                 for(MasterLpj lpj : listLpj){
                     totalDebetLpj = totalDebetLpj+ lpj.getDebet();
                 }

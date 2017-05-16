@@ -15,9 +15,15 @@ import aplikasiinvestasi.view.MainPageLpb;
 import aplikasiinvestasi.view.UpdateLpb;
 import aplikasiinvestasi.view.UpdateLpj;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -30,6 +36,8 @@ public class UpdateLpjController {
     private LpjService lpjService;
     private List<MasterDepartemen> listDepartemen;
     private ChooseDataInvestController chooseData;
+    private String harga;
+    private DecimalFormat df;
     
     public UpdateLpjController(MainPageLpbController mainPageController){
         this.mainPageController = mainPageController;
@@ -84,8 +92,8 @@ public class UpdateLpjController {
     public void simpanAction(java.awt.event.ActionEvent e){
         this.masterLpj.setAlokasiBiaya(updateLpj.getAlokasiBiayaField().getText());
         this.masterLpj.setKodeRekening(updateLpj.getKodeRekeningField().getText());
-        this.masterLpj.setDebet(Long.parseLong(updateLpj.getDebetField().getText()));
-        this.masterLpj.setHargaSatuan(Long.parseLong(updateLpj.getHargaField().getText()));
+        this.masterLpj.setDebet(Double.parseDouble(updateLpj.getDebetField().getText()));
+        this.masterLpj.setHargaSatuan(Double.parseDouble(updateLpj.getHargaField().getText()));
         this.masterLpj.setJumlah(Double.parseDouble(updateLpj.getJumlahField().getText()));
         this.masterLpj.setKeterangan(updateLpj.getKeteranganField().getText());
         this.masterLpj.setNoIpbEksternal(updateLpj.getNomorLpbEksternalField().getText());
@@ -149,9 +157,37 @@ public class UpdateLpjController {
                 }
             }
         });
+        this.updateLpj.getHargaField().addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                hargaKeyReleased(evt);
+            }
+        });
         return updateLpj;
     }
-    
+     private void hargaKeyReleased(java.awt.event.KeyEvent evt) {
+       try{
+        df=new DecimalFormat("0.00");
+        harga = updateLpj.getHargaField().getText();
+        formatRupiah(updateLpj.getFormatHarga(), updateLpj.getHargaField());
+        Double jumlahDebet = Double.parseDouble(updateLpj.getJumlahField().getText())* Double.parseDouble(harga);
+        String formate = df.format(jumlahDebet); 
+        double finalValue = Double.parseDouble(""+df.parse(formate));
+        harga = String.format("%.2f", finalValue);
+        harga = harga.replace(",", ".");
+        updateLpj.getDebetField().setText(harga);
+        formatRupiah(updateLpj.getFormatDebet(), updateLpj.getDebetField()); 
+       }catch(NumberFormatException e){
+           updateLpj.getDebetField().setText("");
+           updateLpj.getFormatDebet().setText("");
+       } catch (ParseException ex) {
+            Logger.getLogger(AddLpjController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
+     public void formatRupiah(JLabel labelFormat, JTextField textFormat){
+       labelFormat.setText(FormatRupiah.convert(textFormat.getText()));
+    }
     public void selectDataInvest(java.awt.event.ActionEvent e){
         chooseData = new ChooseDataInvestController(this);
         chooseData.chooseInvest().setVisible(true);

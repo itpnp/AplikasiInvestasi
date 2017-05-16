@@ -16,8 +16,12 @@ import aplikasiinvestasi.utils.Table;
 import aplikasiinvestasi.utils.TextValidation;
 import aplikasiinvestasi.view.AddNewLpj;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -39,6 +43,8 @@ public class AddLpjController {
     private MasterInvest masterInvest;
     private List<MasterLpj> listMaster;
     private RekeningService rekeningService;
+    private String harga;
+    private DecimalFormat df;
     
     public AddLpjController(MainPageLpbController mainPage, LpjService lpjService){
         this.mainPage = mainPage;
@@ -145,8 +151,8 @@ public class AddLpjController {
             if(validation()){
                 lpj.setAlokasiBiaya(addLpj.getAlokasiBiayaField().getText());
                 lpj.setKodeRekening(addLpj.getKodeRekeningField().getText());
-                lpj.setDebet(Long.parseLong(addLpj.getDebetField().getText()));
-                lpj.setHargaSatuan(Long.parseLong(addLpj.getHargaField().getText()));
+                lpj.setDebet(Double.parseDouble(addLpj.getDebetField().getText()));
+                lpj.setHargaSatuan(Double.parseDouble(addLpj.getHargaField().getText()));
                 lpj.setJumlah(Double.parseDouble(addLpj.getJumlahField().getText()));
                 lpj.setKeterangan(addLpj.getKeteranganField().getText());
                 lpj.setNoIpbEksternal(addLpj.getNomorLpbEksternalField().getText());
@@ -229,15 +235,23 @@ public class AddLpjController {
     }
     private void hargaKeyReleased(java.awt.event.KeyEvent evt) {
        try{
+        df=new DecimalFormat("0.00");
+        harga = addLpj.getHargaField().getText();
+        harga  = harga.replace(',', '.');
         formatRupiah(addLpj.getFormatHarga(), addLpj.getHargaField());
-        Double jumlahDebet = Double.parseDouble(addLpj.getJumlahField().getText())* Long.parseLong(addLpj.getHargaField().getText());
-        long result = jumlahDebet.longValue();
-        addLpj.getDebetField().setText(""+result);
+        Double jumlahDebet = Double.parseDouble(addLpj.getJumlahField().getText())* Double.parseDouble(harga);
+        String formate = df.format(jumlahDebet); 
+        double finalValue = Double.parseDouble(""+df.parse(formate));
+        harga = String.format("%.2f", finalValue);
+        harga = harga.replace(",", ".");
+        addLpj.getDebetField().setText(harga);
         formatRupiah(addLpj.getFormatDebet(), addLpj.getDebetField()); 
        }catch(NumberFormatException e){
            addLpj.getDebetField().setText("");
            addLpj.getFormatDebet().setText("");
-       }
+       } catch (ParseException ex) {
+            Logger.getLogger(AddLpjController.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }
 

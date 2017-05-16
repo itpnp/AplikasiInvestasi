@@ -12,9 +12,15 @@ import aplikasiinvestasi.utils.FormatRupiah;
 import aplikasiinvestasi.view.MainPageLpb;
 import aplikasiinvestasi.view.UpdateLpb;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -27,6 +33,8 @@ public class UpdateLpbController {
     private LpbService lpbService;
     private List<MasterDepartemen> listDepartemen;
     private ChooseDataInvestController chooseData;
+    private String harga;
+    private DecimalFormat df;
     
     public UpdateLpbController(MainPageLpbController mainPageController){
         this.mainPageController = mainPageController;
@@ -145,6 +153,12 @@ public class UpdateLpbController {
                 }
             }
         });
+        this.updateLpb.getHargaField().addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                hargaKeyReleased(evt);
+            }
+        });
         updateLpb.getHolo2Radio().addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -185,4 +199,28 @@ public class UpdateLpbController {
         updateLpb.getAlokasiBiayaField().setText("");
       }
     } 
+    public void formatRupiah(JLabel labelFormat, JTextField textFormat){
+       labelFormat.setText(FormatRupiah.convert(textFormat.getText()));
+    }
+    private void hargaKeyReleased(java.awt.event.KeyEvent evt) {
+       try{
+        df=new DecimalFormat("##.##");
+        harga = updateLpb.getHargaField().getText();
+        formatRupiah(updateLpb.getFormatHarga(), updateLpb.getHargaField());
+        Double jumlahDebet = Double.parseDouble(updateLpb.getJumlahField().getText())* Double.parseDouble(harga);
+        String formate = df.format(jumlahDebet); 
+        Double finalValue = Double.parseDouble(""+df.parse(formate));
+        harga = String.format("%.2f", finalValue);
+        harga = harga.replace(",", ".");
+        updateLpb.getDebetField().setText(harga);
+        formatRupiah(updateLpb.getFormatDebet(), updateLpb.getDebetField()); 
+        
+       }catch(NumberFormatException e){
+           updateLpb.getDebetField().setText("");
+           updateLpb.getFormatDebet().setText("");
+       } catch (ParseException ex) {
+            Logger.getLogger(AddNewLpbController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
 }

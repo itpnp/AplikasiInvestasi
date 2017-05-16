@@ -258,13 +258,13 @@ public class AddNewLpbController {
        try{
         df=new DecimalFormat("0.00");
         harga = addLpb.getHargaField().getText();
-        harga  = harga.replace(',', '.');
         formatRupiah(addLpb.getFormatHarga(), addLpb.getHargaField());
         Double jumlahDebet = Double.parseDouble(addLpb.getJumlahField().getText())* Double.parseDouble(harga);
         String formate = df.format(jumlahDebet); 
         double finalValue = Double.parseDouble(""+df.parse(formate));
-//        harga = (""+finalValue).replace('.', ',');
-        addLpb.getDebetField().setText(""+finalValue);
+        harga = String.format("%.2f", finalValue);
+        harga = harga.replace(",", ".");
+        addLpb.getDebetField().setText(harga);
         formatRupiah(addLpb.getFormatDebet(), addLpb.getDebetField()); 
         
        }catch(NumberFormatException e){
