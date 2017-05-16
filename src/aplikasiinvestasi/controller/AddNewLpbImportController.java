@@ -229,11 +229,7 @@ public class AddNewLpbImportController {
         Double jumlahDebet = Double.parseDouble(addLpb.getJumlahField().getText())* Double.parseDouble(harga);
         String formate = df.format(jumlahDebet); 
         double finalValue = Double.parseDouble(""+df.parse(formate));
-//        harga = (""+finalValue).replace('.', ',');
-        
-//        formatRupiah(addLpb.getFormatHarga(), addLpb.getHargaField());
-//        Double jumlahDebet = Double.parseDouble(addLpb.getJumlahField().getText())* Long.parseLong(addLpb.getHargaField().getText());
-//        long result = jumlahDebet.longValue();
+
         addLpb.getDebetField().setText(""+finalValue);
         formatRupiah(addLpb.getFormatDebet(), addLpb.getDebetField()); 
        }catch(NumberFormatException e){

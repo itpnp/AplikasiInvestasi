@@ -214,7 +214,7 @@ public class MainPageLpb extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createEtchedBorder()));
 
-        addButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        addButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/bill medium.png"))); // NOI18N
         addButton.setText("LPB Lokal");
         addButton.setToolTipText("LPB LOKAL");
@@ -222,7 +222,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         addButton.setIconTextGap(1);
         addButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        printButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        printButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         printButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1482910741_excel.png"))); // NOI18N
         printButton.setText("Export To Excel");
         printButton.setToolTipText("Print To Excel");
@@ -230,7 +230,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         printButton.setIconTextGap(1);
         printButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        addLpbImportButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        addLpbImportButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         addLpbImportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1480056802_import.png"))); // NOI18N
         addLpbImportButton.setText("LPB Import");
         addLpbImportButton.setToolTipText("LPB IMPORT");
@@ -238,7 +238,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         addLpbImportButton.setIconTextGap(10);
         addLpbImportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        lpjButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        lpjButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lpjButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1493198199_vector_65_12.png"))); // NOI18N
         lpjButton.setText("LPJ");
         lpjButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -272,7 +272,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(1000, 867));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Bulan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -281,7 +281,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 4, 0, 0);
         jPanel2.add(jLabel1, gridBagConstraints);
 
-        bulanParam.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        bulanParam.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         bulanParam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         bulanParam.setPreferredSize(new java.awt.Dimension(66, 29));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -294,7 +294,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 10, 0, 0);
         jPanel2.add(bulanParam, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Tahun");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
@@ -303,7 +303,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 0);
         jPanel2.add(jLabel2, gridBagConstraints);
 
-        tahunParam.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        tahunParam.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tahunParam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         tahunParam.setPreferredSize(new java.awt.Dimension(66, 29));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -330,7 +330,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
         jPanel2.add(searchButton, gridBagConstraints);
 
-        viewTable.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        viewTable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         viewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -382,7 +382,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
         jPanel2.add(jSeparator1, gridBagConstraints);
 
-        viewLPJ.setFont(new java.awt.Font("Lucida Sans", 1, 10)); // NOI18N
+        viewLPJ.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         viewLPJ.setText("LPJ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -393,7 +393,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 10, 0, 0);
         jPanel2.add(viewLPJ, gridBagConstraints);
 
-        viewLpb.setFont(new java.awt.Font("Lucida Sans", 1, 10)); // NOI18N
+        viewLpb.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         viewLpb.setText("LPB");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
@@ -415,7 +415,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(9, 10, 0, 0);
         jPanel2.add(infoLabel, gridBagConstraints);
 
-        jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Kode Rekening");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -427,7 +427,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 10, 0, 0);
         jPanel2.add(jLabel3, gridBagConstraints);
 
-        kodeRekening.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        kodeRekening.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;

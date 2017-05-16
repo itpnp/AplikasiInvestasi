@@ -273,96 +273,96 @@ public class UpdateLpj extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        saveButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        saveButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1478002140_floppy.png"))); // NOI18N
         saveButton.setText("SIMPAN");
 
-        debetField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        debetField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        hargaField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        hargaField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setText("Harga");
 
-        jLabel10.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Satuan");
 
-        satuanField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        satuanField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        formatHarga.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        formatHarga.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         formatHarga.setText("Rp.");
 
-        formatDebet.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        formatDebet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         formatDebet.setText("Rp.");
 
-        jumlahField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jumlahField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Quantity");
 
-        jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Nomor LPJ Eksternal");
 
-        nomorLpbEksternalField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        nomorLpbEksternalField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        nomorLpbInternalField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        nomorLpbInternalField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Nomor LPJ Internal");
 
-        jLabel6.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Keterangan");
 
-        KeteranganField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        KeteranganField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        alokasiBiayaField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        alokasiBiayaField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Alokasi Biaya");
 
-        jLabel4.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Departemen");
 
-        departemenComboBox.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        departemenComboBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         departemenComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-- Pilih Departemen --" }));
 
         groupUnit.add(holo1Radio);
-        holo1Radio.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        holo1Radio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         holo1Radio.setText("Holo I");
 
         groupUnit.add(Holo2Radio);
-        Holo2Radio.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        Holo2Radio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Holo2Radio.setText("Holo II");
 
         groupStatus.add(polosOption);
-        polosOption.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        polosOption.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         polosOption.setText("POLOS");
 
         groupStatus.add(resmiOption);
-        resmiOption.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        resmiOption.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         resmiOption.setText("RESMI");
 
-        kodeRekeningField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        kodeRekeningField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Kode rekening");
 
-        investField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        investField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Nomor Invest");
 
         addInvest.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         addInvest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1479300850_Add.png"))); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Tanggal");
 
         tanggalField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
 
         removeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1481016960_cross-24.png"))); // NOI18N
 
-        jLabel12.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("Debet");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -373,14 +373,6 @@ public class UpdateLpj extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(saveButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(satuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(94, 94, 94)
@@ -388,75 +380,91 @@ public class UpdateLpj extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(90, 90, 90)
                                 .addComponent(jLabel12)))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(debetField)
-                            .addComponent(hargaField, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))
-                        .addGap(10, 10, 10)
+                            .addComponent(debetField, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                            .addComponent(hargaField))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(formatDebet)
-                            .addComponent(formatHarga)))
+                            .addComponent(formatHarga)
+                            .addComponent(formatDebet))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(148, 148, 148)
-                                .addComponent(holo1Radio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Holo2Radio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(polosOption)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(resmiOption))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel1))
                                 .addGap(23, 23, 23)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(investField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(kodeRekeningField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addInvest, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(nomorLpbInternalField, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(tanggalField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(KeteranganField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(46, 46, 46)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(departemenComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(alokasiBiayaField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addGap(18, 18, 18)
-                            .addComponent(nomorLpbEksternalField, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(76, 76, 76)
-                            .addComponent(jLabel9)
-                            .addGap(18, 18, 18)
-                            .addComponent(jumlahField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(holo1Radio, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Holo2Radio)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                                        .addComponent(polosOption)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(resmiOption))
+                                    .addComponent(investField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                                    .addComponent(kodeRekeningField, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addInvest, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tanggalField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(49, 49, 49)
+                                                .addComponent(jLabel6))
+                                            .addComponent(jLabel7))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(20, 20, 20)
+                                                .addComponent(KeteranganField, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(19, 19, 19)
+                                                .addComponent(nomorLpbInternalField, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(2, 2, 2)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(46, 46, 46)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(departemenComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel3)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(alokasiBiayaField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(88, 88, 88)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(saveButton)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel10)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(satuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel9)
+                                            .addGap(12, 12, 12))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel8)
+                                            .addGap(15, 15, 15)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(nomorLpbEksternalField, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                                        .addComponent(jumlahField)))))
+                        .addGap(11, 11, 11))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -526,9 +534,8 @@ public class UpdateLpj extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel11))
-                    .addComponent(hargaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(hargaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(formatHarga)))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

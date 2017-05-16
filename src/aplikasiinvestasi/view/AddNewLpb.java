@@ -278,90 +278,90 @@ public class AddNewLpb extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Nomor Invest");
 
-        jLabel2.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Kode rekening");
 
-        jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Alokasi Biaya");
 
-        jLabel4.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Departemen");
 
-        jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Tanggal");
 
-        jLabel6.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Keterangan");
 
-        jLabel7.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Nomor LPB Internal");
 
-        jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Nomor LPB Eksternal");
 
-        jLabel9.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Quantity");
 
-        jLabel10.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Satuan");
 
-        jLabel11.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setText("Harga");
 
-        jLabel12.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("Debet");
 
         buttonGroup1.add(holo1Radio);
-        holo1Radio.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        holo1Radio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         holo1Radio.setText("Holo I");
 
         buttonGroup1.add(Holo2Radio);
-        Holo2Radio.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        Holo2Radio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Holo2Radio.setText("Holo II");
 
-        investField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        investField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        kodeRekeningField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        kodeRekeningField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        alokasiBiayaField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        alokasiBiayaField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        KeteranganField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        KeteranganField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        departemenComboBox.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        departemenComboBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         departemenComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-- Pilih Departemen --" }));
 
-        nomorLpbInternalField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        nomorLpbInternalField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        nomorLpbEksternalField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        nomorLpbEksternalField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jumlahField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jumlahField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        satuanField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        satuanField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        hargaField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        hargaField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        debetField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        debetField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         tanggalField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
 
         addInvest.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         addInvest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1479300850_Add.png"))); // NOI18N
 
-        formatHarga.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        formatHarga.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         formatHarga.setText("Rp.");
 
-        formatDebet.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        formatDebet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         formatDebet.setText("Rp.");
 
         buttonGroup2.add(polosOption);
-        polosOption.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        polosOption.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         polosOption.setText("POLOS");
 
         buttonGroup2.add(resmiOption);
-        resmiOption.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        resmiOption.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         resmiOption.setText("RESMI");
 
         addButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
@@ -389,16 +389,6 @@ public class AddNewLpb extends javax.swing.JDialog {
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addComponent(nomorLpbInternalField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(nomorLpbEksternalField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(jumlahField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(jLabel11)
@@ -445,15 +435,28 @@ public class AddNewLpb extends javax.swing.JDialog {
                         .addComponent(investField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(addInvest, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(addButton)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(satuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(116, 116, 116)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(addButton)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel10)
+                                    .addGap(16, 16, 16)
+                                    .addComponent(satuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(28, 28, 28)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addGap(18, 18, 18))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addGap(21, 21, 21)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(nomorLpbEksternalField)
+                                .addComponent(jumlahField, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -542,6 +545,7 @@ public class AddNewLpb extends javax.swing.JDialog {
                 .addGap(52, 52, 52))
         );
 
+        viewTable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         viewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

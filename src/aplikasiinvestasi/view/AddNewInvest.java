@@ -203,73 +203,73 @@ public class AddNewInvest extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Tambah Data Ijin Investasi");
 
-        rupiahFormat.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        rupiahFormat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         rupiahFormat.setText("Rp. ");
 
-        kodeInvestField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        kodeInvestField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Tanggal Ijin Investasi");
 
-        nomorSuratIjinField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        nomorSuratIjinField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         tanggalInvest.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
 
-        penanggungJawabCombo.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        penanggungJawabCombo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         penanggungJawabCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-- Pilih Departemen --" }));
 
-        saveButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        saveButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1478002140_floppy.png"))); // NOI18N
         saveButton.setText("SAVE");
 
-        pemohonField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        pemohonField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         pemohonField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-- Pilih Departemen --" }));
 
         buttonGroup2.add(unit4);
-        unit4.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        unit4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         unit4.setText("Holo II");
 
-        jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Jenis Investasi");
 
         buttonGroup1.add(unit1);
-        unit1.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        unit1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         unit1.setText("Holo I");
 
-        jenisInvestField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jenisInvestField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Rencana");
 
         buttonGroup1.add(unit2);
-        unit2.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        unit2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         unit2.setText("Holo II");
 
-        cancelButton.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        cancelButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1478002343_Cancel.png"))); // NOI18N
         cancelButton.setText("CANCEL");
 
-        jumlahField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jumlahField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Nomor Surat Ijin");
 
-        jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Nomor Proposal");
 
-        jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Diajukan Oleh Departemen");
 
-        rencanaField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        rencanaField.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Pemohon");
 
-        jLabel4.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Jumlah");
 
         buttonGroup2.add(unit3);
-        unit3.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        unit3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         unit3.setText("Holo I");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

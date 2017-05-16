@@ -70,7 +70,7 @@
         <Component class="javax.swing.JButton" name="addButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="12" style="1"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/aplikasiinvestasi/images/bill medium.png"/>
@@ -85,7 +85,7 @@
         <Component class="javax.swing.JButton" name="printButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="12" style="1"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/aplikasiinvestasi/images/1482910741_excel.png"/>
@@ -100,7 +100,7 @@
         <Component class="javax.swing.JButton" name="addLpbImportButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="12" style="1"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/aplikasiinvestasi/images/1480056802_import.png"/>
@@ -115,7 +115,7 @@
         <Component class="javax.swing.JButton" name="lpjButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="12" style="1"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/aplikasiinvestasi/images/1493198199_vector_65_12.png"/>
@@ -144,7 +144,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="12" style="1"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Bulan"/>
           </Properties>
@@ -157,7 +157,7 @@
         <Component class="javax.swing.JComboBox" name="bulanParam">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="12" style="1"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -180,7 +180,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="12" style="1"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Tahun"/>
           </Properties>
@@ -193,7 +193,7 @@
         <Component class="javax.swing.JComboBox" name="tahunParam">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="12" style="1"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -247,7 +247,7 @@
             <Component class="javax.swing.JTable" name="viewTable">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Bookman Old Style" size="12" style="1"/>
+                  <Font name="Tahoma" size="12" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
@@ -291,7 +291,7 @@
         <Component class="javax.swing.JButton" name="viewLPJ">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="10" style="1"/>
+              <Font name="Tahoma" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="LPJ"/>
           </Properties>
@@ -304,7 +304,7 @@
         <Component class="javax.swing.JButton" name="viewLpb">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="10" style="1"/>
+              <Font name="Tahoma" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="LPB"/>
           </Properties>
@@ -333,7 +333,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="12" style="1"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Kode Rekening"/>
           </Properties>
@@ -346,7 +346,7 @@
         <Component class="javax.swing.JTextField" name="kodeRekening">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="12" style="1"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
           </Properties>
           <Constraints>
