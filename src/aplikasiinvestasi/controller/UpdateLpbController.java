@@ -85,8 +85,8 @@ public class UpdateLpbController {
     public void simpanAction(java.awt.event.ActionEvent e){
         this.masterLpb.setAlokasiBiaya(updateLpb.getAlokasiBiayaField().getText());
         this.masterLpb.setKodeRekening(updateLpb.getKodeRekeningField().getText());
-        this.masterLpb.setDebet(Long.parseLong(updateLpb.getDebetField().getText()));
-        this.masterLpb.setHargaSatuan(Long.parseLong(updateLpb.getHargaField().getText()));
+        this.masterLpb.setDebet(Double.parseDouble(updateLpb.getDebetField().getText()));
+        this.masterLpb.setHargaSatuan(Double.parseDouble(updateLpb.getHargaField().getText()));
         this.masterLpb.setJumlah(Double.parseDouble(updateLpb.getJumlahField().getText()));
         this.masterLpb.setKeterangan(updateLpb.getKeteranganField().getText());
         this.masterLpb.setNoIpbEksternal(updateLpb.getNomorLpbEksternalField().getText());
@@ -95,9 +95,9 @@ public class UpdateLpbController {
         this.masterLpb.setTanggal(updateLpb.getTanggalField().getDate());
         this.masterLpb.setActiveStatus("ACTIVE");
         if(updateLpb.getLokalRadio().isSelected()){
-            this.masterLpb.setSumberBarang("LOKAL");
+          this.masterLpb.setSumberBarang("LOKAL");
         }else if(updateLpb.getImportRadio().isSelected()){
-            this.masterLpb.setSumberBarang("IMPORT");
+          this.masterLpb.setSumberBarang("IMPORT");
         }
         
         this.masterLpb.setMasterDepartemen(listDepartemen.get(updateLpb.getDepartemenComboBox().getSelectedIndex()));

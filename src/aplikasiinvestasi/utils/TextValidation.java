@@ -27,8 +27,13 @@ public class TextValidation extends PlainDocument{
           if(Character.isDigit(c)){
               valid = true;
           }else{
-              valid = false;
-              break;
+              if(c == '.'){
+                valid = true;
+              }else{
+                valid = false;
+                break;  
+              }
+              
           }
       }
       if(valid){

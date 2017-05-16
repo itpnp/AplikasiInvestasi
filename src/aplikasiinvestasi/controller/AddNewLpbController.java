@@ -16,8 +16,12 @@ import aplikasiinvestasi.utils.Table;
 import aplikasiinvestasi.utils.TextValidation;
 import aplikasiinvestasi.view.AddNewLpb;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -39,6 +43,9 @@ public class AddNewLpbController {
     private MasterInvest masterInvest;
     private List<MasterLpb> listMaster;
     private RekeningService rekeningService;
+    private String harga;
+    private DecimalFormat df;
+
     
     public AddNewLpbController(MainPageLpbController mainPage, LpbService lpbService){
         this.mainPage = mainPage;
@@ -152,9 +159,12 @@ public class AddNewLpbController {
             if(validation()){
                 lpb.setAlokasiBiaya(addLpb.getAlokasiBiayaField().getText());
                 lpb.setKodeRekening(addLpb.getKodeRekeningField().getText());
-                lpb.setDebet(Long.parseLong(addLpb.getDebetField().getText()));
-                lpb.setHargaSatuan(Long.parseLong(addLpb.getHargaField().getText()));
-                lpb.setJumlah(Double.parseDouble(addLpb.getJumlahField().getText()));
+                harga = addLpb.getDebetField().getText().replace(',', '.');
+                lpb.setDebet(Double.parseDouble(harga));
+                harga = addLpb.getHargaField().getText().replace(',', '.');
+                lpb.setHargaSatuan(Double.parseDouble(harga));
+                harga = addLpb.getJumlahField().getText().replace(',', '.');
+                lpb.setJumlah(Double.parseDouble(harga));
                 lpb.setKeterangan(addLpb.getKeteranganField().getText());
                 lpb.setNoIpbEksternal(addLpb.getNomorLpbEksternalField().getText());
                 lpb.setNoIpbInternal(addLpb.getNomorLpbInternalField().getText());
@@ -246,15 +256,23 @@ public class AddNewLpbController {
     
     private void hargaKeyReleased(java.awt.event.KeyEvent evt) {
        try{
+        df=new DecimalFormat("0.00");
+        harga = addLpb.getHargaField().getText();
+        harga  = harga.replace(',', '.');
         formatRupiah(addLpb.getFormatHarga(), addLpb.getHargaField());
-        Double jumlahDebet = Double.parseDouble(addLpb.getJumlahField().getText())* Long.parseLong(addLpb.getHargaField().getText());
-        long result = jumlahDebet.longValue();
-        addLpb.getDebetField().setText(""+result);
+        Double jumlahDebet = Double.parseDouble(addLpb.getJumlahField().getText())* Double.parseDouble(harga);
+        String formate = df.format(jumlahDebet); 
+        double finalValue = Double.parseDouble(""+df.parse(formate));
+//        harga = (""+finalValue).replace('.', ',');
+        addLpb.getDebetField().setText(""+finalValue);
         formatRupiah(addLpb.getFormatDebet(), addLpb.getDebetField()); 
+        
        }catch(NumberFormatException e){
            addLpb.getDebetField().setText("");
            addLpb.getFormatDebet().setText("");
-       }
+       } catch (ParseException ex) {
+            Logger.getLogger(AddNewLpbController.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }
 

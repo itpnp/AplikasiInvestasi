@@ -1272,13 +1272,15 @@ public class LpbDaoImpl implements LpbDao {
     public List<MasterLpb> findByYearMonthRekening(String year, String month, String rekening) {
         List<MasterLpb> listLpb = new ArrayList<>();
         try{
+            System.out.println(year);
+            System.out.println(month);
+            System.out.println(rekening);
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             listLpb = session.createCriteria(MasterLpb.class, "a")
-                    .createAlias("a.masterInvest", "invest")
                     .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"'"))
-                    .add(Restrictions.sqlRestriction("Year(tanggal) = '"+year+"'"))
-                    .add(Restrictions.eq("kodeRekening",rekening)).list();
+                    .add(Restrictions.sqlRestriction("YEAR(tanggal) = '"+year+"'"))
+                    .add(Restrictions.eq("a.kodeRekening",rekening)).list();
              if(listLpb != null){
                 for(MasterLpb lpb : listLpb){
                     if(lpb.getMasterDepartemen() != null){

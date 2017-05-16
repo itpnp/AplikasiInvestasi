@@ -46,7 +46,7 @@ public class MainPageLpbController {
     private UpdateLpjController updateLpjController;
     private List<MasterLpb> listLpb;
     private List<MasterLpj> listLpj;
-    private int totalDebetLpj, totalDebetLpb;
+    private Double totalDebetLpj, totalDebetLpb;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public MainPageLpbController(){
@@ -299,39 +299,51 @@ public class MainPageLpbController {
         }
     }
     public void searchButton(java.awt.event.ActionEvent e){
-        if(mainPage.getInfoLabel().getText().equals("DATA LPB")){
-            if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
-                listLpb = lpbService.getAllDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
-             }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
-                 listLpb = lpbService.getAllDataByYear(""+mainPage.getTahunParam().getSelectedItem().toString());
-             }else if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && !mainPage.getKodeRekening().getText().equals("")){
-                 listLpb = lpbService.findByYearMonthRekening(mainPage.getTahunParam().getSelectedItem().toString(), ""+mainPage.getBulanParam().getSelectedIndex(),mainPage.getKodeRekening().getText());
-             }
-            totalDebetLpb = 0;
-            for(MasterLpb lpb : listLpb){
-                totalDebetLpb = totalDebetLpj+Integer.valueOf(String.valueOf(lpb.getDebet()));
+        try{
+            Double x = 0.0;
+            if(mainPage.getInfoLabel().getText().equals("DATA LPB")){
+                if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
+                    listLpb = lpbService.getAllDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
+                 }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
+                     listLpb = lpbService.getAllDataByYear(""+mainPage.getTahunParam().getSelectedItem().toString());
+                 }else if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && !mainPage.getKodeRekening().getText().equals("")){
+                     listLpb = lpbService.findByYearMonthRekening(mainPage.getTahunParam().getSelectedItem().toString(), ""+mainPage.getBulanParam().getSelectedIndex(),mainPage.getKodeRekening().getText());
+                 }
+                  totalDebetLpb = 0.0;
+                  System.out.println(listLpb.size());
+                if(listLpb.size()>0){
+                    for(MasterLpb lpb : listLpb){
+                    totalDebetLpb = totalDebetLpb+lpb.getDebet();
+                    }
+                }else{
+                   totalDebetLpb = 0.0;
+                }
+
+                 x = 0.1*totalDebetLpb;
+                mainPage.getTotalPpn().setText(FormatRupiah.convert(String.valueOf((x.intValue()))));
+                mainPage.getLabelPpn().setText("Total PPN LPB :");
+                viewDataOnTable();
+            }else if(mainPage.getInfoLabel().getText().equals("DATA LPJ")){
+                if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
+                    listLpj = lpjService.getAllDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
+                 }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
+                    listLpj = lpjService.getAllDataByYear(""+mainPage.getTahunParam().getSelectedItem().toString());
+                 }else if(mainPage.getBulanParam().getSelectedIndex() > 0 && mainPage.getTahunParam().getSelectedIndex() >0 && !mainPage.getKodeRekening().getText().equals("")){
+                    listLpj = lpjService.findByYearMonthRekening(mainPage.getTahunParam().getSelectedItem().toString(), ""+mainPage.getBulanParam().getSelectedIndex(),mainPage.getKodeRekening().getText());
+                 }
+                totalDebetLpj = null;
+                for(MasterLpj lpj : listLpj){
+                    totalDebetLpj = totalDebetLpj+ lpj.getDebet();
+                }
+                x = 0.1*totalDebetLpj;
+                mainPage.getTotalPpn().setText(FormatRupiah.convert(String.valueOf((x.intValue()))));
+                mainPage.getLabelPpn().setText("Total PPN LPJ :");
+                viewLpjOnTable();
             }
-            Double x = 0.1*totalDebetLpj;
-            mainPage.getTotalPpn().setText(FormatRupiah.convert(String.valueOf((x.intValue()))));
-            mainPage.getLabelPpn().setText("Total PPN LPB :");
-            viewDataOnTable();
-        }else if(mainPage.getInfoLabel().getText().equals("DATA LPJ")){
-            if(mainPage.getBulanParam().getSelectedIndex() != 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
-                listLpj = lpjService.getAllDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
-             }else if(mainPage.getBulanParam().getSelectedIndex() == 0 && mainPage.getTahunParam().getSelectedIndex() !=0 && mainPage.getKodeRekening().getText().equals("")){
-                listLpj = lpjService.getAllDataByYear(""+mainPage.getTahunParam().getSelectedItem().toString());
-             }else if(mainPage.getBulanParam().getSelectedIndex() > 0 && mainPage.getTahunParam().getSelectedIndex() >0 && !mainPage.getKodeRekening().getText().equals("")){
-                listLpj = lpjService.findByYearMonthRekening(mainPage.getTahunParam().getSelectedItem().toString(), ""+mainPage.getBulanParam().getSelectedIndex(),mainPage.getKodeRekening().getText());
-             }
-            totalDebetLpj = 0;
-            for(MasterLpj lpj : listLpj){
-                totalDebetLpj = totalDebetLpj+(int)lpj.getDebet();
-            }
-            Double x = 0.1*totalDebetLpj;
-            mainPage.getTotalPpn().setText(FormatRupiah.convert(String.valueOf((x.intValue()))));
-            mainPage.getLabelPpn().setText("Total PPN LPJ :");
-            viewLpjOnTable();
+        }catch(Exception x){
+            x.printStackTrace();
         }
+        
     }
     public void getAllData(){
         listLpb = lpbService.getAllData();

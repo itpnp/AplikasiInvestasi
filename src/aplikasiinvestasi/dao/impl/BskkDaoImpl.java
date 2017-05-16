@@ -655,7 +655,10 @@ public class BskkDaoImpl implements BskkDao{
         moneyStyle.setFont(fontData);
         moneyStyle.setDataFormat(format.getFormat("_-* #,##0.00_-;-* #,##0.00_-;_-* \"-\"??_-;_-@_-"));
         
-        HSSFCell cell;
+        if(listTerima.size()==0){
+            JOptionPane.showMessageDialog(null,"Data Rekap Kosong", "Warning", JOptionPane.ERROR_MESSAGE, null);
+        }else{
+           HSSFCell cell;
         HSSFRow rowData;
         Calendar cal = Calendar.getInstance();
         cal.setTime(listTerima.get(0).getTanggal());
@@ -910,7 +913,9 @@ public class BskkDaoImpl implements BskkDao{
            }else if(i==7){
               sheet.setColumnWidth(i, sheet.getColumnWidth(i) + 6000); 
            }
+        } 
         }
+        
      }
 
     @Override

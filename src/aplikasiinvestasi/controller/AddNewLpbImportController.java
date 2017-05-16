@@ -16,8 +16,12 @@ import aplikasiinvestasi.utils.Table;
 import aplikasiinvestasi.utils.TextValidation;
 import aplikasiinvestasi.view.AddLpbImport;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -38,7 +42,9 @@ public class AddNewLpbImportController {
     private MasterInvest masterInvest;
     private RekeningService rekeningService;
     private List<MasterLpb> listMaster;
-
+    private String harga;
+    private DecimalFormat df;
+    
     public AddNewLpbImportController(MainPageLpbController mainPage, LpbService lpbService){
         this.mainPage = mainPage;
         this.lpbService = lpbService;
@@ -127,8 +133,10 @@ public class AddNewLpbImportController {
             if(validation()){
                 lpb.setAlokasiBiaya(addLpb.getAlokasiBiayaField().getText());
                 lpb.setKodeRekening(addLpb.getKodeRekeningField().getText());
-                lpb.setDebet(Long.parseLong(addLpb.getDebetField().getText()));
-                lpb.setHargaSatuan(Long.parseLong(addLpb.getHargaField().getText()));
+                harga = addLpb.getDebetField().getText().replace(',', '.');
+                lpb.setDebet(Double.parseDouble(harga));
+                harga = addLpb.getHargaField().getText().replace(',', '.');
+                lpb.setHargaSatuan(Double.parseDouble(harga));
                 lpb.setJumlah(Double.parseDouble(addLpb.getJumlahField().getText()));
                 lpb.setKeterangan(addLpb.getKeteranganField().getText());
                 lpb.setNoIpbEksternal(addLpb.getNomorLpbEksternalField().getText());
@@ -214,15 +222,26 @@ public class AddNewLpbImportController {
     }
     private void hargaKeyReleased(java.awt.event.KeyEvent evt) {
        try{
+        df=new DecimalFormat("0.00");
+        harga = addLpb.getHargaField().getText();
+        harga  = harga.replace(',', '.');
         formatRupiah(addLpb.getFormatHarga(), addLpb.getHargaField());
-        Double jumlahDebet = Double.parseDouble(addLpb.getJumlahField().getText())* Long.parseLong(addLpb.getHargaField().getText());
-        long result = jumlahDebet.longValue();
-        addLpb.getDebetField().setText(""+result);
+        Double jumlahDebet = Double.parseDouble(addLpb.getJumlahField().getText())* Double.parseDouble(harga);
+        String formate = df.format(jumlahDebet); 
+        double finalValue = Double.parseDouble(""+df.parse(formate));
+//        harga = (""+finalValue).replace('.', ',');
+        
+//        formatRupiah(addLpb.getFormatHarga(), addLpb.getHargaField());
+//        Double jumlahDebet = Double.parseDouble(addLpb.getJumlahField().getText())* Long.parseLong(addLpb.getHargaField().getText());
+//        long result = jumlahDebet.longValue();
+        addLpb.getDebetField().setText(""+finalValue);
         formatRupiah(addLpb.getFormatDebet(), addLpb.getDebetField()); 
        }catch(NumberFormatException e){
            addLpb.getDebetField().setText("");
            addLpb.getFormatDebet().setText("");
-       }
+       } catch (ParseException ex) {
+            Logger.getLogger(AddNewLpbImportController.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }
     private void debetKeyReleased(java.awt.event.KeyEvent evt){

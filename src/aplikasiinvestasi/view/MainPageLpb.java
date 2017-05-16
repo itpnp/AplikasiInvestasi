@@ -444,7 +444,6 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 27;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 40, 55, 0);
         jPanel2.add(labelPpn, gridBagConstraints);
@@ -454,7 +453,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 14;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipadx = 89;
+        gridBagConstraints.ipadx = 116;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 55, 10);
         jPanel2.add(totalPpn, gridBagConstraints);

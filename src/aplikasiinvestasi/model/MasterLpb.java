@@ -4,6 +4,7 @@
  */
 package aplikasiinvestasi.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name="master_lpb")
-public class MasterLpb {
+public class MasterLpb implements Serializable {
     
     @Id
     @Column(name="id_lpb")
@@ -57,10 +58,10 @@ public class MasterLpb {
     private String satuan;
     
     @Column(name="harga_satuan")
-    private long hargaSatuan;
+    private Double hargaSatuan;
     
     @Column(name="debet")
-    private long debet;
+    private Double debet;
 
     @Column(name="kode_rekening")
     private String kodeRekening;
@@ -76,7 +77,7 @@ public class MasterLpb {
     
 
     public MasterLpb(int idLpb, MasterInvest masterInvest, String alokasiBiaya, MasterDepartemen masterDepartemen, Date tanggal, 
-            String keterangan, String noIpbInternal, String noIpbEksternal, double jumlah, String satuan, long hargaSatuan, long debet, 
+            String keterangan, String noIpbInternal, String noIpbEksternal, double jumlah, String satuan, Double hargaSatuan, Double debet, 
             String kodeRekening, String status, String activeStatus, String sumberBarang) {
         this.idLpb = idLpb;
         this.masterInvest = masterInvest;
@@ -211,19 +212,19 @@ public class MasterLpb {
         this.satuan = satuan;
     }
 
-    public long getHargaSatuan() {
+    public Double getHargaSatuan() {
         return hargaSatuan;
     }
 
-    public void setHargaSatuan(long hargaSatuan) {
+    public void setHargaSatuan(Double hargaSatuan) {
         this.hargaSatuan = hargaSatuan;
     }
 
-    public long getDebet() {
+    public Double getDebet() {
         return debet;
     }
 
-    public void setDebet(long debet) {
+    public void setDebet(Double debet) {
         this.debet = debet;
     }
     
