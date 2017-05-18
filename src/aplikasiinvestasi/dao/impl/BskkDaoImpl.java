@@ -86,7 +86,6 @@ public class BskkDaoImpl implements BskkDao{
         try{
             for(MasterBskk bskk : listBskk){
                if(saveData(bskk)){
-                   
                }else{
                    success = false;
                    JOptionPane.showMessageDialog(null,"Data Gagal Disimpan", "Error", JOptionPane.ERROR_MESSAGE, null);
@@ -163,7 +162,6 @@ public class BskkDaoImpl implements BskkDao{
                     Hibernate.initialize(bskk.getMasterDepartemen());
                 }
             }
-            
             session.flush();
         }catch(  HibernateException | ExceptionInInitializerError e){
             JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
@@ -964,5 +962,215 @@ public class BskkDaoImpl implements BskkDao{
             }
         }
         return totalDebet;
+    }
+
+    @Override
+    public List<MasterBskk> getDataByMonthAndYearAndKodeRekening(String month, String year, String kodeRekening) {
+        List<MasterBskk> listBskk = new ArrayList<>();
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            listBskk = session.createCriteria(MasterBskk.class, "bskk")
+                    .createAlias("bskk.masterDepartemen", "departemen")
+                    .add(Restrictions.eq("bskk.kodeRekening", kodeRekening))
+                    .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"' and YEAR(tanggal) = '"+year+"'"))
+                    .addOrder(Order.asc("bskk.kodeRekening"))
+                    .addOrder(Order.asc("departemen.namaDepartment"))
+                    .addOrder(Order.desc("bskk.tanggal")).list();
+            if(!listBskk.isEmpty()){
+                for(MasterBskk bskk : listBskk){
+                    if(bskk.getMasterInvest() != null){
+                        Hibernate.initialize(bskk.getMasterInvest());
+                    }
+                    Hibernate.initialize(bskk.getMasterDepartemen());
+                }
+            }
+            
+            session.flush();
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return listBskk;
+    }
+
+    @Override
+    public List<MasterBskk> getDataByKodeRekening(String kodeRekening) {
+        List<MasterBskk> listBskk = new ArrayList<>();
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            System.out.println(kodeRekening);
+            listBskk = session.createCriteria(MasterBskk.class, "bskk")
+                    .createAlias("bskk.masterDepartemen", "departemen")
+                    .add(Restrictions.eq("bskk.kodeRekening", kodeRekening))
+                    .addOrder(Order.asc("bskk.kodeRekening"))
+                    .addOrder(Order.asc("departemen.namaDepartment"))
+                    .addOrder(Order.desc("bskk.tanggal")).list();
+            if(!listBskk.isEmpty()){
+                for(MasterBskk bskk : listBskk){
+                    if(bskk.getMasterInvest() != null){
+                        Hibernate.initialize(bskk.getMasterInvest());
+                    }
+                    Hibernate.initialize(bskk.getMasterDepartemen());
+                }
+            }
+            
+            session.flush();
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return listBskk;
+    }
+
+    @Override
+    public List<MasterBskk> getDataByBpkkAndKodeRekening(String bpkk, String kodeRekening) {
+        List<MasterBskk> listBskk = new ArrayList<>();
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            listBskk = session.createCriteria(MasterBskk.class, "bskk")
+                    .createAlias("bskk.masterDepartemen", "departemen")
+                    .createAlias("bskk.masterInvest", "invest")
+                    .add(Restrictions.eq("bskk.noBskk", bpkk))
+                    .add(Restrictions.eq("bskk.kodeRekening", kodeRekening))
+                    .addOrder(Order.asc("bskk.kodeRekening"))
+                    .addOrder(Order.asc("departemen.namaDepartment"))
+                    .addOrder(Order.desc("bskk.tanggal")).list();
+            if(!listBskk.isEmpty()){
+                for(MasterBskk bskk : listBskk){
+                    if(bskk.getMasterInvest() != null){
+                        Hibernate.initialize(bskk.getMasterInvest());
+                    }
+                    Hibernate.initialize(bskk.getMasterDepartemen());
+                }
+            }
+            
+            session.flush();
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return listBskk;
+    }
+
+    @Override
+    public List<MasterBskk> getDataByAllParameter(String month, String year, String nomorBpkk, String kodeRekening) {
+        List<MasterBskk> listBskk = new ArrayList<>();
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            listBskk = session.createCriteria(MasterBskk.class, "bskk")
+                    .createAlias("bskk.masterDepartemen", "departemen")
+                    .createAlias("bskk.masterInvest", "invest")
+                    .add(Restrictions.eq("bskk.kodeRekening", kodeRekening))
+                    .add(Restrictions.eq("bskk.noBpkk", nomorBpkk))
+                    .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"' and YEAR(tanggal) = '"+year+"'"))
+                    .addOrder(Order.asc("bskk.kodeRekening"))
+                    .addOrder(Order.asc("departemen.namaDepartment"))
+                    .addOrder(Order.desc("bskk.tanggal")).list();
+            if(!listBskk.isEmpty()){
+                for(MasterBskk bskk : listBskk){
+                    if(bskk.getMasterInvest() != null){
+                        Hibernate.initialize(bskk.getMasterInvest());
+                    }
+                    Hibernate.initialize(bskk.getMasterDepartemen());
+                }
+            }
+            
+            session.flush();
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return listBskk;
+    }
+
+    @Override
+    public List<MasterBskk> getDataByYearAndKodeRekening(String year, String kodeRekening) {
+        List<MasterBskk> listBskk = new ArrayList<>();
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            listBskk = session.createCriteria(MasterBskk.class, "bskk")
+                    .createAlias("bskk.masterDepartemen", "departemen")
+                    .add(Restrictions.sqlRestriction("YEAR(tanggal) = '"+year+"'"))
+                    .add(Restrictions.eq("bskk.kodeRekening", kodeRekening))
+                    .addOrder(Order.asc("bskk.kodeRekening"))
+                    .addOrder(Order.asc("departemen.namaDepartment"))
+                    .addOrder(Order.desc("bskk.tanggal")).list();
+            for(MasterBskk bskk : listBskk){
+                if(bskk.getMasterInvest() != null){
+                    Hibernate.initialize(bskk.getMasterInvest());
+                }
+                Hibernate.initialize(bskk.getMasterDepartemen());
+            }
+            session.flush();
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return listBskk;
+    }
+
+    @Override
+    public List<MasterBskk> getDataByMonthAndYearAndBpkk(String month, String year, String nomorBpkk) {
+        List<MasterBskk> listBskk = new ArrayList<>();
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            listBskk = session.createCriteria(MasterBskk.class, "bskk")
+                    .createAlias("bskk.masterDepartemen", "departemen")
+                    .add(Restrictions.eq("bskk.noBskk", nomorBpkk))
+                    .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"' and YEAR(tanggal) = '"+year+"'"))
+                    .addOrder(Order.asc("bskk.kodeRekening"))
+                    .addOrder(Order.asc("departemen.namaDepartment"))
+                    .addOrder(Order.desc("bskk.tanggal")).list();
+            if(!listBskk.isEmpty()){
+                for(MasterBskk bskk : listBskk){
+                    if(bskk.getMasterInvest() != null){
+                        Hibernate.initialize(bskk.getMasterInvest());
+                    }
+                    Hibernate.initialize(bskk.getMasterDepartemen());
+                }
+            }
+            
+            session.flush();
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return listBskk;
     }
 }

@@ -16,7 +16,6 @@ import aplikasiinvestasi.utils.FormatRupiah;
 import aplikasiinvestasi.utils.Table;
 import aplikasiinvestasi.utils.TableHeaderRenderer;
 import aplikasiinvestasi.view.MainPageBskk;
-import aplikasiinvestasi.view.TerimaBskkPage;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -56,6 +55,14 @@ public class MainPageBskkController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addNewData(e);
+            }
+        });
+        mainPage.getAllButton().addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getAllData();
+                viewDataOnTable();
             }
         });
         mainPage.getExportButton().addActionListener(new java.awt.event.ActionListener() {
@@ -180,12 +187,31 @@ public class MainPageBskkController {
     }
     
     public void searchData(java.awt.event.ActionEvent e){
-        if(mainPage.getBulanParam().getSelectedIndex()!=0 && mainPage.getTahunParam().getSelectedIndex()!=0){
+        if(mainPage.getBulanParam().getSelectedIndex()!=0 && mainPage.getTahunParam().getSelectedIndex()!=0 && mainPage.getKodeRekeningParam().getText().equals("") && mainPage.getNoBpkkParameter().getText().isEmpty() ){
             listBskk = bskkService.getDataByMonthAndYear(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString());
-        }else if(mainPage.getBulanParam().getSelectedIndex()==0 && mainPage.getTahunParam().getSelectedIndex()!=0){
+        }else if(mainPage.getBulanParam().getSelectedIndex()==0 && mainPage.getTahunParam().getSelectedIndex()!=0 && mainPage.getKodeRekeningParam().getText().equals("") && mainPage.getNoBpkkParameter().getText().isEmpty() ){
             listBskk = bskkService.getDataByYear(mainPage.getTahunParam().getSelectedItem().toString());
-        }else if(!mainPage.getNoBpkkParameter().getText().isEmpty() || !mainPage.getNoBpkkParameter().getText().equals("")){
+        }else if(!mainPage.getNoBpkkParameter().getText().isEmpty() || !mainPage.getNoBpkkParameter().getText().equals("") && mainPage.getKodeRekeningParam().getText().equals("") && mainPage.getNoBpkkParameter().getText().isEmpty() ){
             listBskk = bskkService.getDataByBpkk(mainPage.getNoBpkkParameter().getText());
+       //ini buat kode rekening
+        }else if(mainPage.getBulanParam().getSelectedIndex()!=0 && mainPage.getTahunParam().getSelectedIndex()!=0 && !mainPage.getKodeRekeningParam().getText().equals("") && mainPage.getNoBpkkParameter().getText().isEmpty() ){
+            listBskk = bskkService.getDataByMonthAndYearAndKodeRekening(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString(),mainPage.getKodeRekeningParam().getText());
+        }else if(mainPage.getBulanParam().getSelectedIndex()==0 && mainPage.getTahunParam().getSelectedIndex()!=0 && !mainPage.getKodeRekeningParam().getText().equals("") && mainPage.getNoBpkkParameter().getText().isEmpty() ){
+            listBskk = bskkService.getDataByYearAndKodeRekening(mainPage.getTahunParam().getSelectedItem().toString(),mainPage.getKodeRekeningParam().getText());
+        }else if(!mainPage.getNoBpkkParameter().getText().isEmpty() || !mainPage.getNoBpkkParameter().getText().equals("")){
+            if(mainPage.getBulanParam().getSelectedIndex()!=0 && mainPage.getTahunParam().getSelectedIndex()!=0 && mainPage.getKodeRekeningParam().getText().equals("")){
+                listBskk = bskkService.getDataByMonthAndYearAndBpkk(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString(),mainPage.getNoBpkkParameter().getText());
+            }else if(mainPage.getBulanParam().getSelectedIndex()==0 && mainPage.getTahunParam().getSelectedIndex()==0 && mainPage.getKodeRekeningParam().getText().equals("") ){
+                listBskk = bskkService.getDataByBpkk(mainPage.getNoBpkkParameter().getText());
+            }else if(mainPage.getBulanParam().getSelectedIndex()==0 && mainPage.getTahunParam().getSelectedIndex()==0 && !mainPage.getKodeRekeningParam().getText().equals("")){
+                listBskk = bskkService.getDataByBpkkAndKodeRekening(mainPage.getNoBpkkParameter().getText(),mainPage.getKodeRekeningParam().getText());
+            }else if(mainPage.getBulanParam().getSelectedIndex()!=0 && mainPage.getTahunParam().getSelectedIndex()!=0 && !mainPage.getKodeRekeningParam().getText().equals("")){
+                listBskk = bskkService.getDataByAllParameter(""+mainPage.getBulanParam().getSelectedIndex(), mainPage.getTahunParam().getSelectedItem().toString(),mainPage.getNoBpkkParameter().getText(),mainPage.getKodeRekeningParam().getText());
+            }
+        }else if(mainPage.getBulanParam().getSelectedIndex()==0 && mainPage.getTahunParam().getSelectedIndex()==0 && !mainPage.getKodeRekeningParam().getText().equals("") && mainPage.getNoBpkkParameter().getText().isEmpty() ){
+            System.out.println("Here");
+            System.out.println(mainPage.getKodeRekeningParam().getText());
+            listBskk = bskkService.getDataByKodeRekening(mainPage.getKodeRekeningParam().getText());
         }
         viewDataOnTable();
     }

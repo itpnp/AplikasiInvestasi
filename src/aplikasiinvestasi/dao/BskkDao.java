@@ -27,7 +27,13 @@ public interface BskkDao {
     public Long countDebet(MasterInvest masterInvest);
     public void saveInBatch(List<MasterBskk> listBskk);
     public List<MasterBskk> getDataByMonthAndYearAndInvestNumber(String month, String year,String investNumber);
+    public List<MasterBskk> getDataByMonthAndYearAndKodeRekening(String month, String year,String kodeRekening);
+    public List<MasterBskk> getDataByKodeRekening(String kodeRekening);
+    public List<MasterBskk> getDataByYearAndKodeRekening(String year, String kodeRekening);
+    public List<MasterBskk> getDataByAllParameter(String month, String year,String nomorBpkk,String kodeRekening);
     public List<MasterBskk> getDataByBpkk(String bpkkNumber);
+    public List<MasterBskk> getDataByMonthAndYearAndBpkk(String month, String year,String nomorBpkk);
+    public List<MasterBskk> getDataByBpkkAndKodeRekening(String noBpkk,String kodeRekening);
     public void exportToExcelSheet2(HSSFWorkbook workbook, HSSFSheet sheet, List<MasterTerima> listTerima);
     public Long countDebetByDate(String startDate, String endDate);
     public Long countSaldoBefore(int month);

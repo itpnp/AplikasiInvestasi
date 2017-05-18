@@ -318,8 +318,7 @@ public class MainPageLpbController {
                 }else{
                    totalDebetLpb = 0.0;
                 }
-
-                 x = 0.1*totalDebetLpb;
+                x = 0.1*totalDebetLpb;
                 mainPage.getTotalPpn().setText(FormatRupiah.convert(String.valueOf((x.intValue()))));
                 mainPage.getLabelPpn().setText("Total PPN LPB :");
                 viewDataOnTable();

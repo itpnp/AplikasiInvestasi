@@ -98,5 +98,37 @@ public class BskkServiceImpl implements BskkService{
     public Long countDebetByDate(String startDate, String endDate) {
         return bskkDao.countDebetByDate(startDate, endDate);
     }
+
+    @Override
+    public List<MasterBskk> getDataByMonthAndYearAndKodeRekening(String month, String year, String kodeRekening) {
+        return bskkDao.getDataByMonthAndYearAndKodeRekening(month, year, kodeRekening);
+    }
+
+    @Override
+    public List<MasterBskk> getDataByKodeRekening(String kodeRekening) {
+        return bskkDao.getDataByKodeRekening(kodeRekening);
+    }
+
+    @Override
+    public List<MasterBskk> getDataByBpkkAndKodeRekening(String bpkk, String kodeRekening) {
+        return bskkDao.getDataByBpkkAndKodeRekening(bpkk, kodeRekening);
+    }
+
+    @Override
+    public List<MasterBskk> getDataByAllParameter(String month, String year, String nomorBpkk, String kodeRekening) {
+        return bskkDao.getDataByAllParameter(month, year, nomorBpkk, kodeRekening);
+    }
+
+    @Override
+    public List<MasterBskk> getDataByYearAndKodeRekening(String year, String kodeRekening) {
+        return bskkDao.getDataByYearAndKodeRekening(year, kodeRekening);
+    }
+
+    @Override
+    public List<MasterBskk> getDataByMonthAndYearAndBpkk(String month, String year, String nomorBpkk) {
+        return bskkDao.getDataByMonthAndYearAndBpkk(month, year, nomorBpkk);
+    }
+
+
     
 }
