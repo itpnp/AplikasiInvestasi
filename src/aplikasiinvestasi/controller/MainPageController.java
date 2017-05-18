@@ -38,7 +38,6 @@ public class MainPageController {
                 addUserButtonActionPerformed(e);
             }
         });
-        
         mainPage.getInvestButton().addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

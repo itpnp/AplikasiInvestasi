@@ -143,8 +143,8 @@ public class MainPageLpbController {
         model.addColumn("<html><center>Kode<br>Departemen");
         model.addColumn("Tanggal");
         model.addColumn("Keterangan");
-        model.addColumn("LPB INTR");
-        model.addColumn("LPB EKSTR");
+        model.addColumn("<html><center>LPB<br>INTR");
+        model.addColumn("<html><center>LPB<br>EKSTR");
         model.addColumn("QTY");
         model.addColumn("Satuan");
         model.addColumn("Harga");
@@ -191,7 +191,7 @@ public class MainPageLpbController {
         };
        ButtonColumns buttonColumns = new ButtonColumns(mainPage.getViewTable(), detail, 12);
        buttonColumns.setMnemonic(KeyEvent.VK_D);
-       float[] columnSize = {7.0f, 4.0f, 3.0f, 6.0f, 6.0f, 23.0f, 9.0f,11.0f,2.0f,3.0f,10.0f,10.0f,6.0f};
+       float[] columnSize = {7.0f, 4.0f, 3.0f, 6.0f, 6.0f, 31.0f,5.0f,5.0f,2.0f,3.0f,10.0f,12.0f,6.0f};
        Table.resizeTable(mainPage.getViewTable(), columnSize);
     }
     public void viewLpjOnTable(){

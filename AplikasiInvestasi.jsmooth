@@ -9,7 +9,7 @@
 <arguments></arguments>
 <classPath>dist\AplikasiInvestasi.jar</classPath>
 <embeddedJar>false</embeddedJar>
-<executableName>Aplikasi Investasi.exe</executableName>
+<executableName>Aplikasi Investasi</executableName>
 <iconLocation>E:\ICON\1489479967_Currency_dollar.png</iconLocation>
 <initialMemoryHeap>-1</initialMemoryHeap>
 <mainClassName>aplikasiinvestasi.AplikasiInvestasi</mainClassName>

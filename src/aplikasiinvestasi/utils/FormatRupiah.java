@@ -4,19 +4,24 @@
  */
 package aplikasiinvestasi.utils;
 
+import java.text.DecimalFormat;
+import java.text.ParseException;
+
 /**
  *
  * @author Rizaldi Habibie
  */
 public class FormatRupiah {
-    private static String belakang, format;
+    private static String belakang, format, nominal;
+    private static DecimalFormat df =new DecimalFormat("0.00");;
+
     public static String convert(String number){
         try{
-            String[] separate = number.split("\\.");
-//            if(number.indexOf('.')>=0){
- //            }else{
-//               separate = number.split(",");
-//            }
+            String formate = df.format(Double.valueOf(number)); 
+            double finalValue = Double.parseDouble(""+df.parse(formate));
+            nominal = String.format("%.2f", finalValue);
+            nominal = nominal.replace(",", ".");
+            String[] separate = nominal.split("\\.");
             if(separate.length>1){
                 belakang = ","+separate[1];
             }else{
@@ -49,7 +54,7 @@ public class FormatRupiah {
             }else if(format.length()==12){
                 format = "Rp. "+format.substring(0,3)+"."+format.substring(3,6)+"."+format.substring(6,9)+"."+format.substring(9,format.length())+""+belakang;
             }
-        }catch(Exception e){
+        }catch(ParseException | NumberFormatException e){
             e.printStackTrace();
         }
         
