@@ -1025,7 +1025,7 @@ public class LpbDaoImpl implements LpbDao {
                 kredit.setKodeRekening(obj[0].toString());
                 kredit.setBulan(obj[1].toString());
                 kredit.setTahun(obj[2].toString());
-                kredit.setKredit(Long.parseLong(obj[3].toString()));
+                kredit.setKredit(Double.parseDouble(obj[3].toString()));
                 listCredit.add(kredit);
             }
         }catch(  HibernateException | ExceptionInInitializerError e){
@@ -1055,7 +1055,7 @@ public class LpbDaoImpl implements LpbDao {
                 kredit.setKodeRekening(obj[0].toString());
                 kredit.setBulan(obj[1].toString());
                 kredit.setTahun(obj[2].toString());
-                kredit.setKredit(Long.parseLong(obj[3].toString()));
+                kredit.setKredit(Double.parseDouble(obj[3].toString()));
                 listCredit.add(kredit);
             }
         }catch(  HibernateException | ExceptionInInitializerError e){

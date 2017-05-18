@@ -13,9 +13,9 @@ public class TotalKredit {
     private String kodeRekening;
     private String bulan;
     private String Tahun;
-    private Long kredit;
+    private Double kredit;
 
-    public TotalKredit(String kodeRekening, String bulan, String Tahun, Long kredit) {
+    public TotalKredit(String kodeRekening, String bulan, String Tahun, Double kredit) {
         this.kodeRekening = kodeRekening;
         this.bulan = bulan;
         this.Tahun = Tahun;
@@ -49,11 +49,11 @@ public class TotalKredit {
         this.Tahun = Tahun;
     }
 
-    public Long getKredit() {
+    public Double getKredit() {
         return kredit;
     }
 
-    public void setKredit(Long kredit) {
+    public void setKredit(Double kredit) {
         this.kredit = kredit;
     }
     
