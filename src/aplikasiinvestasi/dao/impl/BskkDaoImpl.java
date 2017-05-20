@@ -304,7 +304,7 @@ public class BskkDaoImpl implements BskkDao{
                 dataStyle.setBorderTop(HSSFCellStyle.BORDER_DOTTED);
                 dataStyle.setBorderRight(HSSFCellStyle.BORDER_DOTTED);
                 dataStyle.setBorderLeft(HSSFCellStyle.BORDER_DOTTED);
-                dataStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+                dataStyle.setAlignment(HSSFCellStyle.ALIGN_LEFT);
                 
                 fontData.setFontHeightInPoints((short)12);
                 fontData.setFontName("Tahoma");
