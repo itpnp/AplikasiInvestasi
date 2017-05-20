@@ -11,6 +11,7 @@ import aplikasiinvestasi.model.MasterLpb;
 import aplikasiinvestasi.model.MasterLpj;
 import aplikasiinvestasi.service.LpjService;
 import aplikasiinvestasi.service.impl.LpjServiceImpl;
+import aplikasiinvestasi.utils.BulanEnum;
 import aplikasiinvestasi.utils.HibernateUtil;
 import java.awt.Component;
 import java.io.File;
@@ -188,6 +189,7 @@ public class LpbDaoImpl implements LpbDao {
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(masterLpb.get(0).getTanggal());
                 int month = cal.get(Calendar.MONTH) +1;
+                int year = cal.get(Calendar.YEAR);
                 
                 //Make LPB
 		sheet = workbook.createSheet(sheetTitle);
@@ -328,7 +330,7 @@ public class LpbDaoImpl implements LpbDao {
 		String[] header= new String[11];
 	        header[0]  = "PT. PURA NUSAPERSADA - UNIT HOLOGRAFI";
 	        header[1]  = "JURNAL PENERIMAAN BARANG";
-	        header[2]  = "BULAN "+month+"-2016";
+	        header[2]  = "BULAN "+BulanEnum.namaBulan()[month]+" - "+year;
                 
                 /*
                  * create header file
@@ -484,6 +486,7 @@ public class LpbDaoImpl implements LpbDao {
                         }
                         rowIndex++;
                         rowIndex++;
+                        rowIndex++;
                         startIndex = rowIndex+1;
                         rowData = sheet.createRow(rowIndex);
                     }       
@@ -507,6 +510,7 @@ public class LpbDaoImpl implements LpbDao {
                     endImportIndex = rowIndex+1;
                     rowIndex++;
                 }
+//                 rowIndex++;
                  rowData = sheet.createRow(rowIndex);
                  for(int i=0; i<12; i++){
                      cell = rowData.createCell(i);
@@ -783,13 +787,20 @@ public class LpbDaoImpl implements LpbDao {
                     rowIndex++;
                     
                     //LPJ Ditulis Disini
+                    if(listLpj.size()>0){
+                        
+                    }
                     rowData = sheet.createRow(rowIndex);
                     cell = rowData.createCell(0);
                     cell.setCellValue("LAPORAN PENERIMAAN JASA (LPJ)");
                     cell.setCellStyle(cellStyle4);
                     rowIndex++;
                     rowIndex++;
-                    compareRekening = listLpj.get(0).getKodeRekening();
+                    if(listLpj.size()>0){
+                        compareRekening = listLpj.get(0).getKodeRekening();
+                    }else{
+                        compareRekening = null;
+                    }
                     for(MasterLpj lpj : listLpj){
                         rowData = sheet.createRow(rowIndex);
                         compareRekening = fillDataLPJ(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj);
@@ -844,30 +855,32 @@ public class LpbDaoImpl implements LpbDao {
                             rowIndex++;
 //                            rowData = sheet.createRow(rowIndex);
 //                        }
+                    }
+                    if(listLpj.size()>0){
+                        rowIndex++;
+                        rowData = sheet.createRow(rowIndex);
+                        cell = rowData.createCell(10);
+                        cell.setCellValue("Total PPn");
+
+                        cell = rowData.createCell(11);
+                        cell.setCellStyle(cellStyle12);
+                        cell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
+                        int f = 1;
+                        for(Integer x : listPpnlpj){
+                            rumus = rumus+"K"+x;
+                           if(f==listPpnlpj.size()){
+
+                           }else{
+                               rumus = rumus+"+";
+                           }
+                           f++;
+                        }
+                        cell.setCellFormula("SUM("+rumus+")+(K"+startIndex+")");
+                    }else{
                         
                     }
                     
-                    rowIndex++;
-                    rowData = sheet.createRow(rowIndex);
-                    cell = rowData.createCell(10);
-                    cell.setCellValue("Total PPn");
-                    
-                    cell = rowData.createCell(11);
-                    cell.setCellStyle(cellStyle12);
-                    cell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
-                    int f = 1;
-                    for(Integer x : listPpnlpj){
-                        rumus = rumus+"K"+x;
-                       if(f==listPpnlpj.size()){
-                           
-                       }else{
-                           rumus = rumus+"+";
-                       }
-                       f++;
-                    }
-                    cell.setCellFormula("SUM("+rumus+")+(K"+startIndex+")");
                  }
-                 
                  //Kalo Lemot, script dibawah ini Penyebabnya
                  sheet.setColumnWidth(0,2500);
                  sheet.setColumnWidth(1,2500);
