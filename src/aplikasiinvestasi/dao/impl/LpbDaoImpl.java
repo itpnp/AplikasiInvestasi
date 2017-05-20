@@ -235,7 +235,7 @@ public class LpbDaoImpl implements LpbDao {
                 
                 font2.setFontHeightInPoints((short)10);
                 font2.setFontName("Tahoma");
-                cellStyle2.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+                cellStyle2.setAlignment(HSSFCellStyle.ALIGN_LEFT);
                 cellStyle2.setFont(font2);
                 
                 cellStyle12.setAlignment(HSSFCellStyle.ALIGN_CENTER);
