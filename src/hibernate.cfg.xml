@@ -19,5 +19,6 @@
     <mapping class="aplikasiinvestasi.model.MasterLpj"/>
     <mapping class="aplikasiinvestasi.model.MasterTerima"/>
     <mapping class="aplikasiinvestasi.model.SaldoAkhir"/>
+    <mapping class="aplikasiinvestasi.model.MasterKeluarBskk"/>
   </session-factory>
 </hibernate-configuration>
