@@ -52,7 +52,7 @@ public class KeluarDaoImpl implements KeluarDao {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             listKeluar= session.createCriteria(MasterKeluarBskk.class,"keluar")
-            .addOrder(Order.desc("keluar.tanggal")).list();
+            .addOrder(Order.desc("keluar.idKeluar")).list();
             
             session.flush();
         }catch(  HibernateException | ExceptionInInitializerError e){
@@ -74,8 +74,9 @@ public class KeluarDaoImpl implements KeluarDao {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             listKeluar = session.createCriteria(MasterKeluarBskk.class, "keluar")
-                    .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"' and YEAR(tanggal) = '"+year+"'"))
-                    .addOrder(Order.desc("keluar.tanggal")).list();
+                    .add(Restrictions.eq("keluar.bulan", month))
+                    .add(Restrictions.eq("keluar.tahun", year))
+                    .addOrder(Order.desc("keluar.idKeluar")).list();
             session.flush();
         }catch(  HibernateException | ExceptionInInitializerError e){
             JOptionPane.showMessageDialog(null,"Error Check Database \n" +e, "Error", JOptionPane.ERROR_MESSAGE, null);

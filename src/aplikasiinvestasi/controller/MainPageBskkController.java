@@ -41,6 +41,7 @@ public class MainPageBskkController {
     private TerimaPageController terimaPage;
     private SaldoAkhirController saldoAkhirController;
     private TerimaService terimaService;
+    private KeluarPageController keluarPageController;
     
     public MainPageBskkController(){
         this.bskkService = new BskkServiceImpl();
@@ -99,9 +100,17 @@ public class MainPageBskkController {
                 openSaldoPage(e);
             }
         });
+        mainPage.getKeluarPageButton().addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openKeluarPage(e);
+            }
+        });
         mainPage.getBulanParam().setModel(new DefaultComboBoxModel(BulanEnum.namaBulan()));
         mainPage.getTahunParam().setModel(new DefaultComboBoxModel(BulanEnum.tahun()));
         terimaPage = new TerimaPageController();
+        keluarPageController = new KeluarPageController();
         saldoAkhirController = new SaldoAkhirController();
     }
     
@@ -218,6 +227,7 @@ public class MainPageBskkController {
     public void openTerimaPage(java.awt.event.ActionEvent e){
         mainPage.getjPanel2().setVisible(false);
         saldoAkhirController.getPage().setVisible(false);
+        keluarPageController.openPage().setVisible(false);
         mainPage.getContentPane().remove(mainPage.getjPanel2());
         mainPage.getContentPane().add(terimaPage.getPage(),java.awt.BorderLayout.CENTER);
         terimaPage.getPage().setVisible(true);
@@ -229,6 +239,7 @@ public class MainPageBskkController {
     public void openHomePage(java.awt.event.ActionEvent e){
          terimaPage.getPage().setVisible(false);
          saldoAkhirController.getPage().setVisible(false);
+         keluarPageController.openPage().setVisible(false);
          mainPage.getContentPane().remove(terimaPage.getPage());
          mainPage.getContentPane().add(mainPage.getjPanel2(),java.awt.BorderLayout.CENTER);
          mainPage.getjPanel2().setVisible(true);
@@ -237,6 +248,7 @@ public class MainPageBskkController {
     public void openSaldoPage(java.awt.event.ActionEvent e){
         terimaPage.getPage().setVisible(false);
         mainPage.getjPanel2().setVisible(false);
+         keluarPageController.openPage().setVisible(false);
          mainPage.getContentPane().remove(saldoAkhirController.getPage());
          mainPage.getContentPane().add(saldoAkhirController.getPage(),java.awt.BorderLayout.CENTER);
          saldoAkhirController.getPage().setVisible(true);
@@ -245,4 +257,15 @@ public class MainPageBskkController {
          saldoAkhirController.viewData();
     }
     
+    public void openKeluarPage(java.awt.event.ActionEvent e){
+        mainPage.getjPanel2().setVisible(false);
+        saldoAkhirController.getPage().setVisible(false);
+        terimaPage.getPage().setVisible(false);
+        mainPage.getContentPane().remove(mainPage.getjPanel2());
+        mainPage.getContentPane().add(keluarPageController.openPage(),java.awt.BorderLayout.CENTER);
+        keluarPageController.openPage().setVisible(true);
+        mainPage.getContentPane().validate();
+        keluarPageController.getAllData();
+        keluarPageController.viewDataOnTable();
+    }
 }

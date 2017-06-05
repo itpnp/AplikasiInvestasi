@@ -62,6 +62,7 @@ public class TerimaPageController {
                 search(e);
             }
         });
+        this.terimaPage.getTanggalField().setFormats("dd MMMM yyyy");
     }
     public TerimaBskkPage getPage(){
         return terimaPage;

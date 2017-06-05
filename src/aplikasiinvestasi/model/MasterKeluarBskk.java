@@ -4,6 +4,7 @@
  */
 package aplikasiinvestasi.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,10 +16,11 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="master_keluar_bskk")
-public class MasterKeluarBskk {
+public class MasterKeluarBskk implements Serializable {
+    
     @Id
     @Column(name="id_keluar")
-    private Long idKeluar;
+    private int idKeluar;
     
     @Column(name="keterangan")
     private String keterangan;
@@ -36,7 +38,7 @@ public class MasterKeluarBskk {
         return keterangan;
     }
 
-    public MasterKeluarBskk(Long idKeluar, String keterangan, String bulan, String tahun, Long nominal) {
+    public MasterKeluarBskk(int idKeluar, String keterangan, String bulan, String tahun, Long nominal) {
         this.idKeluar = idKeluar;
         this.keterangan = keterangan;
         this.bulan = bulan;
@@ -75,11 +77,11 @@ public class MasterKeluarBskk {
         this.nominal = nominal;
     }
     
-    public Long getIdKeluar() {
+    public int getIdKeluar() {
         return idKeluar;
     }
 
-    public void setIdKeluar(Long idKeluar) {
+    public void setIdKeluar(int idKeluar) {
         this.idKeluar = idKeluar;
     }
     
