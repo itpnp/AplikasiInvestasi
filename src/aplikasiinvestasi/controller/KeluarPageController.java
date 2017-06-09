@@ -117,6 +117,8 @@ public class KeluarPageController {
         keluar.setNominal(Long.valueOf(keluarPage.getNominalField().getText()));
         if(keluarService.save(keluar)){
             this.empty();
+            this.getAllData();
+            this.viewDataOnTable();
         }
     }
     public void empty(){
