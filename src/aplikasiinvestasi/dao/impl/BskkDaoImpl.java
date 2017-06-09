@@ -32,7 +32,12 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormat;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
@@ -271,6 +276,7 @@ public class BskkDaoImpl implements BskkDao{
                 HSSFCellStyle titleStyle2 = workbook.createCellStyle();
 	        HSSFCellStyle headerStyle = workbook.createCellStyle();
 	        HSSFCellStyle dataStyle = workbook.createCellStyle();
+                CellStyle apostropheStyle = workbook.createCellStyle();
                 HSSFCellStyle moneyStyle = workbook.createCellStyle();
                 
                 HSSFFont fontTitle = workbook.createFont();
@@ -279,7 +285,7 @@ public class BskkDaoImpl implements BskkDao{
 	        HSSFFont fontData = workbook.createFont();
                 
                 fontTitleRed.setFontHeightInPoints((short)12);
-                fontTitleRed.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+                fontTitleRed.setBold(true);
                 fontTitleRed.setColor(HSSFColor.RED.index);
                 fontTitleRed.setFontName("Tahoma");
                 titleStyle2.setFont(fontTitleRed);
@@ -291,31 +297,43 @@ public class BskkDaoImpl implements BskkDao{
                 fontHeader.setFontHeightInPoints((short)12);
                 fontHeader.setFontName("Tahoma"); 
                 headerStyle.setFont(fontHeader);
-                headerStyle.setBorderBottom(HSSFCellStyle.BORDER_THIN);
-                headerStyle.setBorderTop(HSSFCellStyle.BORDER_THIN);
-                headerStyle.setBorderRight(HSSFCellStyle.BORDER_THIN);
-                headerStyle.setBorderLeft(HSSFCellStyle.BORDER_THIN);
-                headerStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-                headerStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+                headerStyle.setBorderBottom(BorderStyle.THIN);
+                headerStyle.setBorderTop(BorderStyle.THIN);
+                headerStyle.setBorderRight(BorderStyle.THIN);
+                headerStyle.setBorderLeft(BorderStyle.THIN);
+                headerStyle.setAlignment(HorizontalAlignment.CENTER);
+                headerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
                 headerStyle.setWrapText(true);
                 
                 fontData.setFontHeightInPoints((short)12);
                 fontData.setFontName("Tahoma");
                 dataStyle.setFont(fontData);
-                dataStyle.setBorderBottom(HSSFCellStyle.BORDER_DOTTED);
-                dataStyle.setBorderTop(HSSFCellStyle.BORDER_DOTTED);
-                dataStyle.setBorderRight(HSSFCellStyle.BORDER_DOTTED);
-                dataStyle.setBorderLeft(HSSFCellStyle.BORDER_DOTTED);
-                dataStyle.setAlignment(HSSFCellStyle.ALIGN_LEFT);
+                dataStyle.setBorderBottom(BorderStyle.DOTTED);
+                dataStyle.setBorderTop(BorderStyle.DOTTED);
+                dataStyle.setBorderRight(BorderStyle.DOTTED);
+                dataStyle.setBorderLeft(BorderStyle.DOTTED);
+                dataStyle.setAlignment(HorizontalAlignment.LEFT);
+                
+                DataFormat fmt = workbook.createDataFormat();
                 
                 fontData.setFontHeightInPoints((short)12);
                 fontData.setFontName("Tahoma");
+                apostropheStyle.setFont(fontData);
+                apostropheStyle.setBorderBottom(BorderStyle.DOTTED);
+                apostropheStyle.setBorderTop(BorderStyle.DOTTED);
+                apostropheStyle.setBorderRight(BorderStyle.DOTTED);
+                apostropheStyle.setBorderLeft(BorderStyle.DOTTED);
+                apostropheStyle.setAlignment(HorizontalAlignment.LEFT);
+                apostropheStyle.setQuotePrefixed(true);
+                        
+                fontData.setFontHeightInPoints((short)12);
+                fontData.setFontName("Tahoma");
                 moneyStyle.setFont(fontData);
-                moneyStyle.setBorderBottom(HSSFCellStyle.BORDER_DOTTED);
-                moneyStyle.setBorderTop(HSSFCellStyle.BORDER_DOTTED);
-                moneyStyle.setBorderRight(HSSFCellStyle.BORDER_DOTTED);
-                moneyStyle.setBorderLeft(HSSFCellStyle.BORDER_DOTTED);
-                moneyStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+                moneyStyle.setBorderBottom(BorderStyle.DOTTED);
+                moneyStyle.setBorderTop(BorderStyle.DOTTED);
+                moneyStyle.setBorderRight(BorderStyle.DOTTED);
+                moneyStyle.setBorderLeft(BorderStyle.DOTTED);
+                moneyStyle.setAlignment(HorizontalAlignment.LEFT);
                 moneyStyle.setDataFormat(format.getFormat("_-* #,##0.00_-;-* #,##0.00_-;_-* \"-\"??_-;_-@_-"));
 
                 /**
@@ -370,7 +388,7 @@ public class BskkDaoImpl implements BskkDao{
                 
                 for(int i=7; i<10; i++){
                     rowHeader = sheet.createRow(i);
-                    for(int j=0; j <9; j++){
+                    for(int j=1; j <9; j++){
                         cell = rowHeader.createCell(j);
                         cell.setCellStyle(dataStyle);
                         if(i==8 && j==5){
@@ -409,7 +427,7 @@ public class BskkDaoImpl implements BskkDao{
                                 }else if(i==8){
                                     cell = rowData.createCell(8);
                                     cell.setCellStyle(moneyStyle);
-                                    cell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
+                                    cell.setCellType(CellType.FORMULA);
                                     cell.setCellFormula("SUM(H"+startCount+":H"+endCount+")");
                                 }else{
                                     cell.setCellStyle(dataStyle);
@@ -429,20 +447,20 @@ public class BskkDaoImpl implements BskkDao{
                         
                         rowData = sheet.createRow(rowIndex);
                         cell = rowData.createCell(1);
-                        cell.setCellStyle(dataStyle);
+                        cell.setCellStyle(apostropheStyle);
                         cell.setCellValue(bskk.getKodeRekening());
                         
                         cell = rowData.createCell(2);
-                        cell.setCellStyle(dataStyle);
+                        cell.setCellStyle(apostropheStyle);
                         cell.setCellValue(bskk.getMasterDepartemen().getKodeDepartement());
                         
                         cell = rowData.createCell(3);
-                        cell.setCellStyle(dataStyle);
+                        cell.setCellStyle(apostropheStyle);
                         cell.setCellValue(bskk.getMasterDepartemen().getAlokasi());
                         
                         cell = rowData.createCell(4);
                         cell.setCellStyle(dataStyle);
-                        cell.setCellValue(FormatDate.convert(bskk.getTanggal()));
+                        cell.setCellValue(FormatDate.convert(bskk.getTanggal()).substring(0,2));
                         
                         cell = rowData.createCell(5);
                         cell.setCellStyle(dataStyle);
@@ -682,7 +700,7 @@ public class BskkDaoImpl implements BskkDao{
 
             rowData = sheet.createRow(4);
             cell = rowData .createCell(0);
-            cell.setCellValue("SALDO AWAL BULAN "+BulanEnum.namaBulan()[month]+" TAHUN "+year);
+            cell.setCellValue("SALDO AWAL BULAN "+BulanEnum.namaBulan()[month+1]+" TAHUN "+year);
             cell.setCellStyle(titleStyle3);
             sheet.addMergedRegion(new CellRangeAddress(4,4,0,4));
 
