@@ -402,6 +402,7 @@ public class BskkDaoImpl implements BskkDao{
                     int lastIndex = 0;
                     @SuppressWarnings("UnusedAssignment")
                     int startCount = 10, endCount = 0;
+                    int startTotalCount = startCount;
                     String compareRekening = listBskk.get(0).getKodeRekening();
                     
                     for(MasterBskk bskk : listBskk){
@@ -459,7 +460,7 @@ public class BskkDaoImpl implements BskkDao{
                         cell.setCellValue(bskk.getMasterDepartemen().getAlokasi());
                         
                         cell = rowData.createCell(4);
-                        cell.setCellStyle(dataStyle);
+                        cell.setCellStyle(apostropheStyle);
                         cell.setCellValue(FormatDate.convert(bskk.getTanggal()).substring(0,2));
                         
                         cell = rowData.createCell(5);
@@ -467,7 +468,7 @@ public class BskkDaoImpl implements BskkDao{
                         cell.setCellValue(bskk.getKeterangan());
                         
                         cell = rowData.createCell(6);
-                        cell.setCellStyle(dataStyle);
+                        cell.setCellStyle(apostropheStyle);
                         cell.setCellValue(bskk.getNoBskk());
                         
                         cell = rowData.createCell(7);
@@ -499,7 +500,7 @@ public class BskkDaoImpl implements BskkDao{
                                 }else if(i==8){
                                     cell = rowData.createCell(8);
                                     cell.setCellStyle(moneyStyle);
-                                    cell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
+                                    cell.setCellType(CellType.FORMULA);
                                     cell.setCellFormula("SUM(H"+startCount+":H"+endCount+")");
                                 }else{
                                     cell.setCellStyle(dataStyle);
@@ -510,6 +511,15 @@ public class BskkDaoImpl implements BskkDao{
                         lastIndex++;
                         rowIndex++;
                     }
+                    rowData = sheet.createRow(rowIndex);
+                    cell = rowData.createCell(6);
+                    cell.setCellStyle(dataStyle);
+                    cell.setCellValue("TOTAL :");
+                        
+                    cell = rowData.createCell(7);
+                    cell.setCellStyle(moneyStyle);
+                    cell.setCellType(CellType.FORMULA);
+                    cell.setCellFormula("SUM(H"+startTotalCount+":H"+endCount+")");
                     HSSFFormulaEvaluator.evaluateAllFormulaCells(workbook);
                     for(int i=0; i<10; i++){
                         sheet.autoSizeColumn(i, true);
