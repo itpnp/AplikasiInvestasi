@@ -419,7 +419,7 @@ public class BskkDaoImpl implements BskkDao{
                             for(int i = 1; i<9; i++){
                                 cell = rowData.createCell(i);
                                 if(i==1){
-                                    cell.setCellStyle(dataStyle);
+                                    cell.setCellStyle(apostropheStyle);
                                     cell.setCellValue("1101.02");
                                 }else if(i==5){
                                     cell = rowData.createCell(5);
@@ -491,7 +491,7 @@ public class BskkDaoImpl implements BskkDao{
                             for(int i = 1; i<9; i++){
                                 cell = rowData.createCell(i);
                                 if(i==1){
-                                    cell.setCellStyle(dataStyle);
+                                    cell.setCellStyle(apostropheStyle);
                                     cell.setCellValue("1101.02");
                                 }else if(i==5){
                                     cell = rowData.createCell(5);
