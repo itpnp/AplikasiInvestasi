@@ -26,4 +26,11 @@ public class FormatDate {
         Calendar monthStart = new GregorianCalendar(year, month, 1);
         return monthStart.getActualMaximum(Calendar.DAY_OF_MONTH);
     }
+    
+    public static String convertNumber(Date date){
+        String formatedDate = null;
+        java.text.DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        formatedDate= dateFormat.format(date);
+        return formatedDate;
+    }
 }

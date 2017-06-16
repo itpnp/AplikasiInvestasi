@@ -655,25 +655,22 @@ public class BskkDaoImpl implements BskkDao{
 	HSSFFont fontData = workbook.createFont();
                 
         fontTitle.setFontHeightInPoints((short)14);
-        fontTitle.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+        fontTitle.setBold(true);
         fontTitle.setColor(HSSFColor.BLACK.index);
         fontTitle.setFontName("Tahoma");
         titleStyle.setFont(fontTitle);
-        titleStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+        titleStyle.setAlignment(HorizontalAlignment.CENTER);
         
-        fontTitle.setFontHeightInPoints((short)14);
-        fontTitle.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-        fontTitle.setColor(HSSFColor.BLACK.index);
-        fontTitle.setFontName("Tahoma");
+     
         titleStyle3.setFont(fontTitle);
-        titleStyle3.setAlignment(HSSFCellStyle.ALIGN_LEFT);
+        titleStyle3.setAlignment(HorizontalAlignment.CENTER);
         
         moneyStyle2.setDataFormat(format.getFormat("_-* #,##0.00_-;-* #,##0.00_-;_-* \"-\"??_-;_-@_-"));
         moneyStyle2.setFont(fontTitle);
-        moneyStyle2.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+        moneyStyle2.setAlignment(HorizontalAlignment.CENTER);
         
         fontTitle2.setFontHeightInPoints((short)12);
-        fontTitle2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+        fontTitle2.setBold(true);
         fontTitle2.setColor(HSSFColor.BLACK.index);
         fontTitle2.setFontName("Tahoma");
         titleStyle2.setFont(fontTitle2);
@@ -682,8 +679,8 @@ public class BskkDaoImpl implements BskkDao{
         fontData.setFontName("Tahoma");
         dataStyle.setFont(fontData);
         
-        underScore.setBorderTop(HSSFCellStyle.BORDER_THIN);
-        underScore.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+        underScore.setBorderTop(BorderStyle.THIN);
+        underScore.setVerticalAlignment(VerticalAlignment.CENTER);
         underScore.setDataFormat(format.getFormat("_-* #,##0.00_-;-* #,##0.00_-;_-* \"-\"??_-;_-@_-"));
         underScore.setFont(fontTitle2);
         
@@ -740,7 +737,7 @@ public class BskkDaoImpl implements BskkDao{
                  cell.setCellStyle(dataStyle);
 
                  cell = rowData.createCell(1);
-                 cell.setCellValue(listTerima.get(i).getJenis());
+                 cell.setCellValue(listTerima.get(i).getJenis()+" "+FormatDate.convertNumber(listTerima.get(i).getTanggal()));
                  cell.setCellStyle(dataStyle);
 
                  cell = rowData.createCell(2);
@@ -763,7 +760,7 @@ public class BskkDaoImpl implements BskkDao{
              cell.setCellStyle(dataStyle);
 
              cell = rowData.createCell(4);
-             cell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
+             cell.setCellType(CellType.FORMULA);
              cell.setCellFormula("SUM(E8:E"+(8+listTerima.size())+")");
              cell.setCellStyle(underScore);
 
