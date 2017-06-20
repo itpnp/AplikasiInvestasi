@@ -159,6 +159,7 @@ public class AddLpjController {
                 lpj.setNoIpbInternal(addLpj.getNomorLpbInternalField().getText());
                 lpj.setSatuan(addLpj.getSatuanField().getText());
                 lpj.setTanggal(addLpj.getTanggalField().getDate());
+                lpj.setPph(Integer.valueOf(addLpj.getPphField().getText()));
                 lpj.setActiveStatus("ACTIVE");
                 lpj.setMasterDepartemen(listDepartemen.get(addLpj.getDepartemenComboBox().getSelectedIndex()));
                 if(masterInvest != null){

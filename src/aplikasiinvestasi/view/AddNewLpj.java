@@ -226,6 +226,14 @@ public class AddNewLpj extends javax.swing.JDialog {
     public void setButtonGroup2(ButtonGroup buttonGroup2) {
         this.buttonGroup2 = buttonGroup2;
     }
+
+    public JTextField getPphField() {
+        return pphField;
+    }
+
+    public void setPphField(JTextField pphField) {
+        this.pphField = pphField;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -271,6 +279,9 @@ public class AddNewLpj extends javax.swing.JDialog {
         polosOption = new javax.swing.JRadioButton();
         resmiOption = new javax.swing.JRadioButton();
         addButton = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        pphField = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         viewTable = new javax.swing.JTable();
@@ -368,6 +379,14 @@ public class AddNewLpj extends javax.swing.JDialog {
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/1483954124_1.png"))); // NOI18N
         addButton.setText("Tambah");
 
+        jLabel13.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel13.setText("Pph");
+
+        pphField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+
+        jLabel14.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel14.setText("%");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -408,13 +427,6 @@ public class AddNewLpj extends javax.swing.JDialog {
                                 .addComponent(hargaField, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
                                 .addComponent(formatHarga))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(121, 121, 121)
-                                .addComponent(jLabel12)
-                                .addGap(18, 18, 18)
-                                .addComponent(debetField, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(formatDebet))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(82, 82, 82)
@@ -433,7 +445,22 @@ public class AddNewLpj extends javax.swing.JDialog {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel10)
                                         .addGap(18, 18, 18)
-                                        .addComponent(satuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(satuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(121, 121, 121)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel13))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(debetField, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(formatDebet))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(pphField, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel14)))))
                         .addGap(0, 42, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -541,7 +568,12 @@ public class AddNewLpj extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(formatDebet)))
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(pphField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addGap(12, 12, 12)
                 .addComponent(addButton)
                 .addGap(35, 35, 35))
         );
@@ -662,6 +694,8 @@ public class AddNewLpj extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -678,6 +712,7 @@ public class AddNewLpj extends javax.swing.JDialog {
     private javax.swing.JTextField nomorLpbEksternalField;
     private javax.swing.JTextField nomorLpbInternalField;
     private javax.swing.JRadioButton polosOption;
+    private javax.swing.JTextField pphField;
     private javax.swing.JRadioButton resmiOption;
     private javax.swing.JTextField satuanField;
     private javax.swing.JButton saveButton;

@@ -54,6 +54,9 @@ public class MasterLpj implements Serializable {
     @Column(name="jumlah")
     private double jumlah;
     
+    @Column(name="pph")
+    private int pph;
+    
     @Column(name="satuan")
     private String satuan;
     
@@ -73,8 +76,8 @@ public class MasterLpj implements Serializable {
     private String activeStatus;
   
     public MasterLpj(int idLpj, MasterInvest masterInvest, String alokasiBiaya, MasterDepartemen masterDepartemen, Date tanggal, 
-            String keterangan, String noIpbInternal, String noIpbEksternal, double jumlah, String satuan, Double hargaSatuan, Double debet, 
-            String kodeRekening, String status, String activeStatus) {
+        String keterangan, String noIpbInternal, String noIpbEksternal, double jumlah, String satuan, Double hargaSatuan, Double debet, 
+        String kodeRekening, String status, String activeStatus, int pph) {
         this.idLpj = idLpj;
         this.masterInvest = masterInvest;
         this.alokasiBiaya = alokasiBiaya;
@@ -90,9 +93,18 @@ public class MasterLpj implements Serializable {
         this.kodeRekening = kodeRekening;
         this.status = status;
         this.activeStatus = activeStatus;
+        this.pph = pph;
     }
     
     public MasterLpj() {
+    }
+
+    public int getPph() {
+        return pph;
+    }
+
+    public void setPph(int pph) {
+        this.pph = pph;
     }
 
     public String getActiveStatus() {

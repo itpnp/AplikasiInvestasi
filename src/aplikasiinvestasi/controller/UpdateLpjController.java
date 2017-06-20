@@ -67,6 +67,7 @@ public class UpdateLpjController {
         updateLpj.getNomorLpbInternalField().setText(this.masterLpj.getNoIpbInternal());
         updateLpj.getNomorLpbEksternalField().setText(this.masterLpj.getNoIpbEksternal());
         updateLpj.getKodeRekeningField().setText(this.masterLpj.getKodeRekening());
+        updateLpj.getPphField().setText(""+this.masterLpj.getPph());
         updateLpj.getHargaField().setText(""+this.masterLpj.getHargaSatuan());
         if(this.masterLpj.getMasterInvest() != null){
             updateLpj.getInvestField().setText(this.masterLpj.getMasterInvest().getKodeInvest());
@@ -100,6 +101,7 @@ public class UpdateLpjController {
         this.masterLpj.setNoIpbInternal(updateLpj.getNomorLpbInternalField().getText());
         this.masterLpj.setSatuan(updateLpj.getSatuanField().getText());
         this.masterLpj.setTanggal(updateLpj.getTanggalField().getDate());
+        this.masterLpj.setPph(Integer.parseInt(updateLpj.getPphField().getText()));
         this.masterLpj.setActiveStatus("ACTIVE");
         
         this.masterLpj.setMasterDepartemen(listDepartemen.get(updateLpj.getDepartemenComboBox().getSelectedIndex()));
