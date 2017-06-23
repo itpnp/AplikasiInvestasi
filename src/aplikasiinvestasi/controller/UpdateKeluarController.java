@@ -38,7 +38,8 @@ public class UpdateKeluarController {
         updateKeluar.getKeteranganField().setText(masterKeluar.getKeterangan());
         updateKeluar.getBulanField().setSelectedItem(masterKeluar.getBulan());
         updateKeluar.getTahunField().setSelectedItem(masterKeluar.getTahun());
-        updateKeluar.getNominalField().setText(FormatRupiah.convert(""+masterKeluar.getNominal()));
+        updateKeluar.getNominalField().setText(""+masterKeluar.getNominal());
+        updateKeluar.getFormatRupiah().setText(FormatRupiah.convert(""+masterKeluar.getNominal()));
     }
     public void saveUpdate(java.awt.event.ActionEvent e){
         masterKeluar.setKeterangan(updateKeluar.getKeteranganField().getText());
