@@ -110,7 +110,9 @@ public class MainPageBskkController {
         mainPage.getBulanParam().setModel(new DefaultComboBoxModel(BulanEnum.namaBulan()));
         mainPage.getTahunParam().setModel(new DefaultComboBoxModel(BulanEnum.tahun()));
         terimaPage = new TerimaPageController();
+        terimaPage.setMainPage(this.mainPage);
         keluarPageController = new KeluarPageController();
+        keluarPageController.setMainPage(this.mainPage);
         saldoAkhirController = new SaldoAkhirController();
     }
     

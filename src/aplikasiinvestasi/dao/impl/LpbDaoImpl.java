@@ -621,26 +621,26 @@ public class LpbDaoImpl implements LpbDao {
                               cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
                            }
                         }
-                          rowIndex++;
-                          rowIndex++;
+                        rowIndex++;
+                        rowIndex++;
                                 
-                          rowData = sheet.createRow(rowIndex);
-                          fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "JURNAL ADJ");
-                          rowIndex++;
-                          rowIndex++;
-                          rowData = sheet.createRow(rowIndex);
-                          for(int i=0; i<12; i++){
-                             cell = rowData.createCell(i);
-                             cell.setCellStyle(cellStyle5);
-                             if(i == 0){
-                                cell.setCellValue("2190.03");
-                             }else if(i == 4){
-                                cell.setCellValue("HUTANG PPH 23");
-                             }else if(i==11){
-                                cell.setCellType(CellType.FORMULA);
-                                cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
-                             }
-                          }
+                        rowData = sheet.createRow(rowIndex);
+                        fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "JURNAL ADJ");
+                        rowIndex++;
+                        rowIndex++;
+                        rowData = sheet.createRow(rowIndex);
+                        for(int i=0; i<12; i++){
+                            cell = rowData.createCell(i);
+                            cell.setCellStyle(cellStyle5);
+                            if(i == 0){
+                               cell.setCellValue("2190.03");
+                            }else if(i == 4){
+                               cell.setCellValue("HUTANG PPH 23");
+                            }else if(i==11){
+                               cell.setCellType(CellType.FORMULA);
+                               cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
+                            }
+                         }
                            rowIndex++;
                            rowIndex++;
                          sheet.setColumnWidth(0,2500);

@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface KeluarDao {
     public boolean save(MasterKeluarBskk keluar);
+    public boolean update(MasterKeluarBskk keluar);
     public List<MasterKeluarBskk> getAllData();
     public List<MasterKeluarBskk> findByMonthAndYear(String month, String year);
 }

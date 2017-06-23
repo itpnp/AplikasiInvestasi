@@ -13,6 +13,7 @@ import aplikasiinvestasi.utils.FormatRupiah;
 import aplikasiinvestasi.utils.Table;
 import aplikasiinvestasi.utils.TableHeaderRenderer;
 import aplikasiinvestasi.view.KeluarBskkPage;
+import aplikasiinvestasi.view.MainPageBskk;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -34,6 +35,8 @@ public class KeluarPageController {
     private KeluarBskkPage keluarPage;
     private KeluarService keluarService;
     private List<MasterKeluarBskk> listKeluarBskk;
+    private MainPageBskk mainPage;
+    private UpdateKeluarController updateKeluar;
     
     public KeluarPageController(){
         keluarPage = new KeluarBskkPage();
@@ -65,6 +68,19 @@ public class KeluarPageController {
     public KeluarBskkPage openPage(){
         return keluarPage;
     }
+
+    public MainPageBskk getMainPage() {
+        return mainPage;
+    }
+
+    public void setMainPage(MainPageBskk mainPage) {
+        this.mainPage = mainPage;
+    }
+
+    public KeluarService getKeluarService() {
+        return keluarService;
+    }
+
     public void getAllData(){
         listKeluarBskk = new ArrayList<>();
         listKeluarBskk = keluarService.getAllData();
@@ -100,7 +116,7 @@ public class KeluarPageController {
         public void actionPerformed(ActionEvent e)
             {
                 int modelRow = Integer.valueOf( e.getActionCommand());
-//                openEditLpjPage(listTerima.get(modelRow));
+                updatePage(listKeluarBskk.get(modelRow));
             }
         };
        ButtonColumns buttonColumns = new ButtonColumns(keluarPage.getViewTable(), detail, 4);
@@ -138,5 +154,11 @@ public class KeluarPageController {
     }
     public void formatRupiah(JLabel labelFormat, JTextField textFormat){
        labelFormat.setText(FormatRupiah.convert(textFormat.getText()));
+    }
+    public void updatePage(MasterKeluarBskk masterKeluar){
+        updateKeluar = new UpdateKeluarController(this);
+        updateKeluar.initComponent();
+        updateKeluar.setData(masterKeluar);
+        updateKeluar.getUpdatePage().setVisible(true);
     }
 }

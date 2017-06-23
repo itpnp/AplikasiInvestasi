@@ -111,5 +111,28 @@ public class TerimaDaoImpl implements TerimaDao {
         }
         return listTerima;
     }
+
+    @Override
+    public boolean update(MasterTerima terima) {
+         boolean success = false;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.update(terima);
+            session.getTransaction().commit();
+            success = true;
+            session.flush();
+            JOptionPane.showMessageDialog(null,"Data Berhasil Disimpan", "Error", JOptionPane.ERROR_MESSAGE, null);
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            JOptionPane.showMessageDialog(null,"Error Check Database " +e, "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return success;
+    }
     
 }

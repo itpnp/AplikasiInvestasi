@@ -26,6 +26,7 @@ public interface TerimaService {
      */
     public List<MasterTerima> findByMonth(String month, String year);
     
+    public boolean update(MasterTerima terima);
     public List<MasterTerima> getAllData();
     public List<MasterTerima> findByYear(String year);
 

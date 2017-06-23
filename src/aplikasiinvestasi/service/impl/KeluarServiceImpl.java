@@ -32,5 +32,10 @@ public class KeluarServiceImpl implements KeluarService{
     public List<MasterKeluarBskk> findByMonthAndYear(String month, String year) {
         return keluarDao.findByMonthAndYear(month, year);
     }
+
+    @Override
+    public boolean update(MasterKeluarBskk keluar) {
+        return keluarDao.update(keluar);
+    }
     
 }

@@ -12,6 +12,7 @@ import aplikasiinvestasi.utils.FormatDate;
 import aplikasiinvestasi.utils.FormatRupiah;
 import aplikasiinvestasi.utils.Table;
 import aplikasiinvestasi.utils.TableHeaderRenderer;
+import aplikasiinvestasi.view.MainPageBskk;
 import aplikasiinvestasi.view.TerimaBskkPage;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -32,6 +33,8 @@ public class TerimaPageController {
     private TerimaBskkPage terimaPage;
     private TerimaService terimaService = new TerimaServiceImpl();
     private List<MasterTerima> listTerima;
+    private MainPageBskk mainPage;
+    private UpdateTerimaController updateTerima;
    
     
     public TerimaPageController(){
@@ -70,16 +73,35 @@ public class TerimaPageController {
     public void getAllData(){
         listTerima = terimaService.getAllData();
     }
+
+    public MainPageBskk getMainPage() {
+        return mainPage;
+    }
+
+    public void setMainPage(MainPageBskk mainPage) {
+        this.mainPage = mainPage;
+    }
+
+    public TerimaService getTerimaService() {
+        return terimaService;
+    }
+
+    public void setTerimaService(TerimaService terimaService) {
+        this.terimaService = terimaService;
+    }
+    
     public void viewData(){
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Jenis");
         model.addColumn("Tanggal");
+        model.addColumn("Jumlah");
         model.addColumn("Action");
         for(MasterTerima terima : listTerima){
-            Object[] obj = new Object [3];
+            Object[] obj = new Object [4];
             obj[0] = terima.getJenis();
             obj[1] = FormatDate.convert(terima.getTanggal());
-            obj[2] = "UPDATE";
+            obj[2] = FormatRupiah.convert(""+terima.getJumlah());
+            obj[3] = "UPDATE";
             model.addRow(obj);
         }
         terimaPage.getViewTable().setModel(model);
@@ -93,10 +115,10 @@ public class TerimaPageController {
         public void actionPerformed(ActionEvent e)
             {
                 int modelRow = Integer.valueOf( e.getActionCommand());
-//                openEditLpjPage(listTerima.get(modelRow));
+                updatePage(listTerima.get(modelRow));
             }
         };
-       ButtonColumns buttonColumns = new ButtonColumns(terimaPage.getViewTable(), detail, 2);
+       ButtonColumns buttonColumns = new ButtonColumns(terimaPage.getViewTable(), detail, 3);
        buttonColumns.setMnemonic(KeyEvent.VK_D);
        float[] columnSize = {30.0f, 30.0f, 30.0f, 10.0f};
        Table.resizeTable(terimaPage.getViewTable(), columnSize);
@@ -136,5 +158,12 @@ public class TerimaPageController {
 
             }
         }
+    }
+    
+    public void updatePage(MasterTerima masterTerima){
+        updateTerima = new UpdateTerimaController(this);
+        updateTerima.initComponent();
+        updateTerima.setData(masterTerima);
+       updateTerima.getUpdatePage().setVisible(true);
     }
 }
