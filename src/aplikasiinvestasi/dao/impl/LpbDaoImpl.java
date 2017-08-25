@@ -12,6 +12,7 @@ import aplikasiinvestasi.model.MasterLpj;
 import aplikasiinvestasi.service.LpjService;
 import aplikasiinvestasi.service.impl.LpjServiceImpl;
 import aplikasiinvestasi.utils.BulanEnum;
+import aplikasiinvestasi.utils.FormatDate;
 import aplikasiinvestasi.utils.HibernateUtil;
 import java.awt.Component;
 import java.io.File;
@@ -44,6 +45,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -59,6 +61,7 @@ public class LpbDaoImpl implements LpbDao {
     private LpjService lpjService = new LpjServiceImpl();
     private List<Integer> listPpnlpj = new ArrayList<>();
     private String rumus = "";
+    private Double x;
     
      @Override
     public boolean saveInBatch(List<MasterLpb> listMaster) {
@@ -617,14 +620,17 @@ public class LpbDaoImpl implements LpbDao {
                            }else if(i == 4){
                               cell.setCellValue("HUTANG PBT");
                            }else if(i==11){
-                              cell.setCellType(CellType.FORMULA);
-                              cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
+//                              cell.setCellType(CellType.FORMULA);
+                              x = (lpj.getDebet()/100)*lpj.getPph();
+                              cell.setCellValue(x);
+//                              cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
                            }
                         }
                         rowIndex++;
                         rowIndex++;
                                 
                         rowData = sheet.createRow(rowIndex);
+                        lpj.setKodeRekening("2101.05");
                         fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "JURNAL ADJ");
                         rowIndex++;
                         rowIndex++;
@@ -637,8 +643,10 @@ public class LpbDaoImpl implements LpbDao {
                             }else if(i == 4){
                                cell.setCellValue("HUTANG PPH 23");
                             }else if(i==11){
-                               cell.setCellType(CellType.FORMULA);
-                               cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
+//                               cell.setCellType(CellType.FORMULA);
+                               cell.setCellValue(x);
+
+//                               cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
                             }
                          }
                            rowIndex++;
@@ -654,7 +662,6 @@ public class LpbDaoImpl implements LpbDao {
                         }
                     }
                 }
-//                
                  //end of LPJ POLOS
             }
             if( !listMaster.isEmpty()){
@@ -1091,7 +1098,7 @@ public class LpbDaoImpl implements LpbDao {
      cell.setCellStyle(cellStyle2);
 
      cell = rowData.createCell(3);
-     cell.setCellValue(lpb.getTanggal());
+     cell.setCellValue(FormatDate.convertNumber(lpb.getTanggal()));
      cell.setCellStyle(cellStyle13);
 
      cell = rowData.createCell(4);
@@ -1142,7 +1149,7 @@ public class LpbDaoImpl implements LpbDao {
      cell.setCellStyle(cellStyle2);
 
      cell = rowData.createCell(3);
-     cell.setCellValue(lpj.getTanggal());
+     cell.setCellValue(FormatDate.convertNumber(lpj.getTanggal()));
      cell.setCellStyle(cellStyle13);
 
      cell = rowData.createCell(4);
@@ -1190,7 +1197,7 @@ public class LpbDaoImpl implements LpbDao {
      cell.setCellStyle(cellStyle2);
 
      cell = rowData.createCell(3);
-     cell.setCellValue(lpj.getTanggal());
+     cell.setCellValue(FormatDate.convertNumber(lpj.getTanggal()));
      cell.setCellStyle(cellStyle13);
 
      cell = rowData.createCell(4);
@@ -1377,7 +1384,8 @@ public class LpbDaoImpl implements LpbDao {
             listLpb = session.createCriteria(MasterLpb.class, "a")
                     .createAlias("a.masterInvest", "invest")
                     .add(Restrictions.eq("invest.kodeInvest", investNumber))
-                    .add(Restrictions.sqlRestriction("Year(tanggal) = '"+year+"'")).list();
+                    .add(Restrictions.sqlRestriction("Year(tanggal) = '"+year+"'"))
+                    .addOrder(Order.asc("a.noIpbInternal")).list();
              if(listLpb != null){
                 for(MasterLpb lpb : listLpb){
                     if(lpb.getMasterDepartemen() != null){
@@ -1409,7 +1417,8 @@ public class LpbDaoImpl implements LpbDao {
             listLpb = session.createCriteria(MasterLpb.class, "a")
                     .createAlias("a.masterInvest", "invest")
                     .add(Restrictions.eq("invest.kodeInvest", investNumber))
-                    .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"'")).list();
+                    .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"'"))
+                    .addOrder(Order.asc("a.noIpbInternal")).list();
              if(listLpb != null){
                 for(MasterLpb lpb : listLpb){
                     if(lpb.getMasterDepartemen() != null){
@@ -1442,7 +1451,8 @@ public class LpbDaoImpl implements LpbDao {
                     .createAlias("a.masterInvest", "invest")
                     .add(Restrictions.eq("invest.kodeInvest", investNumber))
                     .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"'"))
-                    .add(Restrictions.sqlRestriction("Year(tanggal) = '"+year+"'")).list();
+                    .add(Restrictions.sqlRestriction("Year(tanggal) = '"+year+"'"))
+                    .addOrder(Order.asc("a.noIpbInternal")).list();
              if(listLpb != null){
                 for(MasterLpb lpb : listLpb){
                     if(lpb.getMasterDepartemen() != null){
@@ -1469,15 +1479,13 @@ public class LpbDaoImpl implements LpbDao {
     public List<MasterLpb> findByYearMonthRekening(String year, String month, String rekening) {
         List<MasterLpb> listLpb = new ArrayList<>();
         try{
-//            System.out.println(year);
-//            System.out.println(month);
-//            System.out.println(rekening);
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             listLpb = session.createCriteria(MasterLpb.class, "a")
                     .add(Restrictions.sqlRestriction("MONTH(tanggal) = '"+month+"'"))
                     .add(Restrictions.sqlRestriction("YEAR(tanggal) = '"+year+"'"))
-                    .add(Restrictions.eq("a.kodeRekening",rekening)).list();
+                    .add(Restrictions.eq("a.kodeRekening",rekening))
+                    .addOrder(Order.asc("a.noIpbInternal")).list();
              if(listLpb != null){
                 for(MasterLpb lpb : listLpb){
                     if(lpb.getMasterDepartemen() != null){

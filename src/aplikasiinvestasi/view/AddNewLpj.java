@@ -384,7 +384,7 @@ public class AddNewLpj extends javax.swing.JDialog {
 
         pphField.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
 
-        jLabel14.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel14.setText("%");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -459,7 +459,7 @@ public class AddNewLpj extends javax.swing.JDialog {
                                         .addComponent(formatDebet))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(pphField, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel14)))))
                         .addGap(0, 42, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()

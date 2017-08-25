@@ -20,7 +20,7 @@ public interface InvestPageService {
      public boolean saveData(MasterInvest masterInvest);
      public List<MasterDepartemen> getDataByUnit(String unit);
      public List<MasterLpb> getAllDataByInvestNumber(String investNumber);
-     public Long[] countDebet(MasterInvest masterInvest);
+     public Double[] countDebet(MasterInvest masterInvest);
      public MasterInvest update(MasterInvest masterInvest);
      public List<MasterInvest> findByYear(String year);
      public List<MasterInvest> findByMonth(String month);

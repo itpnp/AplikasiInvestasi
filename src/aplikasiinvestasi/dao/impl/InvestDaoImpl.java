@@ -423,22 +423,22 @@ public class InvestDaoImpl implements InvestDao {
     }
 
     @Override
-    public Long[] countDebet(MasterInvest masterInvest) {
-        Long[] totalDebet = new Long[3];
+    public Double[] countDebet(MasterInvest masterInvest) {
+        Double[] totalDebet = new Double[3];
         try{
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             Query query = session.createSQLQuery("select SUM(debet) as total from master_lpb where kode_invest = '"+masterInvest.getKodeInvest()+"'");
             if(query.uniqueResult()!= null){
-                totalDebet[0] = Long.parseLong(""+query.uniqueResult());
+                totalDebet[0] = Double.parseDouble(""+query.uniqueResult());
             }else{
-                totalDebet[0] = Long.parseLong("0");
+                totalDebet[0] = Double.parseDouble("0");
             }
             query = session.createSQLQuery("select SUM(debet) as total from master_bskk where invest = '"+masterInvest.getKodeInvest()+"'");
             if(query.uniqueResult()!= null){
-                totalDebet[1] = Long.parseLong(""+query.uniqueResult());
+                totalDebet[1] = Double.parseDouble(""+query.uniqueResult());
             }else{
-                totalDebet[1] = Long.parseLong("0");
+                totalDebet[1] = Double.parseDouble("0");
             }
             totalDebet[2] = totalDebet[0]+totalDebet[1];
             

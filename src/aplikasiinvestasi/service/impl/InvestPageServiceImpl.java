@@ -54,7 +54,7 @@ public class InvestPageServiceImpl implements InvestPageService {
     }
 
     @Override
-    public Long[] countDebet(MasterInvest masterInvest) {
+    public Double[] countDebet(MasterInvest masterInvest) {
         return investDao.countDebet(masterInvest);
     }
 

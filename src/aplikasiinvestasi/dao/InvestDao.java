@@ -23,6 +23,6 @@ public interface InvestDao {
     public List<MasterInvest> findByMonthAndYear(String month, String year);
     public void exportAllToExcel(String bulan, String tahun);
     public void exportToExcel(MasterInvest masterInvest, List<MasterLpb> listLpb, List<MasterBskk> listBskk);
-    public Long[] countDebet(MasterInvest masterInvest);
+    public Double[] countDebet(MasterInvest masterInvest);
 
 }

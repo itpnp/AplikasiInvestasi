@@ -46,7 +46,7 @@ public class MainPageLpbController {
     private UpdateLpjController updateLpjController;
     private List<MasterLpb> listLpb;
     private List<MasterLpj> listLpj;
-    private Double totalDebetLpj, totalDebetLpb;
+    private Double totalDebetLpj, totalDebetLpb, debetAfterPph;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public MainPageLpbController(){
@@ -172,8 +172,6 @@ public class MainPageLpbController {
             obj[12] = "UPDATE";
             model.addRow(obj);
         }
-        
-        
        mainPage.getViewTable().setModel(model);
        mainPage.setTitle("Laporan LPB dan LPJ");
        JTableHeader jheader = mainPage.getViewTable().getTableHeader();
@@ -207,10 +205,11 @@ public class MainPageLpbController {
         model.addColumn("QTY");
         model.addColumn("Satuan");
         model.addColumn("Harga");
+        model.addColumn("Pph");
         model.addColumn("Debet");
         model.addColumn("ACTION");
         for(MasterLpj lpj : listLpj){
-            Object[] obj = new Object[13];
+            Object[] obj = new Object[14];
             if(lpj.getMasterInvest()!=null){
                 obj[0] = lpj.getMasterInvest().getKodeInvest();
             }else{
@@ -226,8 +225,11 @@ public class MainPageLpbController {
             obj[8]  = lpj.getJumlah();
             obj[9]  = lpj.getSatuan();
             obj[10] = FormatRupiah.convert(String.valueOf(lpj.getHargaSatuan()));
-            obj[11] = FormatRupiah.convert(String.valueOf(lpj.getDebet()));
-            obj[12] = "UPDATE";
+            obj[11] = lpj.getPph()+"%";
+            debetAfterPph = lpj.getDebet()-(lpj.getDebet()/100)*lpj.getPph();
+//            obj[11] = FormatRupiah.convert(String.valueOf(lpj.getDebet()));
+            obj[12] = FormatRupiah.convert(String.valueOf(debetAfterPph));
+            obj[13] = "UPDATE";
             model.addRow(obj);
         }
         mainPage.getViewTable().setModel(model);
@@ -245,9 +247,9 @@ public class MainPageLpbController {
                 openEditLpjPage(listLpj.get(modelRow));
             }
         };
-       ButtonColumns buttonColumns = new ButtonColumns(mainPage.getViewTable(), detail, 12);
+       ButtonColumns buttonColumns = new ButtonColumns(mainPage.getViewTable(), detail, 13);
        buttonColumns.setMnemonic(KeyEvent.VK_D);
-       float[] columnSize = {7.0f, 4.0f, 3.0f, 6.0f, 6.0f, 23.0f, 9.0f,11.0f,2.0f,3.0f,10.0f,10.0f,6.0f};
+       float[] columnSize = {7.0f, 4.0f, 3.0f, 6.0f, 6.0f, 21.0f, 9.0f,11.0f,2.0f,3.0f,10.0f,2.0f,10.0f,6.0f};
        Table.resizeTable(mainPage.getViewTable(), columnSize);
     }
     public LpbService getService(){
