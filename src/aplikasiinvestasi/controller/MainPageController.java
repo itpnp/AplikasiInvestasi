@@ -4,6 +4,7 @@
  */
 package aplikasiinvestasi.controller;
 
+import aplikasiinvestasi.model.MasterCredential;
 import aplikasiinvestasi.view.IjinInvestPage;
 import aplikasiinvestasi.view.MainPage;
 import java.awt.Component;
@@ -26,8 +27,11 @@ public class MainPageController {
     private AddNewInvestController add;
     private DetailInvestViewController detailInvest;
     private UserPageController userPage;
+    private MasterCredential userIdentity;
+    private ChangeCredentialController changeCredential;
     
-    public MainPageController(){
+    public MainPageController(MasterCredential user){
+        userIdentity = user;
         invest = new IjinInvestPageController(this);
         add = new AddNewInvestController(this);
         userPage = new UserPageController();
@@ -56,6 +60,13 @@ public class MainPageController {
                 bskkButtonActionPerformed(e);
             }
         });
+        mainPage.getCredentialButton().addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openCredentialPage(e);
+            }
+        });
         mainPage.addComponentListener(new java.awt.event.ComponentAdapter() {
             @Override
             public void componentResized(java.awt.event.ComponentEvent evt) {
@@ -74,6 +85,8 @@ public class MainPageController {
             }
         });
         mainPage.setVisible(true);
+        changeCredential = new ChangeCredentialController(userIdentity,this);
+
     }
     private void investButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
@@ -171,5 +184,9 @@ public class MainPageController {
     
     public MainPage getParent(){
         return mainPage;
+    }
+    
+    public void openCredentialPage(java.awt.event.ActionEvent e){
+        changeCredential.openPage().setVisible(true);
     }
 }

@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.JMenuItem;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -37,6 +38,14 @@ public class MainPage extends javax.swing.JFrame {
 
     public JButton getAddUserButton() {
         return addUserButton;
+    }
+
+    public JMenuItem getCredentialButton() {
+        return credentialButton;
+    }
+
+    public void setCredentialButton(JMenuItem credentialButton) {
+        this.credentialButton = credentialButton;
     }
 
     public void setAddUserButton(JButton addUserButton) {
@@ -94,6 +103,9 @@ public class MainPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         workBook = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        credentialButton = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HOME");
@@ -136,7 +148,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(bskkButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addUserButton)
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -172,6 +184,16 @@ public class MainPage extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(workBook)
         );
+
+        jMenu2.setText("Edit");
+
+        credentialButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        credentialButton.setText("Ubah Username dan Password");
+        jMenu2.add(credentialButton);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,8 +255,11 @@ public class MainPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addUserButton;
     private javax.swing.JButton bskkButton;
+    private javax.swing.JMenuItem credentialButton;
     private javax.swing.JButton investButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

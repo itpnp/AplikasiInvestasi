@@ -47,5 +47,5 @@ public interface UserService {
      * 
      * @param credential 
      */
-    public void update(MasterCredential credential);
+    public boolean update(MasterCredential credential);
 }

@@ -6,6 +6,7 @@ package aplikasiinvestasi.view;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -142,6 +143,14 @@ public class MainPageBskk extends javax.swing.JFrame {
         this.keluarPageButton = keluarPageButton;
     }
 
+    public JMenuItem getCredentialButton() {
+        return credentialButton;
+    }
+
+    public void setCredentialButton(JMenuItem credentialButton) {
+        this.credentialButton = credentialButton;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,6 +181,9 @@ public class MainPageBskk extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         kodeRekeningParam = new javax.swing.JTextField();
         allButton = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        credentialButton = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -342,6 +354,16 @@ public class MainPageBskk extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
+        jMenu2.setText("Edit");
+
+        credentialButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        credentialButton.setText("Ubah Username dan Password");
+        jMenu2.add(credentialButton);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -383,12 +405,15 @@ public class MainPageBskk extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private javax.swing.JButton allButton;
     private javax.swing.JComboBox bulanParam;
+    private javax.swing.JMenuItem credentialButton;
     private javax.swing.JButton exportButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

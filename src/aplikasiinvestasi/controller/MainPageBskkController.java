@@ -5,6 +5,7 @@
 package aplikasiinvestasi.controller;
 
 import aplikasiinvestasi.model.MasterBskk;
+import aplikasiinvestasi.model.MasterCredential;
 import aplikasiinvestasi.service.BskkService;
 import aplikasiinvestasi.service.TerimaService;
 import aplikasiinvestasi.service.impl.BskkServiceImpl;
@@ -42,11 +43,14 @@ public class MainPageBskkController {
     private SaldoAkhirController saldoAkhirController;
     private TerimaService terimaService;
     private KeluarPageController keluarPageController;
+    private MasterCredential userIdentity;
+    private ChangeCredentialController changeCredential;
     
-    public MainPageBskkController(){
+    public MainPageBskkController(MasterCredential user){
         this.bskkService = new BskkServiceImpl();
         this.terimaService = new TerimaServiceImpl();
         this.mainPage = new MainPageBskk();
+        this.userIdentity = user;
         mainPage.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainPage.setVisible(true);
         addBskkController = new AddBskkController(this);
@@ -77,6 +81,14 @@ public class MainPageBskkController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 searchData(e);
+            }
+        });
+        
+        mainPage.getCredentialButton().addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openCredentialPage(e);
             }
         });
         mainPage.getTerimaButton().addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +126,7 @@ public class MainPageBskkController {
         keluarPageController = new KeluarPageController();
         keluarPageController.setMainPage(this.mainPage);
         saldoAkhirController = new SaldoAkhirController();
+        changeCredential = new ChangeCredentialController(userIdentity,this);
     }
     
     public BskkService getService(){
@@ -257,6 +270,10 @@ public class MainPageBskkController {
          mainPage.getContentPane().validate();
          saldoAkhirController.getAllData();
          saldoAkhirController.viewData();
+    }
+    
+    public void openCredentialPage(java.awt.event.ActionEvent e){
+        changeCredential.openPage().setVisible(true);
     }
     
     public void openKeluarPage(java.awt.event.ActionEvent e){

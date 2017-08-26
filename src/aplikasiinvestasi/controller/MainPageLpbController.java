@@ -4,6 +4,7 @@
  */
 package aplikasiinvestasi.controller;
 
+import aplikasiinvestasi.model.MasterCredential;
 import aplikasiinvestasi.model.MasterLpb;
 import aplikasiinvestasi.model.MasterLpj;
 import aplikasiinvestasi.service.LpbService;
@@ -47,14 +48,17 @@ public class MainPageLpbController {
     private List<MasterLpb> listLpb;
     private List<MasterLpj> listLpj;
     private Double totalDebetLpj, totalDebetLpb, debetAfterPph;
+    private MasterCredential userIdentity;
+    private ChangeCredentialController changeCredential;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public MainPageLpbController(){
+    public MainPageLpbController(MasterCredential user){
         mainPage.setVisible(true);
         mainPage.getTotalPpn().setText("Rp. - ,00");
         mainPage.getLabelPpn().setText("Total PPN :");
         listLpb = lpbService.getAllData();
         listLpj = lpjService.getAllData();
+        this.userIdentity = user;
         mainPage.getInfoLabel().setText("DATA LPB");
         viewDataOnTable();
         DefaultComboBoxModel monthModel = new DefaultComboBoxModel(BulanEnum.namaBulan());
@@ -116,9 +120,19 @@ public class MainPageLpbController {
                 searchButton(e);
             }
         });
+        
+        mainPage.getCredentialButton().addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openCredentialPage(e);
+            }
+        });
         addLpb = new AddNewLpbController(this, lpbService);
         addLpj = new AddLpjController(this, lpjService);
         addLpbImport = new AddNewLpbImportController(this, lpbService);
+        changeCredential = new ChangeCredentialController(userIdentity,this);
+
 
     }
     
@@ -254,6 +268,9 @@ public class MainPageLpbController {
     }
     public LpbService getService(){
         return lpbService;
+    }
+    public void openCredentialPage(java.awt.event.ActionEvent e){
+        changeCredential.openPage().setVisible(true);
     }
     public LpjService getLpjService(){
         return lpjService;

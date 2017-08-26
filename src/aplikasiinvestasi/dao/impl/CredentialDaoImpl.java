@@ -106,6 +106,7 @@ public class CredentialDaoImpl implements CredentialDao {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             credential = (MasterCredential)session.createCriteria(MasterCredential.class).add(Restrictions.eq("username", username)).uniqueResult();
+//            System.out.println(securePassword(password, credential.getSaltKey()));
             if(credential == null){
                 JOptionPane.showMessageDialog(null,"Wrong Username or Password", "Error", JOptionPane.ERROR_MESSAGE, null);
             }else{
@@ -180,16 +181,20 @@ public class CredentialDaoImpl implements CredentialDao {
     }
 
     @Override
-    public void update(MasterCredential credential) {
+    public boolean update(MasterCredential credential) {
+        boolean connected = false;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
+            String pass = securePassword(credential.getPassword(), credential.getSaltKey());
+            credential.setPassword(pass);
             session.update(credential);
             session.getTransaction().commit();
             session.flush();
-           JOptionPane.showMessageDialog(null,"Data Berhasil Diubah", "Success", JOptionPane.INFORMATION_MESSAGE, null);
+            connected = true;
         }catch(HibernateException e){
            JOptionPane.showMessageDialog(null,"Error Check Database \n"+e, "Error", JOptionPane.ERROR_MESSAGE, null);
+           connected = false;
         }finally{
             if(session != null){
                 if(session.isOpen()){
@@ -197,6 +202,7 @@ public class CredentialDaoImpl implements CredentialDao {
                 }
             }
         }
+        return connected;
     }
   
 

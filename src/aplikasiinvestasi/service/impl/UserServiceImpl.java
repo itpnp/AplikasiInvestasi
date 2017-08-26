@@ -44,8 +44,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(MasterCredential credential) {
-        credentialDao.update(credential);
+    public boolean update(MasterCredential credential) {
+        return credentialDao.update(credential);
     }
     
 }

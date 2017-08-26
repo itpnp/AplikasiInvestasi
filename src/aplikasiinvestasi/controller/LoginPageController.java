@@ -45,19 +45,19 @@ public class LoginPageController {
                 case "KABAG":
                     {
                         loginPage.dispose();
-                        MainPageController main = new MainPageController();
+                        MainPageController main = new MainPageController(user);
                         break;
                     }
                 case "LPB":
                     {
                         loginPage.dispose();
-                        MainPageLpbController main = new MainPageLpbController();
+                        MainPageLpbController main = new MainPageLpbController(user);
                         break;
                     }
                 case "BSKK":
                     {
                         loginPage.dispose();
-                        MainPageBskkController main = new MainPageBskkController();
+                        MainPageBskkController main = new MainPageBskkController(user);
                         main.getAllData();
                         main.viewDataOnTable();
                         break;

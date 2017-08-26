@@ -7,6 +7,7 @@ package aplikasiinvestasi.view;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -176,6 +177,14 @@ public class MainPageLpb extends javax.swing.JFrame {
         this.directPrint = directPrint;
     }
 
+    public JMenuItem getCredentialButton() {
+        return credentialButton;
+    }
+
+    public void setCredentialButton(JMenuItem credentialButton) {
+        this.credentialButton = credentialButton;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -209,6 +218,9 @@ public class MainPageLpb extends javax.swing.JFrame {
         labelPpn = new javax.swing.JLabel();
         totalPpn = new javax.swing.JLabel();
         directPrint = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        credentialButton = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -470,6 +482,16 @@ public class MainPageLpb extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
+        jMenu2.setText("Edit");
+
+        credentialButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        credentialButton.setText("Ubah Username dan Password");
+        jMenu2.add(credentialButton);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -512,12 +534,15 @@ public class MainPageLpb extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private javax.swing.JButton addLpbImportButton;
     private javax.swing.JComboBox bulanParam;
+    private javax.swing.JMenuItem credentialButton;
     private javax.swing.JButton creditButton;
     private javax.swing.JButton directPrint;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
