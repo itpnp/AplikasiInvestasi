@@ -65,6 +65,18 @@ public class AddLpjController {
                 debetKeyReleased(evt);
             }
         });
+         this.addLpj.getPpnField().addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ppnKeyReleased(evt);
+            }
+        });
+         this.addLpj.getPphField().addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pphKeyReleased(evt);
+            }
+        });
         this.addLpj.getHolo1Radio().addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -76,6 +88,20 @@ public class AddLpjController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setComboBoxModel(e);
+            }
+        });
+        this.addLpj.getResmiOption().addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openPpn(e);
+            }
+        });
+         this.addLpj.getPolosOption().addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openPpn(e);
             }
         });
         this.addLpj.getSaveButton().addActionListener(new java.awt.event.ActionListener() {
@@ -167,8 +193,10 @@ public class AddLpjController {
                 }
                 if(addLpj.getPolosOption().isSelected()){
                     lpj.setStatus("POLOS");
+                    lpj.setPpn(0.0);
                 }else if(addLpj.getResmiOption().isSelected()){
                     lpj.setStatus("RESMI");
+                    lpj.setPpn(Double.parseDouble(addLpj.getPpnField().getText()));
                 }
                 listMaster.add(lpj);
                 viewOnTable();
@@ -214,6 +242,24 @@ public class AddLpjController {
         }
         addLpj.getDepartemenComboBox().setModel(model);
     }
+    
+    public void openPpn(java.awt.event.ActionEvent awt){
+        model = new DefaultComboBoxModel();
+        if(addLpj.getResmiOption().isSelected()){
+            addLpj.getLabelPpn().setVisible(true);
+            addLpj.getPpnField().setVisible(true);
+            addLpj.getFormatPpn().setVisible(true);
+        }else{
+            addLpj.getLabelPpn().setVisible(false);
+            addLpj.getPpnField().setVisible(false);
+            addLpj.getFormatPpn().setVisible(false);
+        }
+        for(MasterDepartemen departemen : listDepartemen){
+            model.addElement(departemen.getNamaDepartment());
+        }
+        addLpj.getDepartemenComboBox().setModel(model);
+    }
+    
     public void empty(){
         
         addLpj.getDebetField().setText("");
@@ -258,6 +304,14 @@ public class AddLpjController {
 
     private void debetKeyReleased(java.awt.event.KeyEvent evt){
        formatRupiah(addLpj.getFormatDebet(), addLpj.getDebetField());
+    }
+    
+    private void ppnKeyReleased(java.awt.event.KeyEvent evt){
+       formatRupiah(addLpj.getFormatPpn(), addLpj.getPpnField());
+    }
+    
+    private void pphKeyReleased(java.awt.event.KeyEvent evt){
+       formatRupiah(addLpj.getFormatPph(), addLpj.getPphField());
     }
     
     public void formatRupiah(JLabel labelFormat, JTextField textFormat){

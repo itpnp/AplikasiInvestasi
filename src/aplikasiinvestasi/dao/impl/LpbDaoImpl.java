@@ -13,6 +13,7 @@ import aplikasiinvestasi.service.LpjService;
 import aplikasiinvestasi.service.impl.LpjServiceImpl;
 import aplikasiinvestasi.utils.BulanEnum;
 import aplikasiinvestasi.utils.FormatDate;
+import aplikasiinvestasi.utils.FormatRupiah;
 import aplikasiinvestasi.utils.HibernateUtil;
 import java.awt.Component;
 import java.io.File;
@@ -56,7 +57,7 @@ public class LpbDaoImpl implements LpbDao {
 
     private Session session;
     private HSSFSheet sheet;
-    private boolean importFlag = false;
+    private boolean importFlag = false, resmi= false, polos = false;
     private int importIndex, endImportIndex, endLokalIndex, totalLokalIndex;
     private LpjService lpjService = new LpjServiceImpl();
     private List<Integer> listPpnlpj = new ArrayList<>();
@@ -485,15 +486,28 @@ public class LpbDaoImpl implements LpbDao {
                 //START LPJ RESMI
                 for(MasterLpj lpj: masterLpj){
                     if(lpj.getStatus().equals("RESMI")){
-                      if(masterLpj.size()>0){
-
-                        }
-                        rowData = sheet.createRow(rowIndex);
-                        cell = rowData.createCell(0);
-                        cell.setCellValue("LPJ RESMI");
-                        cell.setCellStyle(cellStyle4);
-                        rowIndex++;
-                        rowIndex++;
+                        resmi = true;
+                    }
+                }
+                if(resmi){
+                   rowData = sheet.createRow(rowIndex);
+                   cell = rowData.createCell(0);
+                   cell.setCellValue("LPJ RESMI");
+                   cell.setCellStyle(cellStyle4);
+                   rowIndex++;
+                   rowIndex++; 
+                
+                for(MasterLpj lpj: masterLpj){
+                    if(lpj.getStatus().equals("RESMI")){
+//                      if(masterLpj.size()>0){
+//
+//                        }
+//                        rowData = sheet.createRow(rowIndex);
+//                        cell = rowData.createCell(0);
+//                        cell.setCellValue("LPJ RESMI");
+//                        cell.setCellStyle(cellStyle4);
+//                        rowIndex++;
+//                        rowIndex++;
                         if(masterLpj.size()>0){
                             compareRekening = masterLpj.get(0).getKodeRekening();
                         }else{
@@ -515,22 +529,67 @@ public class LpbDaoImpl implements LpbDao {
                               cell.setCellFormula("+K"+(rowIndex)+"");
                            }
                         }
+                        
+                        rowIndex++;
+                        rowIndex++;
+                        
+                        rowData = sheet.createRow(rowIndex);
+                        fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "");
+                        rowIndex++;
+                        rowData = sheet.createRow(rowIndex);
+                        for(int i=0; i<12; i++){
+                           cell = rowData.createCell(i);
+                           cell.setCellStyle(cellStyle5);
+                           if(i == 0){
+                              cell.setCellValue("2101.05");
+                           }else if(i == 4){
+                              cell.setCellValue("HUTANG PBT");
+                           }else if(i==11){
+//                              cell.setCellType(CellType.FORMULA);
+//                              x = (lpj.getDebet()/100)*lpj.getPph();
+                              cell.setCellValue(FormatRupiah.convert(""+lpj.getPph()));
+//                              cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
+                           }
+                        }
+                        rowIndex++;
+                        rowIndex++;
+                                
+                        rowData = sheet.createRow(rowIndex);
+                        lpj.setKodeRekening("2101.05");
+                        fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "JURNAL ADJ");
+//                        rowIndex++;
+                        rowIndex++;
+                        rowData = sheet.createRow(rowIndex);
+                        for(int i=0; i<12; i++){
+                            cell = rowData.createCell(i);
+                            cell.setCellStyle(cellStyle5);
+                            if(i == 0){
+                               cell.setCellValue("2190.03");
+                            }else if(i == 4){
+                               cell.setCellValue("HUTANG PPH 23");
+                            }else if(i==11){
+                               cell.setCellValue(FormatRupiah.convert(""+lpj.getPph()));
+                            }
+                         }
                         rowIndex++;
                         rowIndex++;
                         rowData = sheet.createRow(rowIndex);
                         for(int i=0; i<5; i++){
                            cell = rowData.createCell(i);
-                           cell.setCellStyle(cellStyle14);
+                           cell.setCellStyle(cellStyle12);
                           if(i==0){
                              cell.setCellValue("1180.02");
+                          }else if(i==3){
+                             cell.setCellValue(FormatDate.convertNumber(lpj.getTanggal()));
                           }else if(i==4){
-                             cell.setCellValue("PPN MASUKAN II");
+                             cell.setCellValue("PPN 10%");
                           }
                         }
                         cell = rowData.createCell(10);
                         cell.setCellStyle(cellStyle12);
-                        cell.setCellType(CellType.FORMULA);
-                        cell.setCellFormula("+K"+(rowIndex-2)+"*10%");
+//                        cell.setCellType(CellType.FORMULA);
+//                        cell.setCellFormula("+K"+(rowIndex-8)+"*10%");
+                        cell.setCellFormula(""+lpj.getPpn());
 
                         rowIndex++;
                         listPpnlpj.add(rowIndex);
@@ -539,16 +598,18 @@ public class LpbDaoImpl implements LpbDao {
                             cell = rowData.createCell(i);
                             cell.setCellStyle(cellStyle5);
                             if(i == 0){
-                              cell.setCellValue("2101.01");
+//                              cell.setCellValue("2190.03");
+                              cell.setCellValue("2101.05");
                             }else if(i == 4){
-                              cell.setCellValue("HUTANG USAHA");
+                                cell.setCellValue("HUTANG PBT");
                              }else if(i==11){
                               cell.setCellType(CellType.FORMULA);
                               cell.setCellFormula("+K"+(rowIndex)+"");
                              }
                          }
-                         rowIndex++;
-                         rowIndex++;
+                        
+//                        rowIndex++;
+                        rowIndex++;
                         if(masterLpj.size()>0){
                             rowIndex++;
                             rowData = sheet.createRow(rowIndex);
@@ -569,27 +630,36 @@ public class LpbDaoImpl implements LpbDao {
                                f++;
                             }
                             cell.setCellFormula("SUM("+rumus+")+(K"+startIndex+")");
+                            rumus = "";
                         }
                         rowIndex++;
                         rowIndex++;
+                        resmi = false;
                     }//END OF IF
                 }
+            }
                 //END LPJ IMPORT
                 
                 //START LPJ POLOS
                 for(MasterLpj lpj : masterLpj){
                     if(lpj.getStatus().equals("POLOS")){
-                        rowData = sheet.createRow(rowIndex);
-                        cell = rowData.createCell(0);
-                        cell.setCellValue("LPJ POLOS");
-                        cell.setCellStyle(cellStyle4);
-                        rowIndex++;
+                        polos = true;
+                    }
+                }
+                if(polos){
+                    rowData = sheet.createRow(rowIndex);
+                    cell = rowData.createCell(0);
+                    cell.setCellValue("LPJ POLOS");
+                    cell.setCellStyle(cellStyle4);
+                    rowIndex++;
+                    rowIndex++;
+                for(MasterLpj lpj : masterLpj){
+                    if(lpj.getStatus().equals("POLOS")){
                         rowIndex++;
                         startIndex = rowIndex;
                         compareRekening = masterLpj.get(0).getKodeRekening();
                         rowData = sheet.createRow(rowIndex);
                         compareRekening = fillDataLPJ(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj);
-                        rowIndex++;
                         rowIndex++;
                         rowData = sheet.createRow(rowIndex);
                         for(int i=0; i<12; i++){
@@ -608,8 +678,8 @@ public class LpbDaoImpl implements LpbDao {
                         rowIndex++;
                                 
                         rowData = sheet.createRow(rowIndex);
-                        fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "PPH "+lpj.getPph()+"%");
-                        rowIndex++;
+//                        fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "PPH "+lpj.getPph()+"%");
+                        fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "");
                         rowIndex++;
                         rowData = sheet.createRow(rowIndex);
                         for(int i=0; i<12; i++){
@@ -621,18 +691,17 @@ public class LpbDaoImpl implements LpbDao {
                               cell.setCellValue("HUTANG PBT");
                            }else if(i==11){
 //                              cell.setCellType(CellType.FORMULA);
-                              x = (lpj.getDebet()/100)*lpj.getPph();
-                              cell.setCellValue(x);
+//                              x = (lpj.getDebet()/100)*lpj.getPph();
+                               x = lpj.getPph();
+                              cell.setCellValue(lpj.getPph());
 //                              cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
                            }
                         }
                         rowIndex++;
                         rowIndex++;
-                                
                         rowData = sheet.createRow(rowIndex);
                         lpj.setKodeRekening("2101.05");
                         fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "JURNAL ADJ");
-                        rowIndex++;
                         rowIndex++;
                         rowData = sheet.createRow(rowIndex);
                         for(int i=0; i<12; i++){
@@ -643,14 +712,11 @@ public class LpbDaoImpl implements LpbDao {
                             }else if(i == 4){
                                cell.setCellValue("HUTANG PPH 23");
                             }else if(i==11){
-//                               cell.setCellType(CellType.FORMULA);
                                cell.setCellValue(x);
-
-//                               cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
                             }
                          }
-                           rowIndex++;
-                           rowIndex++;
+                          rowIndex++;
+                          rowIndex++;
                          sheet.setColumnWidth(0,2500);
                          sheet.setColumnWidth(1,2500);
                          sheet.setColumnWidth(2,2500);
@@ -662,6 +728,7 @@ public class LpbDaoImpl implements LpbDao {
                         }
                     }
                 }
+            }
                  //end of LPJ POLOS
             }
             if( !listMaster.isEmpty()){

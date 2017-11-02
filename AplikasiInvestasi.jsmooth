@@ -24,7 +24,7 @@ Please download it at http://www.java.com</value>
 </skeletonProperties>
 <skeletonProperties>
 <key>PressKey</key>
-<value>1</value>
+<value>0</value>
 </skeletonProperties>
 <skeletonProperties>
 <key>Debug</key>

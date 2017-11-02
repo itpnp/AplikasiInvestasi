@@ -6,13 +6,10 @@ package aplikasiinvestasi.controller;
 
 import aplikasiinvestasi.model.MasterDepartemen;
 import aplikasiinvestasi.model.MasterInvest;
-import aplikasiinvestasi.model.MasterLpb;
 import aplikasiinvestasi.model.MasterLpj;
-import aplikasiinvestasi.service.LpbService;
 import aplikasiinvestasi.service.LpjService;
 import aplikasiinvestasi.utils.FormatRupiah;
 import aplikasiinvestasi.view.MainPageLpb;
-import aplikasiinvestasi.view.UpdateLpb;
 import aplikasiinvestasi.view.UpdateLpj;
 import java.awt.event.ActionEvent;
 import java.text.DecimalFormat;
@@ -60,8 +57,14 @@ public class UpdateLpjController {
         
         if(this.masterLpj.getStatus().equals("POLOS")){
             updateLpj.getPolosOption().setSelected(true);
+            updateLpj.getLabelPpn().setVisible(false);
+            updateLpj.getPpnField().setVisible(false);
+            updateLpj.getFormatPpn().setVisible(false);
         }else{
             updateLpj.getResmiOption().setSelected(true);
+            updateLpj.getLabelPpn().setVisible(true);
+            updateLpj.getPpnField().setVisible(true);
+            updateLpj.getFormatPpn().setVisible(true);
         }
         updateLpj.getSatuanField().setText(this.masterLpj.getSatuan());
         updateLpj.getNomorLpbInternalField().setText(this.masterLpj.getNoIpbInternal());
@@ -107,8 +110,10 @@ public class UpdateLpjController {
         this.masterLpj.setMasterDepartemen(listDepartemen.get(updateLpj.getDepartemenComboBox().getSelectedIndex()));
         if(updateLpj.getPolosOption().isSelected()){
             this.masterLpj.setStatus("POLOS");
+            this.masterLpj.setPpn(0.0);
         }else if(updateLpj.getResmiOption().isSelected()){
            this.masterLpj.setStatus("RESMI");
+           this.masterLpj.setPpn(Double.parseDouble(updateLpj.getPpnField().getText()));
         }
         lpjService.updateData(masterLpj);
         mainPageController.getAllData();
@@ -149,7 +154,7 @@ public class UpdateLpjController {
                 }
             }
         });
-        updateLpj.getHolo2Radio().addActionListener(new java.awt.event.ActionListener() {
+        updateLpj.getHolo1Radio().addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(updateLpj.getHolo1Radio().isSelected()){
@@ -159,13 +164,59 @@ public class UpdateLpjController {
                 }
             }
         });
+        updateLpj.getResmiOption().addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(updateLpj.getResmiOption().isSelected()){
+                    updateLpj.getLabelPpn().setVisible(true);
+                    updateLpj.getPpnField().setVisible(true);
+                    updateLpj.getFormatPpn().setVisible(true);
+                }else if(updateLpj.getPolosOption().isSelected()){
+                    updateLpj.getLabelPpn().setVisible(false);
+                    updateLpj.getPpnField().setVisible(false);
+                    updateLpj.getFormatPpn().setVisible(false);
+                }
+            }
+        });
+        updateLpj.getPolosOption().addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(updateLpj.getResmiOption().isSelected()){
+                    updateLpj.getLabelPpn().setVisible(true);
+                    updateLpj.getPpnField().setVisible(true);
+                    updateLpj.getFormatPpn().setVisible(true);
+                }else if(updateLpj.getPolosOption().isSelected()){
+                    updateLpj.getLabelPpn().setVisible(false);
+                    updateLpj.getPpnField().setVisible(false);
+                    updateLpj.getFormatPpn().setVisible(false);
+                }
+            }
+        });
         this.updateLpj.getHargaField().addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 hargaKeyReleased(evt);
             }
         });
+        this.updateLpj.getPpnField().addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ppnKeyReleased(evt);
+            }
+        });
+        this.updateLpj.getPphField().addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pphKeyReleased(evt);
+            }
+        });
         return updateLpj;
+    }
+    private void ppnKeyReleased(java.awt.event.KeyEvent evt){
+       formatRupiah(updateLpj.getFormatPpn(), updateLpj.getPpnField());
+    }
+    private void pphKeyReleased(java.awt.event.KeyEvent evt){
+       formatRupiah(updateLpj.getFormatPph(), updateLpj.getPphField());
     }
      private void hargaKeyReleased(java.awt.event.KeyEvent evt) {
        try{

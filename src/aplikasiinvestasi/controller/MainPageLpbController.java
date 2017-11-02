@@ -221,9 +221,10 @@ public class MainPageLpbController {
         model.addColumn("Harga");
         model.addColumn("Pph");
         model.addColumn("Debet");
+        model.addColumn("Ppn");
         model.addColumn("ACTION");
         for(MasterLpj lpj : listLpj){
-            Object[] obj = new Object[14];
+            Object[] obj = new Object[15];
             if(lpj.getMasterInvest()!=null){
                 obj[0] = lpj.getMasterInvest().getKodeInvest();
             }else{
@@ -239,11 +240,11 @@ public class MainPageLpbController {
             obj[8]  = lpj.getJumlah();
             obj[9]  = lpj.getSatuan();
             obj[10] = FormatRupiah.convert(String.valueOf(lpj.getHargaSatuan()));
-            obj[11] = lpj.getPph()+"%";
-            debetAfterPph = lpj.getDebet()-(lpj.getDebet()/100)*lpj.getPph();
-//            obj[11] = FormatRupiah.convert(String.valueOf(lpj.getDebet()));
-            obj[12] = FormatRupiah.convert(String.valueOf(debetAfterPph));
-            obj[13] = "UPDATE";
+            obj[11] = lpj.getPph();
+//            debetAfterPph = lpj.getDebet()-(lpj.getDebet()/100)*lpj.getPph();
+            obj[12] = FormatRupiah.convert(String.valueOf(lpj.getDebet()));
+            obj[13] = FormatRupiah.convert(String.valueOf(lpj.getPpn()));
+            obj[14] = "UPDATE";
             model.addRow(obj);
         }
         mainPage.getViewTable().setModel(model);
@@ -261,9 +262,9 @@ public class MainPageLpbController {
                 openEditLpjPage(listLpj.get(modelRow));
             }
         };
-       ButtonColumns buttonColumns = new ButtonColumns(mainPage.getViewTable(), detail, 13);
+       ButtonColumns buttonColumns = new ButtonColumns(mainPage.getViewTable(), detail, 14);
        buttonColumns.setMnemonic(KeyEvent.VK_D);
-       float[] columnSize = {7.0f, 4.0f, 3.0f, 6.0f, 6.0f, 21.0f, 9.0f,11.0f,2.0f,3.0f,10.0f,2.0f,10.0f,6.0f};
+       float[] columnSize = {6.0f, 4.0f, 3.0f, 6.0f, 6.0f, 20.0f, 8.0f,7.0f,2.0f,3.0f,9.0f,2.0f,10.0f,9.0f,5.0f};
        Table.resizeTable(mainPage.getViewTable(), columnSize);
     }
     public LpbService getService(){
