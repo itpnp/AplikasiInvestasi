@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <jsmoothproject>
-<JVMSearchPath>registry</JVMSearchPath>
-<JVMSearchPath>javahome</JVMSearchPath>
-<JVMSearchPath>jrepath</JVMSearchPath>
-<JVMSearchPath>jdkpath</JVMSearchPath>
-<JVMSearchPath>exepath</JVMSearchPath>
-<JVMSearchPath>jview</JVMSearchPath>
 <arguments></arguments>
 <classPath>dist\AplikasiInvestasi.jar</classPath>
 <embeddedJar>false</embeddedJar>
@@ -15,7 +9,7 @@
 <mainClassName>aplikasiinvestasi.AplikasiInvestasi</mainClassName>
 <maximumMemoryHeap>-1</maximumMemoryHeap>
 <maximumVersion></maximumVersion>
-<minimumVersion>1.7</minimumVersion>
+<minimumVersion></minimumVersion>
 <skeletonName>Console Wrapper</skeletonName>
 <skeletonProperties>
 <key>Message</key>
@@ -24,7 +18,7 @@ Please download it at http://www.java.com</value>
 </skeletonProperties>
 <skeletonProperties>
 <key>PressKey</key>
-<value>0</value>
+<value>1</value>
 </skeletonProperties>
 <skeletonProperties>
 <key>Debug</key>

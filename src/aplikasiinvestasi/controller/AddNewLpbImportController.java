@@ -145,6 +145,7 @@ public class AddNewLpbImportController {
                 lpb.setTanggal(addLpb.getTanggalField().getDate());
                 lpb.setActiveStatus("ACTIVE");
                 lpb.setSumberBarang("IMPORT");
+                lpb.setSuplier(addLpb.getSuplierField().getText());
                 lpb.setMasterDepartemen(listDepartemen.get(addLpb.getDepartemenComboBox().getSelectedIndex()));
                 if(masterInvest != null){
                     lpb.setMasterInvest(masterInvest);

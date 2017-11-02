@@ -172,6 +172,7 @@ public class AddNewLpbController {
                 lpb.setTanggal(addLpb.getTanggalField().getDate());
                 lpb.setActiveStatus("ACTIVE");
                 lpb.setSumberBarang("LOKAL");
+                lpb.setSuplier(addLpb.getSuplierField().getText());
                 lpb.setMasterDepartemen(listDepartemen.get(addLpb.getDepartemenComboBox().getSelectedIndex()));
                 if(masterInvest != null){
                     lpb.setMasterInvest(masterInvest);

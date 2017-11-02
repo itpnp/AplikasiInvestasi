@@ -46,6 +46,7 @@ public class UpdateLpbController {
         this.masterLpb = masterLpb;
         updateLpb.getAlokasiBiayaField().setText(this.masterLpb.getAlokasiBiaya());
         updateLpb.getDebetField().setText(""+this.masterLpb.getDebet());
+        updateLpb.getSuplierField().setText(this.masterLpb.getSuplier());
         if(this.masterLpb.getMasterDepartemen().getUnit().equals("Holo I")){
             updateLpb.getDepartemenComboBox().setModel(new DefaultComboBoxModel(this.comboboxModel("Holo I").toArray()));
             updateLpb.getHolo1Radio().setSelected(true);
@@ -101,6 +102,7 @@ public class UpdateLpbController {
         this.masterLpb.setNoIpbInternal(updateLpb.getNomorLpbInternalField().getText());
         this.masterLpb.setSatuan(updateLpb.getSatuanField().getText());
         this.masterLpb.setTanggal(updateLpb.getTanggalField().getDate());
+        this.masterLpb.setSuplier(updateLpb.getSuplierField().getText());
         this.masterLpb.setActiveStatus("ACTIVE");
         if(updateLpb.getLokalRadio().isSelected()){
           this.masterLpb.setSumberBarang("LOKAL");

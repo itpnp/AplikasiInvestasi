@@ -46,6 +46,7 @@ public class UpdateLpjController {
         this.masterLpj = masterLpj;
         updateLpj.getAlokasiBiayaField().setText(this.masterLpj.getAlokasiBiaya());
         updateLpj.getDebetField().setText(""+this.masterLpj.getDebet());
+        updateLpj.getSuplierField().setText(this.masterLpj.getSuplier());
         if(this.masterLpj.getMasterDepartemen().getUnit().equals("Holo I")){
             updateLpj.getDepartemenComboBox().setModel(new DefaultComboBoxModel(this.comboboxModel("Holo I").toArray()));
             updateLpj.getHolo1Radio().setSelected(true);
@@ -106,7 +107,7 @@ public class UpdateLpjController {
         this.masterLpj.setTanggal(updateLpj.getTanggalField().getDate());
         this.masterLpj.setPph(Integer.parseInt(updateLpj.getPphField().getText()));
         this.masterLpj.setActiveStatus("ACTIVE");
-        
+        this.masterLpj.setSuplier(updateLpj.getSuplierField().getText());
         this.masterLpj.setMasterDepartemen(listDepartemen.get(updateLpj.getDepartemenComboBox().getSelectedIndex()));
         if(updateLpj.getPolosOption().isSelected()){
             this.masterLpj.setStatus("POLOS");

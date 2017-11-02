@@ -187,6 +187,7 @@ public class AddLpjController {
                 lpj.setTanggal(addLpj.getTanggalField().getDate());
                 lpj.setPph(Integer.valueOf(addLpj.getPphField().getText()));
                 lpj.setActiveStatus("ACTIVE");
+                lpj.setSuplier(addLpj.getSuplierField().getText());
                 lpj.setMasterDepartemen(listDepartemen.get(addLpj.getDepartemenComboBox().getSelectedIndex()));
                 if(masterInvest != null){
                     lpj.setMasterInvest(masterInvest);

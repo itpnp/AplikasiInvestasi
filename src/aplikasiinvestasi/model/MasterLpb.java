@@ -75,10 +75,12 @@ public class MasterLpb implements Serializable {
     @Column(name="sumber_barang")
     private String sumberBarang;
     
-
+    @Column(name="suplier")
+    private String suplier;
+    
     public MasterLpb(int idLpb, MasterInvest masterInvest, String alokasiBiaya, MasterDepartemen masterDepartemen, Date tanggal, 
             String keterangan, String noIpbInternal, String noIpbEksternal, double jumlah, String satuan, Double hargaSatuan, Double debet, 
-            String kodeRekening, String status, String activeStatus, String sumberBarang) {
+            String kodeRekening, String status, String activeStatus, String sumberBarang, String suplier) {
         this.idLpb = idLpb;
         this.masterInvest = masterInvest;
         this.alokasiBiaya = alokasiBiaya;
@@ -95,11 +97,20 @@ public class MasterLpb implements Serializable {
         this.status = status;
         this.activeStatus = activeStatus;
         this.sumberBarang = sumberBarang;
+        this.suplier = suplier;
     }
     
     public MasterLpb() {
     }
 
+    public String getSuplier() {
+        return suplier;
+    }
+
+    public void setSuplier(String suplier) {
+        this.suplier = suplier;
+    }
+    
     public String getActiveStatus() {
         return activeStatus;
     }

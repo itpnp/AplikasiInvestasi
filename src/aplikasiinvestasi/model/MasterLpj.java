@@ -77,10 +77,12 @@ public class MasterLpj implements Serializable {
     
     @Column(name="active_status")
     private String activeStatus;
-  
+    
+    @Column(name="suplier")
+    private String suplier;
     public MasterLpj(int idLpj, MasterInvest masterInvest, String alokasiBiaya, MasterDepartemen masterDepartemen, Date tanggal, 
         String keterangan, String noIpbInternal, String noIpbEksternal, double jumlah, String satuan, Double hargaSatuan, Double debet, 
-        String kodeRekening, String status, String activeStatus, double pph,double ppn) {
+        String kodeRekening, String status, String activeStatus, double pph,double ppn, String suplier) {
         this.idLpj = idLpj;
         this.masterInvest = masterInvest;
         this.alokasiBiaya = alokasiBiaya;
@@ -98,11 +100,20 @@ public class MasterLpj implements Serializable {
         this.activeStatus = activeStatus;
         this.pph = pph;
         this.ppn = ppn;
+        this.suplier = suplier;
     }
     
     public MasterLpj() {
     }
 
+    public String getSuplier() {
+        return suplier;
+    }
+
+    public void setSuplier(String suplier) {
+        this.suplier = suplier;
+    }
+    
     public double getPph() {
         return pph;
     }
