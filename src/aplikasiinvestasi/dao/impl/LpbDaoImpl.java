@@ -390,43 +390,48 @@ public class LpbDaoImpl implements LpbDao {
             cell.setCellValue("KETERANGAN");
             cell.setCellStyle(cellStyle);
             sheet.addMergedRegion(new CellRangeAddress(4,5,4,4));
-            
+           
             cell = rowHeader.createCell(5);
+            cell.setCellValue("SUPLIER");
+            cell.setCellStyle(cellStyle);
+            sheet.addMergedRegion(new CellRangeAddress(4,5,5,5));
+            
+            cell = rowHeader.createCell(6);
             cell.setCellValue("REF NO. LPB");
             cell.setCellStyle(cellStyle);
-            sheet.addMergedRegion(new CellRangeAddress(4,4,5,6));
+            sheet.addMergedRegion(new CellRangeAddress(4,4,6,7));
             
-            cell = subHeader.createCell(5);
+            cell = subHeader.createCell(6);
             cell.setCellValue("INTR");
             cell.setCellStyle(cellStyle);
             
-            cell = subHeader.createCell(6);
+            cell = subHeader.createCell(7);
             cell.setCellValue("EX");
             cell.setCellStyle(cellStyle);
             
-            cell = rowHeader.createCell(7);
-            cell.setCellValue("QTY");
-            cell.setCellStyle(cellStyle);
-            sheet.addMergedRegion(new CellRangeAddress(4,5,7,7));
-            
             cell = rowHeader.createCell(8);
-            cell.setCellValue("SAT");
+            cell.setCellValue("QTY");
             cell.setCellStyle(cellStyle);
             sheet.addMergedRegion(new CellRangeAddress(4,5,8,8));
             
             cell = rowHeader.createCell(9);
-            cell.setCellValue("HRG");
+            cell.setCellValue("SAT");
             cell.setCellStyle(cellStyle);
             sheet.addMergedRegion(new CellRangeAddress(4,5,9,9));
             
             cell = rowHeader.createCell(10);
-            cell.setCellValue("DEBET (Rp.)");
-            sheet.addMergedRegion(new CellRangeAddress(4,5,10,10));
+            cell.setCellValue("HRG");
             cell.setCellStyle(cellStyle);
+            sheet.addMergedRegion(new CellRangeAddress(4,5,10,10));
             
             cell = rowHeader.createCell(11);
-            cell.setCellValue("KREDIT (Rp.)");
+            cell.setCellValue("DEBET (Rp.)");
             sheet.addMergedRegion(new CellRangeAddress(4,5,11,11));
+            cell.setCellStyle(cellStyle);
+            
+            cell = rowHeader.createCell(12);
+            cell.setCellValue("KREDIT (Rp.)");
+            sheet.addMergedRegion(new CellRangeAddress(4,5,12,12));
             cell.setCellStyle(cellStyle);
             
             rowData = sheet.createRow(6);
@@ -1171,28 +1176,32 @@ public class LpbDaoImpl implements LpbDao {
      cell = rowData.createCell(4);
      cell.setCellValue(lpb.getKeterangan());
      cell.setCellStyle(cellStyle2);
-
+     
      cell = rowData.createCell(5);
+     cell.setCellValue(lpb.getSuplier());
+     cell.setCellStyle(cellStyle2);
+     
+     cell = rowData.createCell(6);
      cell.setCellValue(lpb.getNoIpbInternal());
      cell.setCellStyle(cellStyle2);
 
-     cell = rowData.createCell(6);
+     cell = rowData.createCell(7);
      cell.setCellValue(lpb.getNoIpbEksternal());
      cell.setCellStyle(cellStyle2);
 
-     cell = rowData.createCell(7);
+     cell = rowData.createCell(8);
      cell.setCellValue(lpb.getJumlah());
      cell.setCellStyle(cellStyle2);
 
-     cell = rowData.createCell(8);
+     cell = rowData.createCell(9);
      cell.setCellValue(lpb.getSatuan());
      cell.setCellStyle(cellStyle2);
 
-     cell = rowData.createCell(9);
+     cell = rowData.createCell(10);
      cell.setCellValue(lpb.getHargaSatuan());
      cell.setCellStyle(cellStyle12);
                     
-     cell = rowData.createCell(10);
+     cell = rowData.createCell(11);
      cell.setCellValue(lpb.getDebet());
      cell.setCellStyle(cellStyle12);
      return compareRekening;
