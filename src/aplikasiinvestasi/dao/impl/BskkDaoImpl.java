@@ -11,6 +11,7 @@ import aplikasiinvestasi.model.MasterBskk;
 import aplikasiinvestasi.model.MasterInvest;
 import aplikasiinvestasi.model.MasterKeluarBskk;
 import aplikasiinvestasi.model.MasterTerima;
+import aplikasiinvestasi.model.SaldoAkhir;
 import aplikasiinvestasi.utils.BulanEnum;
 import aplikasiinvestasi.utils.FormatDate;
 import aplikasiinvestasi.utils.HibernateUtil;
@@ -693,12 +694,21 @@ public class BskkDaoImpl implements BskkDao{
         if(listTerima.size()==0){
             JOptionPane.showMessageDialog(null,"Data Rekap Kosong", "Warning", JOptionPane.ERROR_MESSAGE, null);
         }else{
+           if(month == 0){
+               year = year-1;
+               month = 12;
+           }
            if(saldoDao.findByMonthAndYear(BulanEnum.namaBulan()[month], ""+year).size()==0){
             JOptionPane.showMessageDialog(null,"Data Saldo Bulan Sebelumnya Kosong", "Warning", JOptionPane.ERROR_MESSAGE, null);
            }else{
             HSSFCell cell;
             HSSFRow rowData;
-
+            
+            List<SaldoAkhir> saldoAkhir = saldoDao.findByMonthAndYear(BulanEnum.namaBulan()[month], ""+year);
+            if(month == 12){
+                month = 0;
+                year = year+1;
+            }
             rowData = sheet.createRow(1);
             cell = rowData .createCell(0);
             sheet.addMergedRegion(new CellRangeAddress(1,1,0,7));
@@ -720,7 +730,7 @@ public class BskkDaoImpl implements BskkDao{
             cell.setCellStyle(titleStyle);
 
             cell = rowData .createCell(7);
-            cell.setCellValue(saldoDao.findByMonthAndYear(BulanEnum.namaBulan()[month], ""+year).get(0).getSaldo());
+            cell.setCellValue(saldoAkhir.get(0).getSaldo());
             cell.setCellStyle(moneyStyle2);
 
             rowData = sheet.createRow(7);

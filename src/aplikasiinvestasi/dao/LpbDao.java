@@ -42,5 +42,6 @@ public interface LpbDao {
     public boolean saveInBatch(List<MasterLpb> listMaster);
     public List<MasterLpb> findByYearMonthRekening(String year,String month, String rekening);
     public void directPrint(JTable viewTable, String ppn);
+    public List<MasterLpb> importFile();
     
 }

@@ -13,4 +13,6 @@ import java.util.List;
  */
 public interface DepartemenService {
     public List<MasterDepartemen> getDepartemenByUnit(String unit);
+    public MasterDepartemen findByCode(String code);
+
 }

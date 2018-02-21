@@ -57,7 +57,19 @@ public class FormatRupiah {
         }catch(ParseException | NumberFormatException e){
             e.printStackTrace();
         }
-        
         return format;
     }
+    
+    public static String convertFromRupiah(String rupiah){
+        String number = null;
+        int length = rupiah.length();
+        number = rupiah.substring(0,length-3);
+        System.out.println(number);
+        number = number.substring(3);
+        System.out.println(number);
+        number = number.replace(".", "");
+        System.out.println(number);
+        return number;
+    }
+    
 }

@@ -76,6 +76,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="printButton" min="-2" pref="151" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="importButton" min="-2" pref="176" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -85,6 +87,7 @@
               <Component id="addLpbImportButton" alignment="0" max="32767" attributes="0"/>
               <Component id="lpjButton" pref="102" max="32767" attributes="0"/>
               <Component id="printButton" alignment="0" max="32767" attributes="0"/>
+              <Component id="importButton" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -143,6 +146,19 @@
               <Image iconType="3" name="/aplikasiinvestasi/images/1493198199_vector_65_12.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="LPJ"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="importButton">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/aplikasiinvestasi/images/import-icon 64.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="IMPORT DATA"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>

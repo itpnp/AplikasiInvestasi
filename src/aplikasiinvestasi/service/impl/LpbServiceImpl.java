@@ -109,5 +109,10 @@ public class LpbServiceImpl implements LpbService{
         return lpbDao.findByYearMonthRekening(year, month, rekening);
     }
 
+    @Override
+    public List<MasterLpb> importFile() {
+        return lpbDao.importFile();
+    }
+
     
 }

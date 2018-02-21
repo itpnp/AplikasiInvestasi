@@ -185,6 +185,15 @@ public class MainPageLpb extends javax.swing.JFrame {
         this.credentialButton = credentialButton;
     }
 
+    public JButton getImportButton() {
+        return importButton;
+    }
+
+    public void setImportButton(JButton importButton) {
+        this.importButton = importButton;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -200,6 +209,7 @@ public class MainPageLpb extends javax.swing.JFrame {
         printButton = new javax.swing.JButton();
         addLpbImportButton = new javax.swing.JButton();
         lpjButton = new javax.swing.JButton();
+        importButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         bulanParam = new javax.swing.JComboBox();
@@ -256,6 +266,12 @@ public class MainPageLpb extends javax.swing.JFrame {
         lpjButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lpjButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        importButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        importButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasiinvestasi/images/import-icon 64.png"))); // NOI18N
+        importButton.setText("IMPORT DATA");
+        importButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        importButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -269,6 +285,8 @@ public class MainPageLpb extends javax.swing.JFrame {
                 .addComponent(lpjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -277,6 +295,7 @@ public class MainPageLpb extends javax.swing.JFrame {
             .addComponent(addLpbImportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lpjButton, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
             .addComponent(printButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(importButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
@@ -537,6 +556,7 @@ public class MainPageLpb extends javax.swing.JFrame {
     private javax.swing.JMenuItem credentialButton;
     private javax.swing.JButton creditButton;
     private javax.swing.JButton directPrint;
+    private javax.swing.JButton importButton;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

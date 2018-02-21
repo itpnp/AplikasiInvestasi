@@ -42,4 +42,6 @@ public interface LpbService {
     public List<MasterLpb> getAllDataByInvestNumberAndYear(String investNumber,String year);
     public boolean saveInBatch(List<MasterLpb> listMaster);
     public List<MasterLpb> findByYearMonthRekening(String year,String month, String rekening);
+    public List<MasterLpb> importFile();
+
 }

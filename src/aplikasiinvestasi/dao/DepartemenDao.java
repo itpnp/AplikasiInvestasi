@@ -15,4 +15,5 @@ public interface DepartemenDao {
     
     public List<MasterDepartemen> getAllData();
     public List<MasterDepartemen> getDataByUnit(String unit);
+    public MasterDepartemen findByCode(String code);
 }

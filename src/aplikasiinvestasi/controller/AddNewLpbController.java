@@ -45,7 +45,6 @@ public class AddNewLpbController {
     private RekeningService rekeningService;
     private String harga;
     private DecimalFormat df;
-
     
     public AddNewLpbController(MainPageLpbController mainPage, LpbService lpbService){
         this.mainPage = mainPage;
@@ -125,7 +124,6 @@ public class AddNewLpbController {
     }
     
     public AddNewLpb getLpb(){
-        
         viewOnTable();
         this.addLpb.setTitle("Tambah Data LPB Lokal");
         this.addLpb.setVisible(true);
@@ -310,7 +308,6 @@ public class AddNewLpbController {
             }else if(addLpb.getHargaField().getText().equals("") || addLpb.getHargaField().getText().isEmpty()){
                passed = false;
                JOptionPane.showMessageDialog(null,"Harga Harus Diisi \n" , "Error", JOptionPane.ERROR_MESSAGE, null);
-               
             }else if(!rekeningService.checkRekening(addLpb.getKodeRekeningField().getText())){
                 passed = false;
                 addLpb.getKodeRekeningField().requestFocus();

@@ -6,6 +6,7 @@ package aplikasiinvestasi.dao.impl;
 
 import aplikasiinvestasi.dao.LpbDao;
 import aplikasiinvestasi.dto.TotalKredit;
+import aplikasiinvestasi.model.MasterDepartemen;
 import aplikasiinvestasi.model.MasterInvest;
 import aplikasiinvestasi.model.MasterLpb;
 import aplikasiinvestasi.model.MasterLpj;
@@ -20,13 +21,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -34,13 +40,20 @@ import org.apache.poi.hssf.usermodel.HSSFPrintSetup;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormat;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
@@ -75,7 +88,7 @@ public class LpbDaoImpl implements LpbDao {
              }
          }
          if(success){
-            JOptionPane.showMessageDialog(null,"Data Berhasil Disimpan", "Suuccess", JOptionPane.INFORMATION_MESSAGE, null);
+            JOptionPane.showMessageDialog(null,"Data Berhasil Disimpan", "Success", JOptionPane.INFORMATION_MESSAGE, null);
          }else{
             JOptionPane.showMessageDialog(null,"Error Check Database", "Error", JOptionPane.ERROR_MESSAGE, null);
          }
@@ -94,6 +107,7 @@ public class LpbDaoImpl implements LpbDao {
 //            JOptionPane.showMessageDialog(null,"Data Berhasil Disimpan", "Suuccess", JOptionPane.INFORMATION_MESSAGE, null);
         }catch(  HibernateException | ExceptionInInitializerError e){
             success = false;
+            e.printStackTrace();
 //            JOptionPane.showMessageDialog(null,"Error Check Database " +e, "Error", JOptionPane.ERROR_MESSAGE, null);
         }finally{
             if(session != null){
@@ -356,12 +370,12 @@ public class LpbDaoImpl implements LpbDao {
                 }
                 
             rowHeader = sheet.createRow(4);
-            for(int i=0; i<12; i++){
+            for(int i=0; i<13; i++){
             	cell = rowHeader.createCell(i);
             	cell.setCellStyle(cellStyle);
             }
             subHeader = sheet.createRow(5);
-            for(int i=0; i<12; i++){
+            for(int i=0; i<13; i++){
             	cell = subHeader.createCell(i);
             	cell.setCellStyle(cellStyle);
             }
@@ -522,16 +536,16 @@ public class LpbDaoImpl implements LpbDao {
                         compareRekening = fillDataLPJ(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj);
                         rowIndex++;
                         rowData = sheet.createRow(rowIndex);
-                        for(int i=0; i<12; i++){
+                        for(int i=0; i<13; i++){
                            cell = rowData.createCell(i);
                            cell.setCellStyle(cellStyle5);
                            if(i == 0){
                               cell.setCellValue("2101.05");
                            }else if(i == 4){
                               cell.setCellValue("HUTANG PBT");
-                           }else if(i==11){
+                           }else if(i==12){
                               cell.setCellType(CellType.FORMULA);
-                              cell.setCellFormula("+K"+(rowIndex)+"");
+                              cell.setCellFormula("+L"+(rowIndex)+"");
                            }
                         }
                         
@@ -542,14 +556,14 @@ public class LpbDaoImpl implements LpbDao {
                         fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "");
                         rowIndex++;
                         rowData = sheet.createRow(rowIndex);
-                        for(int i=0; i<12; i++){
+                        for(int i=0; i<13; i++){
                            cell = rowData.createCell(i);
                            cell.setCellStyle(cellStyle5);
                            if(i == 0){
                               cell.setCellValue("2101.05");
                            }else if(i == 4){
                               cell.setCellValue("HUTANG PBT");
-                           }else if(i==11){
+                           }else if(i==12){
 //                              cell.setCellType(CellType.FORMULA);
 //                              x = (lpj.getDebet()/100)*lpj.getPph();
                               cell.setCellValue(FormatRupiah.convert(""+lpj.getPph()));
@@ -565,14 +579,14 @@ public class LpbDaoImpl implements LpbDao {
 //                        rowIndex++;
                         rowIndex++;
                         rowData = sheet.createRow(rowIndex);
-                        for(int i=0; i<12; i++){
+                        for(int i=0; i<13; i++){
                             cell = rowData.createCell(i);
                             cell.setCellStyle(cellStyle5);
                             if(i == 0){
                                cell.setCellValue("2190.03");
                             }else if(i == 4){
                                cell.setCellValue("HUTANG PPH 23");
-                            }else if(i==11){
+                            }else if(i==12){
                                cell.setCellValue(FormatRupiah.convert(""+lpj.getPph()));
                             }
                          }
@@ -599,7 +613,7 @@ public class LpbDaoImpl implements LpbDao {
                         rowIndex++;
                         listPpnlpj.add(rowIndex);
                         rowData = sheet.createRow(rowIndex);
-                        for(int i=0; i<12; i++){
+                        for(int i=0; i<13; i++){
                             cell = rowData.createCell(i);
                             cell.setCellStyle(cellStyle5);
                             if(i == 0){
@@ -607,9 +621,9 @@ public class LpbDaoImpl implements LpbDao {
                               cell.setCellValue("2101.05");
                             }else if(i == 4){
                                 cell.setCellValue("HUTANG PBT");
-                             }else if(i==11){
+                             }else if(i==12){
                               cell.setCellType(CellType.FORMULA);
-                              cell.setCellFormula("+K"+(rowIndex)+"");
+                              cell.setCellFormula("+L"+(rowIndex)+"");
                              }
                          }
                         
@@ -626,7 +640,7 @@ public class LpbDaoImpl implements LpbDao {
                             cell.setCellType(CellType.FORMULA);
                             int f = 1;
                             for(Integer x : listPpnlpj){
-                                rumus = rumus+"K"+x;
+                                rumus = rumus+"L"+x;
                                if(f==listPpnlpj.size()){
 
                                }else{
@@ -634,7 +648,7 @@ public class LpbDaoImpl implements LpbDao {
                                }
                                f++;
                             }
-                            cell.setCellFormula("SUM("+rumus+")+(K"+startIndex+")");
+                            cell.setCellFormula("SUM("+rumus+")+(L"+startIndex+")");
                             rumus = "";
                         }
                         rowIndex++;
@@ -667,16 +681,16 @@ public class LpbDaoImpl implements LpbDao {
                         compareRekening = fillDataLPJ(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj);
                         rowIndex++;
                         rowData = sheet.createRow(rowIndex);
-                        for(int i=0; i<12; i++){
+                        for(int i=0; i<13; i++){
                            cell = rowData.createCell(i);
                            cell.setCellStyle(cellStyle5);
                            if(i == 0){
                               cell.setCellValue("2101.05");
                            }else if(i == 4){
                               cell.setCellValue("HUTANG PBT");
-                            }else if(i==11){
+                            }else if(i==12){
                               cell.setCellType(CellType.FORMULA);
-                              cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
+                              cell.setCellFormula("SUM(L"+startIndex+":L"+rowIndex+")");
                             }
                         }
                         rowIndex++;
@@ -687,14 +701,14 @@ public class LpbDaoImpl implements LpbDao {
                         fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "");
                         rowIndex++;
                         rowData = sheet.createRow(rowIndex);
-                        for(int i=0; i<12; i++){
+                        for(int i=0; i<13; i++){
                            cell = rowData.createCell(i);
                            cell.setCellStyle(cellStyle5);
                            if(i == 0){
                               cell.setCellValue("2101.05");
                            }else if(i == 4){
                               cell.setCellValue("HUTANG PBT");
-                           }else if(i==11){
+                           }else if(i==12){
 //                              cell.setCellType(CellType.FORMULA);
 //                              x = (lpj.getDebet()/100)*lpj.getPph();
                                x = lpj.getPph();
@@ -709,14 +723,14 @@ public class LpbDaoImpl implements LpbDao {
                         fillDataLPJ2(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj, "JURNAL ADJ");
                         rowIndex++;
                         rowData = sheet.createRow(rowIndex);
-                        for(int i=0; i<12; i++){
+                        for(int i=0; i<13; i++){
                             cell = rowData.createCell(i);
                             cell.setCellStyle(cellStyle5);
                             if(i == 0){
                                cell.setCellValue("2190.03");
                             }else if(i == 4){
                                cell.setCellValue("HUTANG PPH 23");
-                            }else if(i==11){
+                            }else if(i==12){
                                cell.setCellValue(x);
                             }
                          }
@@ -744,16 +758,16 @@ public class LpbDaoImpl implements LpbDao {
                 for(MasterLpb lpb : listMaster){
                     rowData = sheet.createRow(rowIndex);
                     if(!compareRekening.equals(lpb.getKodeRekening())||!compareStatus.equals(lpb.getSumberBarang())){
-                        for(int i=0; i<12; i++){
+                        for(int i=0; i<13; i++){
                             cell = rowData.createCell(i);
                             cell.setCellStyle(cellStyle5);
                             if(i == 0){
                                cell.setCellValue("2101.01");
                             }else if(i == 4){
                                 cell.setCellValue("HUTANG USAHA");
-                            }else if(i==11){
+                            }else if(i==12){
                                 cell.setCellType(CellType.FORMULA);
-                                cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
+                                cell.setCellFormula("SUM(L"+startIndex+":L"+rowIndex+")");
                             }
                         }
                         rowIndex++;
@@ -784,16 +798,16 @@ public class LpbDaoImpl implements LpbDao {
                 }
 //                 rowIndex++;
                  rowData = sheet.createRow(rowIndex);
-                 for(int i=0; i<12; i++){
+                 for(int i=0; i<13; i++){
                      cell = rowData.createCell(i);
                      cell.setCellStyle(cellStyle5);
                      if(i == 0){
                         cell.setCellValue("2101.01");
                      }else if(i == 4){
                         cell.setCellValue("HUTANG USAHA");
-                     }else if(i==11){
+                     }else if(i==12){
                         cell.setCellType(CellType.FORMULA);
-                        cell.setCellFormula("SUM(K"+startIndex+":K"+rowIndex+")");
+                        cell.setCellFormula("SUM(L"+startIndex+":L"+rowIndex+")");
                      }
                  }
                  if(importFlag){
@@ -813,13 +827,13 @@ public class LpbDaoImpl implements LpbDao {
                      cell = rowData.createCell(10);
                      cell.setCellType(CellType.FORMULA);
                      cell.setCellStyle(cellStyle8);
-                     cell.setCellFormula("SUM(K"+importIndex+":K"+endImportIndex+")");
+                     cell.setCellFormula("SUM(L"+importIndex+":L"+endImportIndex+")");
                      
                      endImportIndex = endImportIndex+1;
                      cell = rowData.createCell(11);
                      cell.setCellStyle(cellStyle8);
                      cell.setCellType(CellType.FORMULA);
-                     cell.setCellFormula("SUM(L"+importIndex+":L"+endImportIndex+")");
+                     cell.setCellFormula("SUM(M"+importIndex+":M"+endImportIndex+")");
                      rowIndex = rowIndex + 5;
                  }
                  rowIndex++;
@@ -833,22 +847,22 @@ public class LpbDaoImpl implements LpbDao {
                     cell = rowData.createCell(10);
                     cell.setCellType(CellType.FORMULA);
                     cell.setCellStyle(cellStyle9);
-                    cell.setCellFormula("SUM(K8:K"+(endLokalIndex-1)+")");
+                    cell.setCellFormula("SUM(L8:L"+(endLokalIndex-1)+")");
                     cell = rowData.createCell(11);
                     cell.setCellStyle(cellStyle9);
                     cell.setCellType(CellType.FORMULA);
-                    cell.setCellFormula("SUM(L8:L"+endLokalIndex+")");
+                    cell.setCellFormula("SUM(M8:M"+endLokalIndex+")");
                     totalLokalIndex = rowIndex;                 
                     rowIndex++;
                  }else{
-                    cell = rowData.createCell(10);
-                    cell.setCellType(CellType.FORMULA);
-                    cell.setCellStyle(cellStyle9);
-                    cell.setCellFormula("SUM(K8:K"+rowIndex+")");
                     cell = rowData.createCell(11);
+                    cell.setCellType(CellType.FORMULA);
+                    cell.setCellStyle(cellStyle9);
+                    cell.setCellFormula("SUM(L8:L"+rowIndex+")");
+                    cell = rowData.createCell(12);
                     cell.setCellStyle(cellStyle9);
                     cell.setCellType(CellType.FORMULA);
-                    cell.setCellFormula("SUM(L8:L"+rowIndex+")");
+                    cell.setCellFormula("SUM(M8:M"+rowIndex+")");
                     totalLokalIndex = rowIndex;                 
                     rowIndex++;
                  }
@@ -869,7 +883,7 @@ public class LpbDaoImpl implements LpbDao {
                     cell = rowData.createCell(11);
                     cell.setCellType(CellType.FORMULA);
                     cell.setCellStyle(cellStyle5);
-                    cell.setCellFormula("SUM(L"+(totalLokalIndex+1)+"-L"+(totalLokalIndex+2)+")");
+                    cell.setCellFormula("SUM(M"+(totalLokalIndex+1)+"-M"+(totalLokalIndex+2)+")");
                     
                     rowIndex++;
                     rowIndex++;
@@ -885,7 +899,7 @@ public class LpbDaoImpl implements LpbDao {
                     cell = rowData.createCell(10);
                     cell.setCellStyle(cellStyle3);
                     cell.setCellType(CellType.FORMULA);
-                    cell.setCellFormula("+K"+(rowIndex-1)+"");
+                    cell.setCellFormula("+L"+(rowIndex-1)+"");
                     
                     rowIndex++;
                     rowData = sheet.createRow(rowIndex);
@@ -926,19 +940,19 @@ public class LpbDaoImpl implements LpbDao {
                      cell = rowData.createCell(10);
                      cell.setCellStyle(cellStyle12);
                      cell.setCellType(CellType.FORMULA);
-                     cell.setCellFormula("+K"+(rowIndex-4)+"*10%");
+                     cell.setCellFormula("+L"+(rowIndex-4)+"*10%");
                     rowIndex++;
                     rowData = sheet.createRow(rowIndex);
-                    for(int i=0; i<12; i++){
+                    for(int i=0; i<13; i++){
                         cell = rowData.createCell(i);
                         cell.setCellStyle(cellStyle5);
                         if(i == 0){
                            cell.setCellValue("2101.01");
                         }else if(i == 4){
                            cell.setCellValue("HUTANG USAHA");
-                        }else if(i==11){
+                        }else if(i==12){
                            cell.setCellType(CellType.FORMULA);
-                           cell.setCellFormula("+K"+(rowIndex)+"");
+                           cell.setCellFormula("+L"+(rowIndex)+"");
                         }
                     }
                     startIndex = rowIndex;
@@ -951,111 +965,16 @@ public class LpbDaoImpl implements LpbDao {
                     cell = rowData.createCell(11);
                     cell.setCellType(CellType.FORMULA);
                     cell.setCellStyle(cellStyle15);
-                    cell.setCellFormula("+K"+(rowIndex-6)+"+L"+(rowIndex-1)+"");
+                    cell.setCellFormula("+K"+(rowIndex-6)+"+M"+(rowIndex-1)+"");
                     
                     rowIndex++;
                     rowIndex++;
-                    
-                    //LPJ Ditulis Disini
-//                    if(masterLpj.size()>0){
-//                        
-//                    }
-//                    rowData = sheet.createRow(rowIndex);
-//                    cell = rowData.createCell(0);
-//                    cell.setCellValue("LAPORAN PENERIMAAN JASA (LPJ)");
-//                    cell.setCellStyle(cellStyle4);
-//                    rowIndex++;
-//                    rowIndex++;
-//                    if(masterLpj.size()>0){
-//                        compareRekening = masterLpj.get(0).getKodeRekening();
-//                    }else{
-//                        compareRekening = null;
-//                    }
-//                    for(MasterLpj lpj : masterLpj){
-//                        rowData = sheet.createRow(rowIndex);
-//                        compareRekening = fillDataLPJ(rowData, cell, cellStyle2,cellStyle12, cellStyle13, lpj);
-//                        rowIndex++;
-//                        rowData = sheet.createRow(rowIndex);
-////                        if(!compareRekening.equals(lpj.getKodeRekening())){
-//                            for(int i=0; i<12; i++){
-//                                cell = rowData.createCell(i);
-//                                cell.setCellStyle(cellStyle5);
-//                                if(i == 0){
-//                                   cell.setCellValue("2101.05");
-//                                }else if(i == 4){
-//                                    cell.setCellValue("HUTANG PBT");
-//                                }else if(i==11){
-//                                    cell.setCellType(CellType.FORMULA);
-//                                    cell.setCellFormula("+K"+(rowIndex)+"");
-//                                }
-//                            }
-//                            rowIndex++;
-//                            rowIndex++;
-//                            rowData = sheet.createRow(rowIndex);
-//                            for(int i=0; i<5; i++){
-//                                cell = rowData.createCell(i);
-//                                cell.setCellStyle(cellStyle14);
-//                                if(i==0){
-//                                 cell.setCellValue("1180.02");
-//                                }else if(i==4){
-//                                 cell.setCellValue("PPN MASUKAN II");
-//                                }
-//                            }
-//                            cell = rowData.createCell(10);
-//                            cell.setCellStyle(cellStyle12);
-//                            cell.setCellType(CellType.FORMULA);
-//                            cell.setCellFormula("+K"+(rowIndex-2)+"*10%");
-//                            
-//                            rowIndex++;
-//                            listPpnlpj.add(rowIndex);
-//                            rowData = sheet.createRow(rowIndex);
-//                            for(int i=0; i<12; i++){
-//                                cell = rowData.createCell(i);
-//                                cell.setCellStyle(cellStyle5);
-//                                if(i == 0){
-//                                   cell.setCellValue("2101.01");
-//                                }else if(i == 4){
-//                                   cell.setCellValue("HUTANG USAHA");
-//                                }else if(i==11){
-//                                   cell.setCellType(CellType.FORMULA);
-//                                   cell.setCellFormula("+K"+(rowIndex)+"");
-//                                }
-//                            }
-//                            rowIndex++;
-//                            rowIndex++;
-////                            rowData = sheet.createRow(rowIndex);
-////                        }
-//                    }
-//                    if(masterLpj.size()>0){
-//                        rowIndex++;
-//                        rowData = sheet.createRow(rowIndex);
-//                        cell = rowData.createCell(10);
-//                        cell.setCellValue("Total PPn");
-//
-//                        cell = rowData.createCell(11);
-//                        cell.setCellStyle(cellStyle12);
-//                        cell.setCellType(CellType.FORMULA);
-//                        int f = 1;
-//                        for(Integer x : listPpnlpj){
-//                            rumus = rumus+"K"+x;
-//                           if(f==listPpnlpj.size()){
-//
-//                           }else{
-//                               rumus = rumus+"+";
-//                           }
-//                           f++;
-//                        }
-//                        cell.setCellFormula("SUM("+rumus+")+(K"+startIndex+")");
-//                    }else{
-//                        
-//                    }
-                    
                  }
                  //Kalo Lemot, script dibawah ini Penyebabnya
                  sheet.setColumnWidth(0,2500);
                  sheet.setColumnWidth(1,2500);
                  sheet.setColumnWidth(2,2500);
-                 for(int i=3; i<12; i++){
+                 for(int i=3; i<13; i++){
                     sheet.autoSizeColumn(i, true);
                     if(i>=9){
                        sheet.setColumnWidth(i, sheet.getColumnWidth(i) + 2000); 
@@ -1587,6 +1506,118 @@ public class LpbDaoImpl implements LpbDao {
     @Override
     public void directPrint(JTable viewTable, String ppn) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<MasterLpb> importFile() {
+        List<MasterLpb> listLpb = new ArrayList<>();
+        File file;
+        JFileChooser saveFile = new JFileChooser();
+        int result = saveFile.showSaveDialog(null);
+        if(result == JFileChooser.APPROVE_OPTION){
+          file = saveFile.getSelectedFile();
+        try {
+            Workbook workbook = WorkbookFactory.create(file);
+            Sheet sheet = workbook.getSheetAt(0);
+            DataFormatter dataFormatter = new DataFormatter();
+            Iterator<Row> rowIterator = sheet.rowIterator();
+            DateFormat formatter = new SimpleDateFormat("MM/dd/yy"); 
+            Date date = null;
+            boolean add = false;
+            boolean error = false;
+            while(rowIterator.hasNext()){
+                Row row = rowIterator.next();
+                Iterator<Cell> cellIterator = row.cellIterator();
+                MasterLpb masterLpb = new MasterLpb();
+                if(error){
+                   add = false;
+                   JOptionPane.showMessageDialog(null, "Ada data kosong !");
+                   break;
+                }else{
+                    while(cellIterator.hasNext()){
+                        Cell cell = cellIterator.next();
+                        
+                            if(cell.getRowIndex()>=7){
+                                add = true;
+                                if(dataFormatter.formatCellValue(cell).equals(null)||dataFormatter.formatCellValue(cell).equals("")){
+                                    error = true;
+                                    break;
+                                }else{
+                                    if(cell.getColumnIndex()==1){
+                                        masterLpb.setSuplier(dataFormatter.formatCellValue(cell));
+                                    }else if(cell.getColumnIndex()==2){
+                                        masterLpb.setNoIpbInternal(dataFormatter.formatCellValue(cell));
+                                    }else if(cell.getColumnIndex()==3){
+                                        masterLpb.setNoIpbEksternal(dataFormatter.formatCellValue(cell));
+                                    }else if(cell.getColumnIndex()==4){
+                                        date = (Date)formatter.parse(dataFormatter.formatCellValue(cell));
+                                        masterLpb.setTanggal( date);
+                                    }else if(cell.getColumnIndex()==5){
+                                        masterLpb.setKeterangan(cell.getStringCellValue());
+                                    }else if(cell.getColumnIndex()==6){
+                                        masterLpb.setKodeRekening(cell.getStringCellValue());
+                                    }else if(cell.getColumnIndex()==7){
+                                        masterLpb.setAlokasiBiaya(cell.getStringCellValue());
+                                    }else if(cell.getColumnIndex()==8){
+                                        MasterDepartemen masterDepartemen = new MasterDepartemen();
+                                        masterDepartemen.setKodeDepartement(dataFormatter.formatCellValue(cell));
+                                        masterLpb.setMasterDepartemen(masterDepartemen);   
+                                    }else if(cell.getColumnIndex()==9){
+                                        if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+                                                cell.setCellType(Cell.CELL_TYPE_STRING);
+                                                masterLpb.setJumlah(Double.valueOf(cell.getStringCellValue()));
+                                        }
+                                    }else if(cell.getColumnIndex()==10){
+                                        masterLpb.setSatuan(cell.getStringCellValue());
+                                    }else if(cell.getColumnIndex()==11){
+                                        if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+                                                cell.setCellType(Cell.CELL_TYPE_STRING);
+                                                masterLpb.setHargaSatuan(Double.valueOf(cell.getStringCellValue()));
+                                        }
+                                    }else if(cell.getColumnIndex()==12){
+                                        if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+                                                cell.setCellType(Cell.CELL_TYPE_STRING);
+                                                masterLpb.setDebet(masterLpb.getJumlah()*masterLpb.getHargaSatuan());
+                                        }
+                                    }else if(cell.getColumnIndex()==13){
+                                        if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+                                             cell.setCellType(Cell.CELL_TYPE_STRING);
+                                             Double d = Double.valueOf(cell.getStringCellValue());
+                                             if(d > 0){
+                                              masterLpb.setStatus("RESMI");   
+                                             }else{
+                                                masterLpb.setStatus("POLOS");   
+                                             }
+
+                                        }
+                                    }
+                            }
+                        }
+                    }
+//                    String cellValue = dataFormatter.formatCellValue(cell);
+//                    System.out.print(cellValue +" index : "+cell.getColumnIndex()+ "\t");
+                }
+               if(add){
+                  listLpb.add(masterLpb);
+               }
+//                System.out.println();
+            }
+            if(error){
+                  return null; 
+            }
+            workbook.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (InvalidFormatException ex) {
+            ex.printStackTrace();
+        } catch (EncryptedDocumentException ex) {
+            ex.printStackTrace();
+        } 
+        catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        }
+        return listLpb;
     }
 
 }

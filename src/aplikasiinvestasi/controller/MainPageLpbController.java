@@ -39,6 +39,7 @@ public class MainPageLpbController {
     private AddNewLpbController addLpb;
     private AddNewLpbImportController addLpbImport;
     private AddLpjController addLpj;
+    private PreviewExcelLpb previewExcelLpb;
     private CreditLpbPageController creditController;
     private LpbService lpbService = new LpbServiceImpl();
     private LpjService lpjService = new LpjServiceImpl();
@@ -128,11 +129,18 @@ public class MainPageLpbController {
                 openCredentialPage(e);
             }
         });
+        mainPage.getImportButton().addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                importLpbLokal(e);
+            }
+        });
         addLpb = new AddNewLpbController(this, lpbService);
         addLpj = new AddLpjController(this, lpjService);
+        previewExcelLpb = new PreviewExcelLpb(this,lpbService);
         addLpbImport = new AddNewLpbImportController(this, lpbService);
         changeCredential = new ChangeCredentialController(userIdentity,this);
-
 
     }
     
@@ -142,6 +150,13 @@ public class MainPageLpbController {
     
     public void addNewLpbButton(java.awt.event.ActionEvent awt){
         addLpb.getLpb();
+    }
+    public void importLpbLokal(java.awt.event.ActionEvent awt){
+        listLpb = lpbService.importFile();
+        if(listLpb!=null){
+          previewExcelLpb.setData(listLpb);
+          previewExcelLpb.getPage();  
+        }
     }
     public void addLpjButton(java.awt.event.ActionEvent awt){
         addLpj.getLpj();

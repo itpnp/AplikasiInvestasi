@@ -22,5 +22,10 @@ public class DepartemenServiceImpl implements DepartemenService {
     public List<MasterDepartemen> getDepartemenByUnit(String unit) {
         return departemenDao.getDataByUnit(unit);
     }
+
+    @Override
+    public MasterDepartemen findByCode(String code) {
+        return departemenDao.findByCode(code);
+    }
     
 }

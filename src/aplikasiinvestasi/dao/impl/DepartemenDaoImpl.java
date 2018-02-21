@@ -5,6 +5,7 @@
 package aplikasiinvestasi.dao.impl;
 
 import aplikasiinvestasi.dao.DepartemenDao;
+import aplikasiinvestasi.model.MasterCredential;
 import aplikasiinvestasi.model.MasterDepartemen;
 import aplikasiinvestasi.utils.HibernateUtil;
 import java.util.ArrayList;
@@ -61,6 +62,27 @@ public class DepartemenDaoImpl implements DepartemenDao{
             }
         }
         return listDepartemen;
+    }
+
+    @Override
+    public MasterDepartemen findByCode(String code) {
+        MasterDepartemen departemen = null;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            departemen = (MasterDepartemen)session.createCriteria(MasterDepartemen.class).add(Restrictions.eq("kodeDepartement", code)).uniqueResult();
+           session.flush();
+        }catch(  HibernateException | ExceptionInInitializerError e){
+            e.printStackTrace();
+           JOptionPane.showMessageDialog(null,"Error Check Database", "Error", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            if(session != null){
+                if(session.isOpen()){
+                    session.close();
+                }
+            }
+        }
+        return departemen;
     }
     
 }

@@ -28,7 +28,7 @@ public class CredentialDaoImpl implements CredentialDao {
     @Override
     public void addCredential(MasterCredential credential) {
         try{
-            System.out.println(credential.getPrivilegeCode());
+//            System.out.println(credential.getPrivilegeCode());
             session = HibernateUtil.getSessionFactory().openSession();
             byte[] key = generateKey();
             credential.setSaltKey(key);
@@ -101,6 +101,7 @@ public class CredentialDaoImpl implements CredentialDao {
 
     @Override
     public MasterCredential login(String username, String password) {
+        
         MasterCredential credential = null;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
